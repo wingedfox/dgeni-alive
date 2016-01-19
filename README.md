@@ -50,7 +50,7 @@ docgen.package().config(function(log) {
 ### Grunt task
 Load task
 ```js
-grunt.loadNpmTasks('grunt-ngdocs');
+grunt.loadNpmTasks('dgeni-alive');
 ```
 
 Add section to your Gruntfile.js
