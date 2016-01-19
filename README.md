@@ -54,6 +54,7 @@ grunt.loadNpmTasks('dgeni-alive');
 ```
 
 Add section to your Gruntfile.js
+```
 "dgeni-alive": {
 options: {
   // optional basePath for correct path calculation

@@ -1,6 +1,6 @@
 {
   "name": "dgeni-alive",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Live doc generator on top of Dgeni",
   "main": "src/docgen.js",
   "scripts": {
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/wingedfox/dgeni-alive#readme",
   "devDependencies": {
     "bower": "~1.7.2",
+    "dgeni": "~0.4.2",
     "dgeni-packages": "~0.11.1",
     "fs-extra": "~0.26.4",
     "lodash": "~4.0.0",
