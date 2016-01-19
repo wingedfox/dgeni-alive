@@ -1,0 +1,37 @@
+<div flex="85"
+  layout="column"
+  layout-fill
+  >
+  <header
+  	flex="initial"
+    ng-include="'src/navbar.html'"></header>
+  <main
+    flex
+    layout-margin
+    layout="row">
+<!--
+   <div
+    flex="75"
+    ng-if="!docs.currentArea" ng-include="docs.partialPath"></div>
+-->
+    <md-sidenav
+      md-is-locked-open="true"
+      flex="25"
+      layout="column"
+      ng-if="docs.currentArea"
+      ng-include="'src/sidebar.html'"></md-sidenav>
+
+    <md-content flex="75"
+      layout="column"
+      g-if="docs.currentArea"
+      ng-include="'src/content.html'"></md-content>
+
+  </main>
+
+  <footer
+    flex="initial"
+   class="footer">
+   <p>Some &copy; reserved</p>
+  </footer>
+
+</div>

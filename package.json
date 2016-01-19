@@ -1,0 +1,32 @@
+{
+  "name": "dgeni-alive",
+  "version": "0.0.1",
+  "description": "Live doc generator on top of Dgeni",
+  "main": "src/docgen.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingedfox/dgeni-alive.git"
+  },
+  "keywords": [
+    "dgeni",
+    "angular",
+    "docs"
+  ],
+  "author": "Ilya WingedFox Lebedev <ilya@lebedev.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wingedfox/dgeni-alive/issues"
+  },
+  "homepage": "https://github.com/wingedfox/dgeni-alive#readme",
+  "devDependencies": {
+    "bower": "~1.7.2",
+    "dgeni-packages": "~0.11.1",
+    "fs-extra": "~0.26.4",
+    "lodash": "~4.0.0",
+    "q": "~1.4.1",
+    "wiredep": "~3.0.0"
+  }
+}

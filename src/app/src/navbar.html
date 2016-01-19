@@ -1,0 +1,19 @@
+<nav
+  flex
+  layout="row"
+  class="avbar navbar-static-top navbar-inverse" ng-controller="NavbarCtrl as navbar">
+  <div flex="initial">
+    <a class="navbar-brand" href="#/index">
+      <span class="glyphicon glyphicon-home"></span>
+      &nbsp;Docs
+    </a>
+  </div>
+  <div flex="grow"
+    class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+    <ul class="nav navbar-nav">
+      <li ng-repeat="area in navbar.areas" ng-class="{active:docs.currentArea.id === area.id}">
+        <a ng-href="#/{{area.href}}" >{{area.name}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
