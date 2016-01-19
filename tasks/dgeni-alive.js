@@ -8,7 +8,7 @@
 
 'use strict';
 
-var docgen = require('../scr/docgen')();
+var docgen = require('../src/docgen')();
 
 module.exports = function (grunt) {
     // register task
