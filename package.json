@@ -21,7 +21,7 @@
     "url": "https://github.com/wingedfox/dgeni-alive/issues"
   },
   "homepage": "https://github.com/wingedfox/dgeni-alive#readme",
-  "devDependencies": {
+  "dependencies": {
     "bower": "~1.7.2",
     "dgeni": "~0.4.2",
     "dgeni-packages": "~0.11.1",
