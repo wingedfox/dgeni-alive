@@ -23,21 +23,33 @@ var DEFAULT_PACKAGES = [
 function configurePackage(p) {
     // append services
     p.factory(require('./services/getTypeLink'))
+     .factory(require('./services/getTypeName'))
 
      // build navigation
      .processor(require('./processors/navigation'))
      .processor(require('./processors/structuredParam'))
 
-     // append custom filters
+     // change default url for native types doc
+//     .config(function(getTypeLink) {
+//        getTypeLink.nativeTypeRoot = 'http://w3.org';
+//      })
+
      .config(function(templateEngine, getInjectables) {
         templateEngine.filters = templateEngine.filters.concat(getInjectables([
-          require('./rendering/filters/type-link')
+          require('./rendering/filters/keys'),
+          require('./rendering/filters/type-link'),
+          require('./rendering/filters/type-name')
         ]));
       })
 
      // add more templates location
      .config(function(templateFinder) {
         templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
+      })
+
+     // do not assume links to be 
+     .config(function(checkAnchorLinksProcessor) {
+        checkAnchorLinksProcessor.base = '/';
       })
 
      // setting readFilesProcessor configuration

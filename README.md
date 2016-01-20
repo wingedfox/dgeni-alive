@@ -3,11 +3,13 @@ Live docs on top of dgeni documentation generator
 
 ## Motivation
 Dgeni-alive documentation generator has been built after a long search for a documentation generator.
+
 1. [ngdocs](//github.com/idanush/ngdocs) ([grunt-ngdoc](//github.com/bevacqua/grunt-ngdoc), [grunt-ngdocs](//github.com/m7r/grunt-ngdocs), etc) - has no updates for a long time
 2. [docular](//grunt-docular.com/) - has no activity as well
 3. [generator-ngdoc](//github.com/Quramy/generator-ngdoc) - has no activity as well and forces to use Yeoman tools, is not suitable for CI
 
 With dgeni-alive you can
+
 1. Use docgen as grunt task and directly
 2. Extend docgen like native Dgeni package
 3. TBD: configure web views
@@ -25,6 +27,7 @@ Parts of code were taken from generator-ngdoc.
 1. Configure Dgeni package
 2. Append custom processors/templates/filters/etc
 3. Run dgeni generator
+4. Serve built app with your favorite server
 4. ...
 5. Profit
 
