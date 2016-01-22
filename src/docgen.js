@@ -185,7 +185,7 @@ function DocGen () {
             var defer = Q.defer();
 
             // copy app data
-            console.log('Copy everytrhing from' + path.join(__dirname, 'app') + ' to ' + dest);
+            console.log('Copy everything from' + path.join(__dirname, 'app') + ' to ' + dest);
             fse.copySync(path.join(__dirname, 'app'), dest);
 
             // provide bower deps
@@ -202,7 +202,9 @@ function DocGen () {
 
             // wiredep
             return defer.promise.then(function(data) {
-                wiredep({src: ['index.html']});
+                wiredep({
+                    src: ['index.html']
+                });
                 return data;
             });
         });

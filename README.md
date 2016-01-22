@@ -61,12 +61,20 @@ Add section to your Gruntfile.js
 "dgeni-alive": {
 options: {
   // optional basePath for correct path calculation
-  // basePath: '',
+     basePath: '',
   // optional dgeni packages
   // packages: [
-  //   'dgeni-packages/jsdoc',
-  //   require('dgeni-packages/examples')
-  //]
+  //   'dgeni-packages/jsdoc',            // either names
+  //   require('dgeni-packages/examples') // or packages
+  // ]
+  // optional serve section for running local http server with live docs
+  // serve: {
+  // the server port
+  // can also be written as a function, e.g.
+       port: 10000,
+  // open the browser
+       openBrowser: true // or command to run favorite browser
+  // }
 },
 api: {
   // do not expand paths
