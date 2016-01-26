@@ -20,5 +20,10 @@ angular.module('docApp', ['ngMaterial'])
 			rewriteLinks: true
 		});
 	}
+})
+.run(function($location){
+	if(!$location.path) {
+		$location.path('api').replace();
+        }
 });
 

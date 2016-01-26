@@ -52,6 +52,12 @@ function configurePackage(p) {
         checkAnchorLinksProcessor.base = '/';
       })
 
+     .config(function(parseTagsProcessor, getInjectables) {
+        getInjectables(require('./tag-defs')).forEach(function(v) {
+            parseTagsProcessor.tagDefinitions.push(v);
+        });
+     })
+
      // setting readFilesProcessor configuration
      .config(function(computePathsProcessor, computeIdsProcessor, createDocMessage, getAliases) {
         computeIdsProcessor.idTemplates.push({
