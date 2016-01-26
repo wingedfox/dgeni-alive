@@ -5,7 +5,7 @@ var _ = require('lodash');
  * @description Get link to type
  */
 module.exports = function getTypeLink(aliasMap, log) {
-    var arrayReg = /^Array\.<([^>]+)>/i;
+    var arrayReg = /^Array\.?<([^>]+)>/i;
     var nativeTypes = [
         'arguments', 'Array', 'ArrayBuffer', 'Boolean', 'DataView', 'Date', 'Error', 'EvalError', 'Float32Array',
         'Float64Array', 'Function', 'Generator', 'GeneratorFunction', 'Infinity', 'Int16Array', 'Int32Array',
@@ -27,7 +27,7 @@ module.exports = function getTypeLink(aliasMap, log) {
             }
 
             var doc = aliasMap.getDocs(typeStr);
-
+console.log(typeStr, doc);
             if (doc.length === 1) {
                 doc = doc[0];
                 log.debug('getTypeLink: Generating link for "%s" - "%s"', typeStr, doc.path);
