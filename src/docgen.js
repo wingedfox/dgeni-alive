@@ -6,6 +6,7 @@ var fse = require('fs-extra');
 var bower = require('bower');
 var wiredep = require('wiredep');
 var Q = require('q');
+var pkg = require('../package.json');
 
 /**
  * Default packages, may be overridden by {@link DocGen#package}
@@ -29,11 +30,19 @@ function configurePackage(p) {
      .processor(require('./processors/config'))
      .processor(require('./processors/navigation'))
      .processor(require('./processors/structuredParam'))
+     .processor(require('./processors/website'))
 
      // change default url for native types doc
 //     .config(function(getTypeLink) {
 //        getTypeLink.nativeTypeRoot = 'http://w3.org';
 //      })
+     // generate website
+     .config(function(generateWebsite) {
+        generateWebsite
+         .locals('version', pkg.version)
+         .locals('title', pkg.title)
+         .locals('url', pkg.homepage)
+     })
 
      .config(function(templateEngine, getInjectables) {
         templateEngine.filters = templateEngine.filters.concat(getInjectables([
@@ -204,11 +213,8 @@ function DocGen () {
         return new Dgeni([this.package()]).generate().then(function(data) {
             var defer = Q.defer();
 
-            // copy app data
-            console.log('Copy everything from' + path.join(__dirname, 'app') + ' to ' + dest);
-            fse.copySync(path.join(__dirname, 'app'), dest);
-
             // provide bower deps
+            console.log('Building bower packages');
             process.chdir(dest);
             var z = bower.commands.install([],{});
 
@@ -222,6 +228,7 @@ function DocGen () {
 
             // wiredep
             return defer.promise.then(function(data) {
+                console.log('Linking bower deps');
                 wiredep({
                     src: ['index.html']
                 });

@@ -1,0 +1,10 @@
+<nav
+  class="md-toolbar-tools"
+  flex
+  layout="row"
+  ng-controller="NavbarCtrl as navbar">
+  <md-button
+    ng-repeat="area in navbar.areas"
+    ng-href="{{area.href}}"
+    aria-label="{{area.title}}">{{area.title}}</md-button>
+</nav>

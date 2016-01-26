@@ -16,15 +16,13 @@ module.exports = function generateConfigProcessor(log) {
       root = r;
       return this;
     },
-//    $runAfter: ['docs-rendered'],
-//    $runBefore: ['writing-files'],
     $runBefore: ['rendering-docs'],
     $process: function (docs) {
       docs.push({
         docType: 'config',
         id: 'config',
         template: 'config.template.js',
-        outputPath: 'src/config.js',
+        outputPath: 'data/config.js',
         config: {
             TITLE: title,
             ROOT: root

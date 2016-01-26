@@ -3,7 +3,7 @@
 angular.module('docApp').directive('a', function (DOCS_OVERWRITELINK, DOCS_AREA_DATA) {
   var linkCache = {};
   var isRewrite = function (link) {
-    var res = link.indexOf('#/') === -1;
+    var res = !!link && (link.indexOf('#/') === -1);
     if(!res){
       return false;
     }
