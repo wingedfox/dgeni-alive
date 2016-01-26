@@ -1,13 +1,27 @@
-<div flex="85"
+<div flex="95"
   layout="column"
   layout-fill
+  ng-controller="MainCtrl as Main"
   >
   <header
-  	flex="initial"
-    ng-include="'src/navbar.html'"></header>
+    flex="initial">
+    <md-toolbar
+      flex
+      layout="row"
+      layout-align="start center"
+      >
+      <md-button
+        aria-label="Components"
+        class="md-icon-button"
+        hide-gt-md
+        ng-click="Main.toggleSidebar('left')" >
+        <i class="fa fa-bars"></i>
+      </md-button>
+      <ng-include src="'src/navbar.html'" ></ng-include>
+    </md-toolbar>
+  </header>
   <main
     flex
-    layout-margin
     layout="row">
 <!--
    <div
@@ -15,13 +29,17 @@
     ng-if="!docs.currentArea" ng-include="docs.partialPath"></div>
 -->
     <md-sidenav
-      md-is-locked-open="true"
+      class="md-sidenav-left md-whiteframe-z2"
+      md-component-id="left"
+      md-is-locked-open="$mdMedia('gt-md')"
       flex="25"
       layout="column"
       ng-if="docs.currentArea"
       ng-include="'src/sidebar.html'"></md-sidenav>
 
-    <md-content flex="75"
+    <md-content
+      flex-gt-md="75"
+      flex="100"
       layout="column"
       g-if="docs.currentArea"
       ng-include="'src/content.html'"></md-content>

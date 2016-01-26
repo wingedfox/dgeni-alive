@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('docApp').controller('NavbarCtrl', function ($scope, DOCS_NAVIGATION) {
+angular.module('docApp').controller('NavbarCtrl', function ($scope, NAV) {
 	var navbar = this;
-	navbar.areas = [];
+	navbar.areas = NAV;
+/*
 	angular.forEach(DOCS_NAVIGATION, function(v, k){
 		navbar.areas.push({
 			id: k,
@@ -10,5 +11,6 @@ angular.module('docApp').controller('NavbarCtrl', function ($scope, DOCS_NAVIGAT
 			href: k
 		});
 	});
+*/
 	$scope.date = new Date();
 });

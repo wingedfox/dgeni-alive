@@ -39,6 +39,9 @@ module.exports = function (grunt) {
         });
 
         var done = this.async();
+        if (this.data.title) {
+            docgen.title(this.data.title);
+        }
         docgen.src(this.filesSrc);
         docgen.dest(dest);
         docgen.generate().then(function (data) {

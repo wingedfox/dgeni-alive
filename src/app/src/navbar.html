@@ -1,7 +1,14 @@
 <nav
   flex
   layout="row"
-  class="avbar navbar-static-top navbar-inverse" ng-controller="NavbarCtrl as navbar">
+  ng-controller="NavbarCtrl as navbar">
+  <div class="md-toolbar-tools">
+    <md-button
+      ng-repeat="area in navbar.areas"
+      ng-href="{{area.href}}"
+      aria-label="{{area.title}}">{{area.title}}</md-button>
+  </div>
+<!--
   <div flex="initial">
     <a class="navbar-brand" href="#/index">
       <span class="glyphicon glyphicon-home"></span>
@@ -16,4 +23,5 @@
       </li>
     </ul>
   </div>
+-->
 </nav>

@@ -8,7 +8,8 @@ module.exports = function generateNavigationProcessor(log) {
 
   var AREA_NAMES = {
     api: 'API',
-    guide: 'Guide'
+    guide: 'Guide',
+    docs: 'Docs'
   };
 
   var mappers = {
@@ -63,6 +64,25 @@ module.exports = function generateNavigationProcessor(log) {
     guide: function (pages, key) {
       var res = {
         name: 'Guide',
+        type: 'groups',
+        href: key,
+        navItems: []
+      };
+
+      _(pages).forEach(function (page) {
+        res.navItems.push({
+          name: page.name,
+          type: '',
+          href: page.path
+        });
+      });
+
+      return [res];
+    },
+
+    docs: function (pages, key) {
+      var res = {
+        name: 'Docs',
         type: 'groups',
         href: key,
         navItems: []

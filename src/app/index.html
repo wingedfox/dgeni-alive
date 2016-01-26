@@ -2,7 +2,7 @@
 <html ng-app="docApp">
   <head>
     <!-- <base href="/" ></base> -->
-    <title><%= moduleName %> Documents</title>
+    <title>Documents</title>
     <meta charset="utf-8"></meta>
 
     <!-- build:css({app,.tmp,src}) styles/vendor.css -->
@@ -19,7 +19,7 @@
   <body flex layout-fill>
     <div flex-md
      layout="row"
-   	 layout-align="center end"
+     layout-align="center end"
      layout-fill
      ng-controller="DocsCtrl as docs"
      ng-include="'src/main.html'"></div>
@@ -33,9 +33,11 @@
       <!-- inject:env_ignore -->
       <!-- endinject -->
       <script src="src/index.js"></script>
+      <script src="src/config.js"></script>
       <script src="src/pre.directive.js"></script>
       <script src="src/a.directive.js"></script>
       <script src="src/docs.controller.js"></script>
+      <script src="src/main.controller.js"></script>
       <script src="src/navbar.controller.js"></script>
       <script src="src/area-data.js"></script>
       <script src="src/nav-data.js"></script>

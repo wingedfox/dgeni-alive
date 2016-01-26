@@ -26,6 +26,7 @@ function configurePackage(p) {
      .factory(require('./services/getTypeName'))
 
      // build navigation
+     .processor(require('./processors/config'))
      .processor(require('./processors/navigation'))
      .processor(require('./processors/structuredParam'))
 
@@ -165,6 +166,19 @@ function DocGen () {
                     include: sourceInfo,
                 };
             })));
+        });
+        return this;
+    }
+
+    /**
+     * Defines docs title
+     *
+     * @param {String} title docs title
+     * @returns {DocGen}
+     */
+    this.title = function (title) {
+        this.package().config(function(generateConfigProcessor) {
+            generateConfigProcessor.title(title);
         });
         return this;
     }

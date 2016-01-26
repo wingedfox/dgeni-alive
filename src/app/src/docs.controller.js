@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('docApp').controller('DocsCtrl', function($scope, $location, DOCS_NAVIGATION){
+angular.module('docApp').controller('DocsCtrl', function($scope, $location, $window, CONFIG, DOCS_NAVIGATION){
 	var docs = this;
 	var basePath = '/';
 
@@ -32,9 +32,16 @@ angular.module('docApp').controller('DocsCtrl', function($scope, $location, DOCS
 
 	};
 
-	$scope.$on('$locationChangeStart', function(){
-		docs.changeCurrent($location.path(), $location.hash());
-	});
+    $scope.$on('$locationChangeStart', function(){
+        docs.changeCurrent($location.path(), $location.hash());
+    });
 
+    $scope.$on('$locationChangeSuccess', function () {
+        var title = CONFIG.TITLE;
+        if (docs.currentArea && docs.currentArea.name) {
+            title += " : " + docs.currentArea.name;
+        }
+        $window.document.title = title;
+    });
 });
 
