@@ -27,7 +27,7 @@ module.exports = function getTypeLink(aliasMap, log) {
             }
 
             var doc = aliasMap.getDocs(typeStr);
-console.log(typeStr, doc);
+
             if (doc.length === 1) {
                 doc = doc[0];
                 log.debug('getTypeLink: Generating link for "%s" - "%s"', typeStr, doc.path);
