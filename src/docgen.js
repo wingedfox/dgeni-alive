@@ -23,7 +23,8 @@ var DEFAULT_PACKAGES = [
  */
 function configurePackage(p) {
     // append services
-    p.factory(require('./services/getTypeLink'))
+    p.factory(require('./services/getNativeTypeLink'))
+     .factory(require('./services/getTypeLink'))
      .factory(require('./services/getTypeName'))
 
      // build navigation
@@ -33,8 +34,8 @@ function configurePackage(p) {
      .processor(require('./processors/website'))
 
      // change default url for native types doc
-//     .config(function(getTypeLink) {
-//        getTypeLink.nativeTypeRoot = 'http://w3.org';
+//     .config(function(getNativeTypeLink) {
+//        getNativeTypeLink.nativeTypeRoot = 'http://w3.org';
 //      })
      // generate website
      .config(function(generateWebsite) {
@@ -81,15 +82,27 @@ function configurePackage(p) {
         });
 
         computeIdsProcessor.idTemplates.push({
+            docTypes: ['area'],
+            idTemplate: '${docType}:${area}',
+            getAliases: getAliases
+        });
+
+        computeIdsProcessor.idTemplates.push({
             docTypes: ['controller'],
-                idTemplate: 'module:${module}.${docType}:${name}',
-                getAliases: getAliases
-            });
+            idTemplate: 'module:${module}.${docType}:${name}',
+            getAliases: getAliases
+        });
 
         computeIdsProcessor.idTemplates.push({
             docTypes: ['factory'],
             idTemplate: 'module:${module}.${docType}:${name}',
             getAliases: getAliases
+        });
+
+        computePathsProcessor.pathTemplates.push({
+            docTypes: ['area'],
+            pathTemplate: '${area}',
+            outputPathTemplate: 'partials/${area}.html'
         });
 
         computePathsProcessor.pathTemplates.push({
@@ -213,8 +226,11 @@ function DocGen () {
         return new Dgeni([this.package()]).generate().then(function(data) {
             var defer = Q.defer();
 
+            // copy app data
+//            console.log('Copy everything from' + path.join(__dirname, 'app') + ' to ' + dest);
+//            fse.copySync(path.join(__dirname, 'app'), dest);
+
             // provide bower deps
-            console.log('Building bower packages');
             process.chdir(dest);
             var z = bower.commands.install([],{});
 
@@ -228,7 +244,6 @@ function DocGen () {
 
             // wiredep
             return defer.promise.then(function(data) {
-                console.log('Linking bower deps');
                 wiredep({
                     src: ['index.html']
                 });

@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 
-module.exports = function generateNavigationProcessor(log) {
+module.exports = function generateNavigationProcessor(aliasMap, log) {
 
   var debug = log.debug;
 
@@ -113,9 +113,20 @@ module.exports = function generateNavigationProcessor(log) {
 
       _(pages).groupBy('area').forEach(function (pages, key) {
         debug('start process area:', key);
+        // take area aliases and link doc to first one
+        var doc = aliasMap.getDocs(key + '-index');
+        if (doc.length > 0) {
+            doc = doc[0];
+        } else {
+            log.warn('No index document found for "%s"\nCreate %s-index.ngdoc file in the documents area with template' +
+                     '\n===================\n@ngdoc overview\n@name %s docs\n@area %s\n@description', key, key, key, key);
+            doc = { path: key };
+        }
+
         if (mappers[key]) {
           areas[key] = {
             id: key,
+            href: doc.path,
             name: AREA_NAMES[key] || key,
             navGroups: mappers[key](pages, key)
           };
