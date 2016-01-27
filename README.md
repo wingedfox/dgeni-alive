@@ -55,11 +55,11 @@ docgen.package().config(function(log) {
 
 ### Web-app configuration
 Whether you need to change live docs appearance, feel free to override templates
-- **[content.html](/tree/master/src/templates/app/views/content.html)**
-- **[footer.html](/tree/master/src/templates/app/views/footer.html)**
-- **[main.html](/tree/master/src/templates/app/views/main.html)**
-- **[navbar.html](/tree/master/src/templates/app/views/navbar.html)**
-- **[sidebar.html](/tree/master/src/templates/app/views/sidebar.html)**
+- **[content.html](src/templates/app/views/content.html)** - content pane
+- **[footer.html](src/templates/app/views/footer.html)** - footer
+- **[main.html](src/templates/app/views/main.html)** - root template
+- **[navbar.html](src/templates/app/views/navbar.html)** - top navbar
+- **[sidebar.html](src/templates/app/views/sidebar.html)** - left sidebar
 
 ```js
 docgen.package()  
