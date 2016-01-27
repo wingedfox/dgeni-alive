@@ -41,7 +41,7 @@ angular.module('docApp', ['ngMaterial'])
 })
 .run(function($location, CONFIG){
     // show api root by default
-    if(!$location.path && CONFIG.ROOT) {
+    if(!$location.path() && CONFIG.ROOT) {
         $location.path(CONFIG.ROOT).replace();
     }
 });
