@@ -42,7 +42,7 @@ function configurePackage(p) {
         generateWebsite
          .locals('version', pkg.version)
          .locals('title', pkg.title)
-         .locals('url', pkg.homepage)
+         .locals('url', pkg.homepage);
      })
 
      .config(function(templateEngine, getInjectables) {
@@ -199,8 +199,23 @@ function DocGen () {
      * @returns {DocGen}
      */
     this.title = function (title) {
-        this.package().config(function(generateConfigProcessor) {
+        this.package().config(function(generateConfigProcessor, generateWebsite) {
             generateConfigProcessor.title(title);
+            generateWebsite.locals('productTitle', title);
+        });
+        return this;
+    }
+
+    /**
+     * Defines docs version
+     *
+     * @param {String} version docs version
+     * @returns {DocGen}
+     */
+    this.version = function (version) {
+        this.package().config(function(generateConfigProcessor, generateWebsite) {
+            generateConfigProcessor.version(version);
+            generateWebsite.locals('productVersion', version);
         });
         return this;
     }

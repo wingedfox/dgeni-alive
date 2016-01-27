@@ -3,6 +3,7 @@
   flex
   layout="row"
   ng-controller="NavbarCtrl as navbar">
+  <div>{$ doc.locals.productTitle $} {$ doc.locals.productVersion $}</div>
   <md-button
     ng-repeat="area in navbar.areas"
     ng-href="{{area.href}}"

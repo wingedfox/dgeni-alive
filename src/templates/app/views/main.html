@@ -23,13 +23,14 @@
 
   <main
     flex
+    layout-margin
     layout="row">
 
     <md-sidenav
       class="md-sidenav-left md-whiteframe-z2"
       md-component-id="left"
       md-is-locked-open="$mdMedia('gt-md')"
-      flex="15"
+      flex="25"
       layout="column"
       ng-if="docs.currentArea"
       ng-include="'views/sidebar.html'"></md-sidenav>

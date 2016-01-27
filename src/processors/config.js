@@ -5,11 +5,16 @@ module.exports = function generateConfigProcessor(log) {
   var debug = log.debug;
 
   var title = "";
+  var version = "";
   var root = "";
 
   return {
     title: function(t) {
       title = t;
+      return this;
+    },
+    version: function(v) {
+      version = v;
       return this;
     },
     rootArea: function(r) {
@@ -25,7 +30,8 @@ module.exports = function generateConfigProcessor(log) {
         outputPath: 'data/config.js',
         config: {
             TITLE: title,
-            ROOT: root
+            ROOT: root,
+            VERSION: version
         }
       });
     }

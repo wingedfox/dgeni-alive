@@ -42,6 +42,9 @@ module.exports = function (grunt) {
         if (this.data.title) {
             docgen.title(this.data.title);
         }
+        if (this.data.version) {
+            docgen.version(this.data.version);
+        }
         docgen.src(this.filesSrc);
         docgen.dest(dest);
         docgen.generate().then(function (data) {

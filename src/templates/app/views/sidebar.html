@@ -1,10 +1,11 @@
 <section
-style="background: yellow"
   layout="column"
-  ayout-fill
+  layout-padding
   flex="grow"
   ng-cloak>
+<!--
   <md-content flex="grow" ayout-fill>
+-->
     <section ng-repeat="navGroup in docs.currentArea.navGroups">
       <subheader class="md-primary">
         <a class="nav-index-group-heading" ng-href="#{{navGroup.href}}"><span>{{navGroup.name}}</span></a>
@@ -30,5 +31,7 @@ style="background: yellow"
         </md-list-item>
       </md-list>
     </section>
+<!--
   </md-content>
+-->
 </section>
