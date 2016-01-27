@@ -12,7 +12,7 @@ With dgeni-alive you can
 
 1. Use docgen as grunt task and directly
 2. Extend docgen like native Dgeni package
-3. TBD: configure web views
+3. Configure web views
 4. TBD: view live examples
 
 Parts of code were taken from generator-ngdoc.
@@ -21,15 +21,17 @@ Parts of code were taken from generator-ngdoc.
 1. Migrated to Angular 1.5
 2. Added controller and factory templates
 3. Added links to internal/external components and types to method params
-4. TBD
+4. Added api-index component to show title API page
+5. Built-in docs server
+6. TBD
 
 ## How it works
 1. Configure Dgeni package
 2. Append custom processors/templates/filters/etc
 3. Run dgeni generator
 4. Serve built app with your favorite server
-4. ...
-5. Profit
+5. ...
+6. Profit
 
 ## How to use
 ### Install
@@ -50,6 +52,23 @@ docgen.package().config(function(log) {
 });
 
 ```
+
+### Web-app configuration
+Whether you need to change live docs appearance, feel free to override templates
+- *[content.html](tree/master/src/templates/app/views/content.html]*
+- *[footer.html](tree/master/src/templates/app/views/footer.html]*
+- *[main.html](tree/master/src/templates/app/views/main.html]*
+- *[navbar.html](tree/master/src/templates/app/views/navbar.html]*
+- *[sidebar.html](tree/master/src/templates/app/views/sidebar.html]*
+
+```js
+docgen.package()  
+  // add more templates location
+  .config(function(templateFinder) {
+    templateFinder.templateFolders.unshift('/path/to/templates');
+  })
+```
+
 ### Grunt task
 Load task
 ```js
@@ -77,6 +96,10 @@ options: {
   // }
 },
 api: {
+  // product title
+  title: 'My Docs',
+  // product version
+  version: '<%= pkg.version %>',
   // do not expand paths
   expand: false,
   // where to put docs
