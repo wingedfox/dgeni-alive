@@ -17,7 +17,11 @@ With dgeni-alive you can
 
 Parts of code were taken from generator-ngdoc.
 
-## What's done
+## Demo Projects
+1. [angular-route-segment](http://wingedfox.github.io/dgeni-alive/docs/angular-route-segment/), [sources](https://github.com/wingedfox/angular-route-segment/blob/master/src/)
+2. TBD
+
+## What's Done
 1. Migrated to Angular 1.5
 2. Added controller and factory templates
 3. Added links to internal/external components and types to method params
