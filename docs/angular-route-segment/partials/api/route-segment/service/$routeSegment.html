@@ -1,0 +1,349 @@
+
+
+
+
+<header class="api-profile-header">
+  <h1 class="api-profile-header-heading">$routeSegment</h1>
+  <ol class="api-profile-header-structure naked-list step-list">
+    
+  <li>
+    <a href="api/route-segment/provider/$routeSegmentProvider">- $routeSegmentProvider</a>
+  </li>
+
+    <li>
+      - service in module <a href="api/route-segment">route-segment</a>
+    </li>
+  </ol>
+</header>
+
+
+
+<div class="api-profile-description">
+  <p>Provides state and operations for the current segment</p>
+
+</div>
+
+
+
+
+<div>
+  
+  <h2 id="dependencies">Dependencies</h2>
+  <ul>
+    <li><a href="https://docs.angularjs.org/api/ng/service/$rootScope">$rootScope</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$q">$q</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$http">$http</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$templateCache">$templateCache</a></li><li><a href="https://docs.angularjs.org/api/ngRoute/service/$route">$route</a></li><li><a href="https://docs.angularjs.org/api/ngRoute/service/$routeParams">$routeParams</a></li><li><a href="https://docs.angularjs.org/api/auto/service/$injector">$injector</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$location">$location</a></li>
+  </ul>
+  
+
+    
+
+  
+
+  
+<h2>Methods</h2>
+<ul class="methods">
+  <li id="startsWith">
+    <h3><p><code>startsWith(val);</code></p>
+
+</h3>
+    <div><p>Helper method for checking whether current route starts with the given string</p>
+</div>
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        val
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>segment name to test</p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+    
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="label type-hint type-hint-boolean">Boolean</a></td>
+    <td></td>
+  </tr>
+</table>
+    
+
+    
+  </li>
+  
+  <li id="contains">
+    <h3><p><code>contains(val);</code></p>
+
+</h3>
+    <div><p>Helper method for checking whether current route contains the given string</p>
+</div>
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        val
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>segment name to test</p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+    
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="label type-hint type-hint-boolean">Boolean</a></td>
+    <td><p>true if given segment present in the current route</p>
+</td>
+  </tr>
+</table>
+    
+
+    
+  </li>
+  
+  <li id="getSegmentUrl">
+    <h3><p><code>getSegmentUrl(segmentName, routeParams);</code></p>
+
+</h3>
+    <div><p>A method for reverse routing which can return the route URL for the specified segment name</p>
+</div>
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        segmentName
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>The name of a segment as defined in <code>when()</code></p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        routeParams
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="label type-hint type-hint-object">Object</a>
+      </td>
+      <td>
+        <p>Route params hash to be put into route URL template</p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+    
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
+    <td><p>segment url</p>
+</td>
+  </tr>
+</table>
+    
+
+    
+    <h4>Throws</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="label type-hint type-hint-error">Error</a></td>
+    <td><p>if url for the given name is not found</p>
+</td>
+  </tr>
+</table>
+    
+  </li>
+  </ul>
+  
+<h2>Events</h2>
+<ul class="events">
+  <li id="routeSegmentChange">
+    <h3>routeSegmentChange</h3>
+    <div><p>event is thrown when segment is loaded</p>
+</div>
+    <div class="inline">
+      <h4>Type:</h4>
+      <div class="type">broadcast</div>
+    </div>
+    <div class="inline">
+      <h4>Target:</h4>
+      <div class="target">$rootScope</div>
+    </div>
+    
+    <section class="api-section">
+      <h3>Parameters</h3>
+      
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        object
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="label type-hint type-hint-object">Object</a>
+      </td>
+      <td>
+        <p>object containing</p>
+<ul>
+<li><code>index</code> {number} index id in <a href="api/route-segment/service/$routeSegment#chain">$routeSegment#chain</a></li>
+<li>segment {$routeSegment.Segment|Null} current segment</li>
+</ul>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    </section></li>
+  </ul>
+
+  
+<h2>Properties</h2>
+<ul class="properties">
+  <li id="name">
+    <h3><code>name</code></h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
+    <td><p>Fully qualified name of current active route</p>
+</td>
+  </tr>
+</table>
+  </li>
+  
+  <li id="$routeParams">
+    <h3><code>$routeParams</code></h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="label type-hint type-hint-object">Object</a></td>
+    <td><p>A copy of <code>$routeParams</code> in its state of the latest successful segment update.</p>
+<p>It may be not equal to <code>$routeParams</code> while some resolving is not completed yet. Should be used instead of original
+<code>$routeParams</code> in most cases.</p>
+</td>
+  </tr>
+</table>
+  </li>
+  
+  <li id="chain">
+    <h3><code>chain</code></h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="api/route-segment/type/$routeSegment.Segment" class="label type-hint type-hint-array">Array.&lt;$routeSegment.Segment&gt;</a></td>
+    <td><p>Array of segments splitted by each level separately. Each item contains the following properties:</p>
+<ul>
+<li><code>name</code> is the name of a segment;</li>
+<li><code>params</code> is the config params hash of a segment;</li>
+<li><code>locals</code> is a hash which contains resolve results if any;</li>
+<li><code>reload</code> is a function to reload a segment (restart resolving, reinstantiate a controller, etc)</li>
+</ul>
+</td>
+  </tr>
+</table>
+  </li>
+  </ul>
+
+
+
+  
+</div>
+
+

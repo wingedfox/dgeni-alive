@@ -1,0 +1,262 @@
+
+
+
+
+<header class="api-profile-header">
+  <h1 class="api-profile-header-heading">$routeSegmentProvider</h1>
+  <ol class="api-profile-header-structure naked-list step-list">
+    
+  <li>
+    <a href="api/route-segment/service/$routeSegment">- $routeSegment</a>
+  </li>
+
+    <li>
+      - provider in module <a href="api/route-segment">route-segment</a>
+    </li>
+  </ol>
+</header>
+
+
+
+<div class="api-profile-description">
+  <p>Replaces <a href="https://docs.angularjs.org/api/ngRoute/provider/$routeProvider">$routeProvider</a> for the app routing configuration</p>
+<p>Example:</p>
+<pre><code class="lang-js">app.config(function ($routeSegmentProvider) {
+
+    $routeSegmentProvider.
+
+        when(&#39;/section1&#39;,          &#39;s1&#39;).
+        when(&#39;/section1/prefs&#39;,    &#39;s1.prefs&#39;).
+        when(&#39;/section1/:id&#39;,      &#39;s1.itemInfo&#39;).
+    when(&#39;/section1/:id/edit&#39;, &#39;s1.itemInfo.edit&#39;).
+        when(&#39;/section2&#39;,          &#39;s2&#39;).
+
+        segment(&#39;s1&#39;, {
+            templateUrl: &#39;templates/section1.html&#39;,
+            controller: MainCtrl}).
+
+        within().
+
+            segment(&#39;home&#39;, {
+                default: true,
+                templateUrl: &#39;templates/section1/home.html&#39;}).
+
+            segment(&#39;itemInfo&#39;, {
+                templateUrl: &#39;templates/section1/item.html&#39;,
+                controller: Section1ItemCtrl,
+                dependencies: [&#39;id&#39;]}).
+
+            within().
+
+                segment(&#39;overview&#39;, {
+                    default: true
+                    templateUrl: &#39;templates/section1/item/overview.html&#39;}).
+
+                segment(&#39;edit&#39;, {
+                     templateUrl: &#39;templates/section1/item/edit.html&#39;}).
+
+                up().
+
+            segment(&#39;prefs&#39;, {
+                templateUrl: &#39;templates/section1/prefs.html&#39;}).
+
+            up().
+
+        segment(&#39;s2&#39;, {
+            templateUrl: &#39;templates/section2.html&#39;,
+            controller: MainCtrl});
+});
+</code></pre>
+<p>Alternatively, you can use this syntax instead of traversing (useful if you want modules to have their own separately defined routes):</p>
+<pre><code class="lang-js">$routeSegmentProvider.segment(&#39;s1&#39;, {
+    templateUrl: &#39;templates/section1.html&#39;,
+    controller: MainCtrl});
+
+$routeSegmentProvider.within(&#39;s1&#39;).segment(&#39;home&#39;, {
+    templateUrl: &#39;templates/section1/home.html&#39;});
+
+$routeSegmentProvider.within(&#39;s1&#39;).segment(&#39;itemInfo&#39;, {
+    templateUrl: &#39;templates/section1/item.html&#39;,
+    controller: Section1ItemCtrl,
+    dependencies: [&#39;id&#39;]});
+
+$routeSegmentProvider.within(&#39;s1&#39;).within(&#39;itemInfo&#39;).segment(&#39;overview&#39;, {
+    templateUrl: &#39;templates/section1/item/overview.html&#39;});
+</code></pre>
+<p>See <a href="api/view-segment/directive/appViewSegment">appViewSegment</a> for details on views configuration</p>
+
+</div>
+
+
+
+
+<div>
+  
+  <h2 id="dependencies">Dependencies</h2>
+  <ul>
+    <li><a href="https://docs.angularjs.org/api/ngRoute/provider/$routeProvider">$routeProvider</a></li>
+  </ul>
+  
+
+    
+
+  
+
+  
+<h2>Methods</h2>
+<ul class="methods">
+  <li id="segment">
+    <h3><p><code>segment();</code></p>
+
+</h3>
+    <div></div>
+
+    
+
+    
+    
+    
+
+    
+  </li>
+  
+  <li id="within">
+    <h3><p><code>within();</code></p>
+
+</h3>
+    <div></div>
+
+    
+
+    
+    
+    
+
+    
+  </li>
+  
+  <li id="when">
+    <h3><p><code>when(path, name, route);</code></p>
+
+</h3>
+    <div><p>The shorthand for <a href="https://docs.angularjs.org/api/ngRoute/provider/$routeProvider#when">$routeProvider.when()</a> method with specified route name.</p>
+</div>
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        path
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>Route URL, e.g. &#39;/foo/bar&#39;</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        name
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>Fully qualified route name, e.g. &#39;foo.bar&#39;</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        route
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="label type-hint type-hint-object">Object</a>
+      </td>
+      <td>
+        <p>Mapping information to be assigned to $route.current on route match.</p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+    
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="api/route-segment/provider/$routeSegmentProvider" class="label type-hint type-hint-object">$routeSegmentProvider</a></td>
+    <td><p>instance</p>
+</td>
+  </tr>
+</table>
+    
+
+    
+  </li>
+  </ul>
+  
+  
+<h2>Properties</h2>
+<ul class="properties">
+  <li id="options">
+    <h3><code>options</code></h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="api/route-segment/type/$routeSegmentProvider.options" class="label type-hint type-hint-object">$routeSegmentProvider.options</a></td>
+    <td><p>Provider configuration object</p>
+</td>
+  </tr>
+</table>
+  </li>
+  
+  <li id="property">
+    <h3><code>property</code></h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="label type-hint type-hint-object">Object</a></td>
+    <td><p>Registered routing segments</p>
+</td>
+  </tr>
+</table>
+  </li>
+  </ul>
+
+
+
+  
+</div>
+
+

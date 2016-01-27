@@ -1,0 +1,148 @@
+
+
+<h1>
+  <code>route-segment</code>
+</h1>
+
+<p>This library is intended to provide the lacking functionality of nested routing to <a href="http://angularjs.org">AngularJS</a> applications.
+It is widely known, there are no ways to keep the parent state unchanged when children are updated via routing mechanics - the
+<a href="https://docs.angularjs.org/api/ngRoute/service/$route">$route</a> service re-creates the whole scope after a route is changed, losing its state completely.
+<em>route-segment</em> gives you a way to handle this.</p>
+<p>The library provides two pieces of code: <a href="api/route-segment/service/$routeSegment">$routeSegment</a> service and <a href="api/view-segment/directive/appViewSegment">appViewSegment</a> directive.
+Both are placed in their own modules which you must include as dependencies in your app module:</p>
+<pre><code class="lang-js">var app = angular.module(&#39;app&#39;, [&#39;ngRoute&#39;, &#39;route-segment&#39;, &#39;view-segment&#39;]);
+</code></pre>
+<p>$routeSegment is a layer on top of built-in Angular <a href="https://docs.angularjs.org/api/ngRoute/service/$route">$route</a> service and is meant to be used instead of it.
+Its provider exposes configuration methods which can be used to traverse the tree of route segments and setup it properly.</p>
+
+
+
+  <h2>Installation</h2>
+
+  <p>First include <code>undefined</code> javascript file in your HTML:</p>
+
+  <p>You can download this file from the following places:</p>
+  <ul>
+    <li>
+      <a href="http://bower.io">Bower</a><br>
+      e.g. <pre><code>bower install angular </code></pre>
+    </li>
+  </ul>
+  <p>Then load the module in your application by adding it as a dependent module:</p>
+  <pre><code>angular.module(&#39;app&#39;, [&#39;route-segment&#39;]);</code></pre>
+
+  <p>With that you&apos;re ready to get started!</p>
+
+
+<div class="component-breakdown">
+  <h2>Module Components</h2>
+  
+  <div>
+    <h3 class="component-heading" id="provider">Provider</h3>
+    <table class="definition-table">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      
+      <tr>
+        <td><a href="api/route-segment/provider/$routeSegmentProvider">$routeSegmentProvider</a></td>
+        <td><p>Replaces <a href="https://docs.angularjs.org/api/ngRoute/provider/$routeProvider">$routeProvider</a> for the app routing configuration</p>
+</td>
+      </tr>
+      
+    </table>
+  </div>
+  
+  <div>
+    <h3 class="component-heading" id="type">Type</h3>
+    <table class="definition-table">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      
+      <tr>
+        <td><a href="api/route-segment/type/$routeSegmentProvider.options">$routeSegmentProvider.options</a></td>
+        <td><p>Contains configuration options for <a href="api/route-segment/provider/$routeSegmentProvider">$routeSegmentProvider</a></p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/route-segment/type/$routeSegmentProvider.Pointer">$routeSegmentProvider.Pointer</a></td>
+        <td><p>Segment traversal element.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/route-segment/type/$routeSegment.Segment">$routeSegment.Segment</a></td>
+        <td><p>Segment record</p>
+</td>
+      </tr>
+      
+    </table>
+  </div>
+  
+  <div>
+    <h3 class="component-heading" id="service">Service</h3>
+    <table class="definition-table">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      
+      <tr>
+        <td><a href="api/route-segment/service/$routeSegment">$routeSegment</a></td>
+        <td><p>Provides state and operations for the current segment</p>
+</td>
+      </tr>
+      
+    </table>
+  </div>
+  
+  <div>
+    <h3 class="component-heading" id="filter">Filter</h3>
+    <table class="definition-table">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      
+      <tr>
+        <td><a href="api/route-segment/filter/routeSegmentUrl">routeSegmentUrl</a></td>
+        <td><p>Returns url for a given segment</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/route-segment/filter/routeSegmentEqualsTo">routeSegmentEqualsTo</a></td>
+        <td><p>Check whether active segment equals to the given segment name</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/route-segment/filter/routeSegmentStartsWith">routeSegmentStartsWith</a></td>
+        <td><p>Check whether active segment starts with the given segment name</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/route-segment/filter/routeSegmentContains">routeSegmentContains</a></td>
+        <td><p>Check whether active segment contains the given segment name</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/route-segment/filter/routeSegmentParam">routeSegmentParam</a></td>
+        <td><p>Returns segment parameter by name</p>
+</td>
+      </tr>
+      
+    </table>
+  </div>
+  
+</div>
+
+
+
+

@@ -1,0 +1,82 @@
+
+
+<h1>
+  <code>view-segment</code>
+</h1>
+
+<p>view-segment is a replacement for <a href="https://docs.angularjs.org/api/ngRoute/directive/ngView">ngView</a> AngularJS directive.</p>
+<p><a href="api/view-segment/directive/appViewSegment">appViewSegment</a> tags in the DOM will be populated with the corresponding route segment item.
+You must provide a segment index as an argument to this directive to make it aware about which segment level in the tree
+it should be linked to.</p>
+<p><em>index.html</em>:</p>
+<pre><code class="lang-html">&lt;ul&gt;
+    &lt;li ng-class=&quot;{active: $routeSegment.startsWith(&#39;s1&#39;)}&quot;&gt;
+        &lt;a href=&quot;/section1&quot;&gt;Section 1&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li ng-class=&quot;{active: $routeSegment.startsWith(&#39;s2&#39;)}&quot;&gt;
+        &lt;a href=&quot;/section2&quot;&gt;Section 2&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id=&quot;contents&quot; app-view-segment=&quot;0&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p><em>section1.html</em>: (it will be loaded to div#contents in index.html)</p>
+<pre><code class="lang-html">&lt;h4&gt;Section 1&lt;/h4&gt;
+Section 1 contents.
+&lt;div app-view-segment=&quot;1&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>...etc. You can reach any nesting level here. Every view will be handled independently, keeping the state of top-level views.</p>
+<p>You can also use filters to define link hrefs. It will resolve segment URLs automatically:</p>
+<pre><code class="lang-html">&lt;ul&gt;
+    &lt;li ng-class=&quot;{active: (&#39;s1&#39; | routeSegmentStartsWith)}&quot;&gt;
+        &lt;a href=&quot;{{ &#39;s1&#39; | routeSegmentUrl }}&quot;&gt;Section 1&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li ng-class=&quot;{active: (&#39;s2&#39; | routeSegmentStartsWith)}&quot;&gt;
+        &lt;a href=&quot;{{ &#39;s2&#39; | routeSegmentUrl }}&quot;&gt;Section 2&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+
+
+  <h2>Installation</h2>
+
+  <p>First include <code>undefined</code> javascript file in your HTML:</p>
+
+  <p>You can download this file from the following places:</p>
+  <ul>
+    <li>
+      <a href="http://bower.io">Bower</a><br>
+      e.g. <pre><code>bower install angular </code></pre>
+    </li>
+  </ul>
+  <p>Then load the module in your application by adding it as a dependent module:</p>
+  <pre><code>angular.module(&#39;app&#39;, [&#39;view-segment&#39;]);</code></pre>
+
+  <p>With that you&apos;re ready to get started!</p>
+
+
+<div class="component-breakdown">
+  <h2>Module Components</h2>
+  
+  <div>
+    <h3 class="component-heading" id="directive">Directive</h3>
+    <table class="definition-table">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      
+      <tr>
+        <td><a href="api/view-segment/directive/appViewSegment">appViewSegment</a></td>
+        <td><p>Renders active segment as specified by parameter</p>
+</td>
+      </tr>
+      
+    </table>
+  </div>
+  
+</div>
+
+
+
+

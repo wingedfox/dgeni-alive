@@ -1,0 +1,425 @@
+
+
+
+
+<header class="api-profile-header">
+  <h1 class="api-profile-header-heading">$routeSegmentProvider.Pointer</h1>
+  <ol class="api-profile-header-structure naked-list step-list">
+    
+    <li>
+      - type in module <a href="api/route-segment">route-segment</a>
+    </li>
+  </ol>
+</header>
+
+
+
+<div class="api-profile-description">
+  <p>Segment traversal element.</p>
+<p>Each <a href="api/route-segment/provider/$routeSegmentProvider#segment">$routeSegmentProvider#segment</a> call creates new navigation pointer</p>
+
+</div>
+
+
+
+
+<div>
+  
+
+    
+
+  
+
+  
+<h2>Methods</h2>
+<ul class="methods">
+  <li id="segment">
+    <h3><p><code>segment(name, params, resolve, params.untilResolved, params.resolveFailed, params.default);</code></p>
+
+</h3>
+    <div><p>Adds new segment at current pointer level.</p>
+</div>
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        name
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">string</a>
+      </td>
+      <td>
+        <p>Name of a segment.</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        params
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="label type-hint type-hint-object">Object</a>
+      </td>
+      <td>
+        <p>Segment&#39;s parameters hash. The following params are supported:</p>
+
+        
+        
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        template
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="label type-hint type-hint-function">function()</a>
+      </td>
+      <td>
+        <p>provides HTML for the given segment view;</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        templateUrl
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="label type-hint type-hint-function">function()</a>
+      </td>
+      <td>
+        <p>template to fetch from network via this URL;</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        controller
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="label type-hint type-hint-function">function()</a>
+      </td>
+      <td>
+        <p>cotroller attached to the given segment view when compiled and linked,
+  this can be any controller definition AngularJS supports;</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        controllerAs
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>controller alias name, if present the controller will be
+  published to scope under the controllerAs name</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        dependencies
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-array">Array&lt;String&gt;</a>
+      </td>
+      <td>
+        <p>array of route param names which are forcing the view to recreate when changed;</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        watcher
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="label type-hint type-hint-function">Function</a>
+      </td>
+      <td>
+        <p>$watch-function for recreating the view when its returning value is changed;</p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        resolve
+        
+        
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-object">Object&lt;String, Function&gt;</a>
+      </td>
+      <td>
+        <p>hash of functions or injectable names which should be resolved
+  prior to instantiating the template and the controller;</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        params.untilResolved
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="label type-hint type-hint-object">Object</a>
+      </td>
+      <td>
+        <p>alternate set of params (e.g. <code>template</code> and <code>controller</code>)
+  which should be used before resolving is completed;</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        params.resolveFailed
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="label type-hint type-hint-object">Object</a>
+      </td>
+      <td>
+        <p>alternate set of params which should be used if resolving failed;</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        params.default
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="label type-hint type-hint-boolean">Boolean</a>
+      </td>
+      <td>
+        <p>when set to true this child segment should be loaded by
+  default when no child is specified in the route.</p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+    
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="api/route-segment/type/$routeSegmentProvider.Pointer" class="label type-hint type-hint-object">$routeSegmentProvider.Pointer</a></td>
+    <td><p>The same level pointer.</p>
+</td>
+  </tr>
+</table>
+    
+
+    
+  </li>
+  
+  <li id="within">
+    <h3><p><code>within([childName]);</code></p>
+
+</h3>
+    <div><p>Traverses into an existing segment, so that subsequent <code>segment</code> calls
+will add new segments as its descendants.</p>
+</div>
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        childName
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>An existing segment&#39;s name. If undefined, then the last added segment is selected.</p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+    
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="api/route-segment/type/$routeSegmentProvider.Pointer" class="label type-hint type-hint-object">$routeSegmentProvider.Pointer</a></td>
+    <td><p>The pointer to the child segment.</p>
+</td>
+  </tr>
+</table>
+    
+
+    
+    <h4>Throws</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="label type-hint type-hint-error">Error</a></td>
+    <td><p>when <a href="api/route-segment/type/$routeSegmentProvider.options#strictMode">$routeSegmentProvider.options#strictMode</a> is true and segment with given name is not found</p>
+</td>
+  </tr>
+</table>
+    
+  </li>
+  
+  <li id="up">
+    <h3><p><code>up();</code></p>
+
+</h3>
+    <div><p>Traverses up in the tree.</p>
+</div>
+
+    
+
+    
+    
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="api/route-segment/type/$routeSegmentProvider.Pointer" class="label type-hint type-hint-object">$routeSegmentProvider.Pointer</a></td>
+    <td><p>The pointer which are parent to the current one;</p>
+</td>
+  </tr>
+</table>
+    
+
+    
+  </li>
+  
+  <li id="up">
+    <h3><p><code>up();</code></p>
+
+</h3>
+    <div><p>Traverses to the root.</p>
+</div>
+
+    
+
+    
+    
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="api/route-segment/type/$routeSegmentProvider.Pointer" class="label type-hint type-hint-object">$routeSegmentProvider.Pointer</a></td>
+    <td><p>The root pointer.</p>
+</td>
+  </tr>
+</table>
+    
+
+    
+  </li>
+  </ul>
+  
+  
+
+
+
+  
+</div>
+
+
