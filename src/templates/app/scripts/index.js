@@ -27,6 +27,7 @@ angular.module('docApp', ['ngMaterial'])
         return {
             title: nav.name,
             href: nav.id,
+            path: nav.path,
             key: nav.id
         };
     })
