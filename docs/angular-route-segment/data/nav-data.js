@@ -1,7 +1,7 @@
 angular.module('docApp').constant('DOCS_NAVIGATION', {
   "api": {
     "id": "api",
-    "href": "docs/api-index",
+    "href": "index",
     "name": "API",
     "navGroups": [
       {

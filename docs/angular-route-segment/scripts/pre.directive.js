@@ -7,9 +7,10 @@ angular.module('docApp').directive('pre', function () {
     primary: 1000,
     /* global prettyPrintOne */
     link: function ($scope, $elem) {
-      var formatted = prettyPrintOne($elem.find('>code').html());
+      var code = $elem.find('code');
+      var formatted = prettyPrintOne(code.html());
       $elem.addClass('prettyprint');
-      $elem.find('>code').html(formatted);
+      code.html(formatted);
     }
   };
 });
