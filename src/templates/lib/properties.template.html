@@ -1,0 +1,11 @@
+{%- if doc.properties %}
+<h2>Properties</h2>
+<ul class="properties">
+  {%- for property in doc.properties %}
+  <li id="{$ property.name $}">
+    <h3 class="{% if property.deprecated != null %}member-deprecated{% endif %}">{$ property.name | code $}</h3>
+    {$ typeInfo(property) $}
+  </li>
+  {% endfor -%}
+</ul>
+{%- endif -%}
