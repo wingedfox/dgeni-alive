@@ -20,7 +20,8 @@ Parts of code were taken from generator-ngdoc.
 
 ## Demo Projects
 1. [angular-route-segment](http://wingedfox.github.io/dgeni-alive/docs/angular-route-segment/), [sources](https://github.com/wingedfox/angular-route-segment/blob/master/src/)
-2. TBD
+2. [angular-gettext](http://wingedfox.github.io/dgeni-alive/docs/angular-gettext/), [sources](https://github.com/wingedfox/angular-gettext/blob/master/src/)
+3. TBD
 
 ## What's Done
 1. Migrated to Angular 1.5
