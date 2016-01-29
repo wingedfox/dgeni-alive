@@ -3,7 +3,11 @@
 <ul class="properties">
   {%- for property in doc.properties %}
   <li id="{$ property.name $}">
-    <h3 class="{% if property.deprecated != null %}member-deprecated{% endif %}">{$ property.name | code $}</h3>
+    <h3 class="{% if property.deprecated != null %}member-deprecated{% endif %}">
+      <span class="title">{$ property.name | code $}</span>
+      {$ memberAccess(property) $}
+      {$ deprecatedOrSince(property) $}
+    </h3>
     {$ typeInfo(property) $}
   </li>
   {% endfor -%}

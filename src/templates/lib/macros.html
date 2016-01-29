@@ -59,3 +59,31 @@
   </tr>
 </table>
 {%- endmacro -%}
+
+{# takes tags @deprecated and @since #}
+{# Renders one of  #}
+{#  "Deprecated {reason} since {comment}" e.g. "Deprecated since v1.2.3", "Deprecated in favor of [new feature] since 21.12.12" #}
+{#  "Since {comment}", e.g. "Since v2.3" #}
+{%- macro deprecatedOrSince(member) -%}
+  {% if member.deprecated != null %}
+  <span class="label label-hint hint-deprecated">
+    Deprecated {$ member.deprecated $}
+    {%- if member.since %}
+      since {$ member.since $}
+    {%- endif %}
+  </span>
+  {% else %}
+    {%- if member.since != null %}
+    <span class="label label-hint hint-since">Since {$ member.since $}</span>
+    {%- endif %}
+  {% endif %}
+{%- endmacro -%}
+
+{# takes tags @access or its' aliases and renders access label #}
+{%- macro memberAccess(member) -%}
+  {% if member.access != null %}
+  <span class="label label-hint hint-access access-{$ member.access $}">
+    {$ member.access $}
+  </span>
+  {% endif %}
+{%- endmacro -%}
