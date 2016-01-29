@@ -42,9 +42,14 @@
 <h2>Methods</h2>
 <ul class="methods">
   <li id="startsWith">
-    <h3><p><code>startsWith(val);</code></p>
+    <h3 class="">
+      <span class="title"><p><code>startsWith(val);</code></p>
 
-</h3>
+</span>
+      
+      
+  
+    </h3>
     <div><p>Helper method for checking whether current route starts with the given string</p>
 </div>
 
@@ -99,9 +104,14 @@
   </li>
   
   <li id="contains">
-    <h3><p><code>contains(val);</code></p>
+    <h3 class="">
+      <span class="title"><p><code>contains(val);</code></p>
 
-</h3>
+</span>
+      
+      
+  
+    </h3>
     <div><p>Helper method for checking whether current route contains the given string</p>
 </div>
 
@@ -157,9 +167,14 @@
   </li>
   
   <li id="getSegmentUrl">
-    <h3><p><code>getSegmentUrl(segmentName, routeParams);</code></p>
+    <h3 class="">
+      <span class="title"><p><code>getSegmentUrl(segmentName, routeParams);</code></p>
 
-</h3>
+</span>
+      
+      
+  
+    </h3>
     <div><p>A method for reverse routing which can return the route URL for the specified segment name</p>
 </div>
 
@@ -244,7 +259,11 @@
 <h2>Events</h2>
 <ul class="events">
   <li id="routeSegmentChange">
-    <h3>routeSegmentChange</h3>
+    <h3 class="">
+      <span class="title"><code>routeSegmentChange</code></span>
+      
+  
+    </h3>
     <div><p>event is thrown when segment is loaded</p>
 </div>
     <div class="inline">
@@ -293,14 +312,25 @@
   </tbody>
 </table>
 
-    </section></li>
+    </section>
+    <section class="api-section">
+      <h4 id="usage">Usage</h4>
+      <div class="usage">
+        <pre><code>$rootScope.$on(&#39;routeSegmentChange&#39;, function (evt, object) {&#10;  ...&#10;});</code></pre>
+        </section>
+    </li>
   </ul>
 
   
 <h2>Properties</h2>
 <ul class="properties">
   <li id="name">
-    <h3><code>name</code></h3>
+    <h3 class="">
+      <span class="title"><code>name</code></span>
+      
+      
+  
+    </h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
@@ -311,7 +341,12 @@
   </li>
   
   <li id="$routeParams">
-    <h3><code>$routeParams</code></h3>
+    <h3 class="">
+      <span class="title"><code>$routeParams</code></span>
+      
+      
+  
+    </h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="label type-hint type-hint-object">Object</a></td>
@@ -324,7 +359,12 @@
   </li>
   
   <li id="chain">
-    <h3><code>chain</code></h3>
+    <h3 class="">
+      <span class="title"><code>chain</code></span>
+      
+      
+  
+    </h3>
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="api/route-segment/type/$routeSegment.Segment" class="label type-hint type-hint-array">Array.&lt;$routeSegment.Segment&gt;</a></td>
