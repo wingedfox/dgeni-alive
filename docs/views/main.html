@@ -17,7 +17,7 @@
         ng-click="Main.toggleSidebar('left')" >
         <i class="fa fa-bars"></i>
       </md-button>
-      <ng-include src="'views/navbar.html'" ></ng-include>
+      <ng-include src="'../views/navbar.html'" ></ng-include>
     </md-toolbar>
   </header>
 
@@ -33,14 +33,14 @@
       flex="25"
       layout="column"
       ng-if="docs.currentArea"
-      ng-include="'views/sidebar.html'"></md-sidenav>
+      ng-include="'../views/sidebar.html'"></md-sidenav>
 
     <md-content
       flex-gt-md="75"
       flex="100"
       layout="column"
       g-if="docs.currentArea"
-      ng-include="'views/content.html'"></md-content>
+      ng-include="'../views/content.html'"></md-content>
 
   </main>
 
@@ -49,6 +49,6 @@
     layout="row"
     layout-children="end"
     class="footer"
-    ng-include="'views/footer.html'"
+    ng-include="'../views/footer.html'"
     ></footer>
 </div>
