@@ -1,3 +1,17 @@
+.title > p {
+  display: inline-block;
+}
+
+.inline {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.member-deprecated > .title {
+  text-decoration: line-through;
+  opacity: 0.9;
+}
+
 .definition-table > tbody > tr > td,
 .definition-table > tbody > tr > th {
   padding: 3px 6px;
@@ -382,6 +396,35 @@ iframe.example {
   padding:5px;
 }
 
+/*** Common hints ***/
+.label-hint {
+  display: inline-block;
+  font-size: x-small;
+  vertical-align: super;
+}
+
+/*** Access hints ***/
+.label-hint.access-public {
+  background-color: yellowgreen;
+}
+.label-hint.access-protected {
+  background-color: chocolate;
+}
+.label-hint.access-private {
+  background-color: darkred;
+}
+
+/*** Method hints ***/
+.hint-deprecated {
+  background: gray; 
+}
+
+.hint-since {
+  background: mediumseagreen; 
+  display: inline-block;
+}
+
+/*** Type hints ***/
 .type-hint {
   display:inline-block;
   background: gray;
