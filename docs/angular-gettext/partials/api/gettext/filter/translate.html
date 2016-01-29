@@ -1,0 +1,115 @@
+
+
+
+
+<header class="api-profile-header">
+  <h1 class="api-profile-header-heading">translate</h1>
+  <ol class="api-profile-header-structure naked-list step-list">
+    
+    <li>
+      - filter in module <a href="api/gettext">gettext</a>
+    </li>
+  </ol>
+</header>
+
+
+
+<div class="api-profile-description">
+  <p>Takes key and returns string</p>
+<p>Sometimes it&#39;s not an option to use an attribute (e.g. when you want to annotate an attribute value).
+There&#39;s a <code>translate</code> filter available for this purpose.</p>
+<pre><code class="lang-html">&lt;input type=&quot;text&quot; placeholder=&quot;{{&#39;Username&#39;|translate}}&quot; /&gt;
+</code></pre>
+<p>This filter does not support plural strings.</p>
+<p>You may want to use <a href="guide:custom-annotations">custom annotations</a> to avoid using the <code>translate</code> filter all the time. * Is</p>
+
+</div>
+
+
+
+
+<div>
+  
+  <h2 id="dependencies">Dependencies</h2>
+  <ul>
+    <li><a href="api/gettext/service/gettextCatalog"><code>gettextCatalog</code></a></li>
+  </ul>
+  
+
+  
+  <h2>Usage</h2>
+  <h3>In HTML Template Binding</h3>
+  
+    <pre><code>{{ translate_expression | translate : context}}</code></pre>
+  
+
+  <h3>In JavaScript</h3>
+  <pre><code>$filter(&#39;translate&#39;)(input, context)</code></pre>
+
+  
+<section class="api-section">
+  <h3>Arguments</h3>
+
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        input
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>translation key</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        context
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>context to evaluate key against</p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+</section>
+  
+  <h3>Returns</h3>
+<table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
+    <td><p>translated string or annotated key</p>
+</td>
+  </tr>
+</table>
+
+
+  
+</div>
+
+

@@ -1,0 +1,39 @@
+
+
+<h1>
+  <code>angular-gettext</code>
+</h1>
+
+<p>Super-simple translation support for Angular.JS</p>
+<h2 id="effortless-translations">Effortless translations</h2>
+<p>Angular-gettext let&#39;s you focus on developing your application.
+Just write everything in English and annotate which parts should be translated. The tools do the rest.</p>
+<p>Marking a string as translatable is as simple as adding an attribute:</p>
+<pre><code class="lang-html">&lt;a href=&quot;/&quot; translate&gt;Home&lt;/a&gt;
+</code></pre>
+<p>No need to maintain translation codes or magic values, that just causes headaches!</p>
+<h2 id="seamless-angular-js-integration">Seamless Angular.JS integration</h2>
+<p>Translating your application doesn&#39;t mean you have to give up any of the good stuff that Angular.JS provides.
+Interpolation and everything else we love and are used to just keep on working:</p>
+<pre><code class="lang-html">&lt;a href=&quot;/&quot; translate&gt;Hello {{name}}&lt;/a&gt;
+</code></pre>
+<p>And with a minified footprint of less than 4kb, you don&#39;t have to worry about the size of your application.
+Add gzip compression and it amounts to less than 1.5kb.</p>
+<h2 id="correct-plurals-in-all-languages">Correct plurals in all languages</h2>
+<p>Not every language works like English. Did you know that Polish uses three plural forms? Or that Irish uses five? No worries, <code>angular-gettext</code> handles all of this for you. Just provide a plural string where needed.</p>
+<pre><code class="lang-html">&lt;span translate translate-n=&quot;msgCount&quot; translate-plural=&quot;{{$count}} new messages&quot;&gt;1 new message&lt;/span&gt;
+</code></pre>
+<p>The span above will always show a correctly pluralized message, even if the language uses wildly different pluralization rules.</p>
+<p>A full list of supported languages (over 130) can be found <a href="http://docs.translatehouse.org/projects/localization-guide/en/latest/l10n/pluralforms.html?id=l10n/pluralforms">here</a>.</p>
+<h2 id="rich-tool-support">Rich tool support</h2>
+<p>The widely used <a href="http://en.wikipedia.org/wiki/Gettext">gettext</a> format is used in <code>angular-gettext</code> (hence the name).
+This means you can use widely established translation tools like <a href="http://www.poedit.net/">Poedit</a>.
+Or you can use an online translation platform like <a href="http://pootle.translatehouse.org/">Pootle</a>, <a href="https://www.transifex.com/">Transifex</a>, or <a href="http://www.zanata.org/">Zanata</a>.</p>
+<p>The upside of this? Non-technical users can help out by translating. Or you can use professional translation services. Better results, faster.</p>
+
+
+
+
+
+
+

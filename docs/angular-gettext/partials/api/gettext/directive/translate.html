@@ -1,0 +1,129 @@
+
+
+
+
+<header class="api-profile-header">
+  <h1 class="api-profile-header-heading">translate</h1>
+  <ol class="api-profile-header-structure naked-list step-list">
+    
+    <li>
+      - directive in module <a href="api/gettext">gettext</a>
+    </li>
+  </ol>
+</header>
+
+
+
+<div class="api-profile-description">
+  <p>Annotates and translates text inside directive</p>
+<p>Full interpolation support is available in translated strings, so the following will work as expected:</p>
+<pre><code class="lang-js">&lt;div translate&gt;Hello {{name}}!&lt;/div&gt;
+</code></pre>
+
+</div>
+
+
+
+
+<div>
+  
+
+  
+  <h2>Directive Info</h2>
+  <ul>
+    
+    <li>This directive executes at priority level 0.</li>
+    
+  </ul>
+
+  
+  <h2 id="usage">Usage</h2>
+  <div class="usage">
+  
+    <ul>
+    
+      <li>as element:
+      
+      <pre><code>&lt;translate&#10;  translate-plural=&quot;&quot;&#10;  translate-n=&quot;&quot;&#10;  translate-context=&quot;&quot;&gt;&#10;...&#10;&lt;/translate&gt;</code></pre>
+      </li>
+    <li>as attribute:
+        <pre><code>&lt;ANY&#10;  translate-plural=&quot;&quot;&#10;  translate-n=&quot;&quot;&#10;  translate-context=&quot;&quot;&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
+      </li>
+    
+  </div>
+  
+<section class="api-section">
+  <h3>Arguments</h3>
+
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        translatePlural
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>plural form</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        translateN
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="label type-hint type-hint-number">Number</a>
+      </td>
+      <td>
+        <p>value to watch to substitute correct plural form</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        translateContext
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>context value, e.g. <a href="doc:context">Verb, Noun</a></p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+</section>
+  
+
+
+  
+</div>
+
+

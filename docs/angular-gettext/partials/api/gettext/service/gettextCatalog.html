@@ -1,0 +1,853 @@
+
+
+
+
+<header class="api-profile-header">
+  <h1 class="api-profile-header-heading">gettextCatalog</h1>
+  <ol class="api-profile-header-structure naked-list step-list">
+    
+  
+
+    <li>
+      - service in module <a href="api/gettext">gettext</a>
+    </li>
+  </ol>
+</header>
+
+
+
+<div class="api-profile-description">
+  <p>Provides set of method to translate stings</p>
+
+</div>
+
+
+
+
+<div>
+  
+  <h2 id="dependencies">Dependencies</h2>
+  <ul>
+    <li><a href="api/gettext/factory/gettextPlurals"><code>gettextPlurals</code></a></li><li><a href="api/gettext/factory/gettextFallbackLanguage"><code>gettextFallbackLanguage</code></a></li><li><a href="https://docs.angularjs.org/api/ng/service/$http">$http</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$cacheFactory">$cacheFactory</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$interpolate">$interpolate</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$rootScope">$rootScope</a></li>
+  </ul>
+  
+
+    
+
+  
+
+  
+<h2>Methods</h2>
+<ul class="methods">
+  <li id="setCurrentLanguage">
+    <h3 class="">
+      <span class="title"><p><code>setCurrentLanguage(lang);</code></p>
+
+</span>
+      
+  <span class="label label-hint hint-access access-public">
+    public
+  </span>
+  
+      
+  
+    </h3>
+    <div><p>Sets the current language and makes sure that all translations get updated correctly.</p>
+</div>
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        lang
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>language name</p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+    
+    
+
+    
+  </li>
+  
+  <li id="getCurrentLanguage">
+    <h3 class="">
+      <span class="title"><p><code>getCurrentLanguage();</code></p>
+
+</span>
+      
+  <span class="label label-hint hint-access access-public">
+    public
+  </span>
+  
+      
+  
+    </h3>
+    <div><p>Returns the current language.</p>
+</div>
+
+    
+
+    
+    
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
+    <td><p>current language</p>
+</td>
+  </tr>
+</table>
+    
+
+    
+  </li>
+  
+  <li id="setStrings">
+    <h3 class="">
+      <span class="title"><p><code>setStrings(language, strings);</code></p>
+
+</span>
+      
+  <span class="label label-hint hint-access access-public">
+    public
+  </span>
+  
+      
+  
+    </h3>
+    <div><p>Processes an object of string definitions. <a href="guide:manual-setstrings">More details here</a>.</p>
+</div>
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        language
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>language name</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        strings
+        
+        
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-object">Object.&lt;String&gt;</a>
+      </td>
+      <td>
+        <p>set of strings where the key is the translation <code>key</code> and <code>value</code> is the translated text</p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+    
+    
+
+    
+  </li>
+  
+  <li id="getStringFormFor">
+    <h3 class="">
+      <span class="title"><p><code>getStringFormFor(language, string, [n], [context]);</code></p>
+
+</span>
+      
+  <span class="label label-hint hint-access access-protected">
+    protected
+  </span>
+  
+      
+  
+    </h3>
+    <div><p>Translate a string with the given language, count and context.</p>
+</div>
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        language
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>language name</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        string
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>translation key</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        n
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="label type-hint type-hint-number">Number</a>
+      </td>
+      <td>
+        <p>number to build sting form for</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        context
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>translation key context, e.g. <a href="doc:context">Verb, Noun</a></p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+    
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null" class="label type-hint type-hint-null">Null</a></td>
+    <td><p>translated or annotated string or null if language is not set</p>
+</td>
+  </tr>
+</table>
+    
+
+    
+  </li>
+  
+  <li id="getString">
+    <h3 class="">
+      <span class="title"><p><code>getString(string, [scope], [context]);</code></p>
+
+</span>
+      
+  <span class="label label-hint hint-access access-public">
+    public
+  </span>
+  
+      
+  
+    </h3>
+    <div><p>Translate a string with the given scope and context.</p>
+<p>First it tries <a href="api/gettext/service/gettextCatalog#currentLanguage">gettextCatalog#currentLanguage</a> (e.g. <code>en-US</code>) then <a href="api/gettext/factory/gettextFallbackLanguage">fallback</a> (e.g. <code>en</code>).</p>
+<p>When <code>scope</code> is supplied it uses Angular.JS interpolation, so something like this will do what you expect:</p>
+<pre><code class="lang-js">var hello = gettextCatalog.getString(&quot;Hello {{name}}!&quot;, { name: &quot;Ruben&quot; });
+// var hello will be &quot;Hallo Ruben!&quot; in Dutch.
+</code></pre>
+<p>Avoid using scopes - this skips interpolation and is a lot faster.</p>
+</div>
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        string
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>translation key</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        scope
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-object">$rootScope.Scope</a>
+      </td>
+      <td>
+        <p>scope to do interpolation against</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        context
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>translation key context, e.g. <a href="doc:context">Verb, Noun</a></p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+    
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
+    <td><p>translated or annotated string</p>
+</td>
+  </tr>
+</table>
+    
+
+    
+  </li>
+  
+  <li id="getPlural">
+    <h3 class="">
+      <span class="title"><p><code>getPlural(n, string, stringPlural, [scope], [context]);</code></p>
+
+</span>
+      
+  <span class="label label-hint hint-access access-public">
+    public
+  </span>
+  
+      
+  
+    </h3>
+    <div><p>Translate a plural string with the given context.</p>
+</div>
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        n
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="label type-hint type-hint-number">Number</a>
+      </td>
+      <td>
+        <p>number to build sting form for</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        string
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>translation key</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        stringPlural
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>plural translation key</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        scope
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-object">$rootScope.Scope</a>
+      </td>
+      <td>
+        <p>scope to do interpolation against</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        context
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>translation key context, e.g. <a href="doc:context">Verb, Noun</a></p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+    
+    
+    <h4>Returns</h4>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
+    <td><p>translated or annotated string</p>
+</td>
+  </tr>
+</table>
+    
+
+    
+  </li>
+  
+  <li id="loadRemote">
+    <h3 class="">
+      <span class="title"><p><code>loadRemote(url);</code></p>
+
+</span>
+      
+  <span class="label label-hint hint-access access-public">
+    public
+  </span>
+  
+      
+  
+    </h3>
+    <div><p>Load a set of translation strings from a given URL.</p>
+<p>This should be a JSON catalog generated with <a href="https://github.com/rubenv/angular-gettext-tools">angular-gettext-tools</a>.
+<a href="guide:lazy-loading">More details here</a>.</p>
+</div>
+
+    
+    <h4>Parameters</h4>
+    
+<table class="variables-matrix input-arguments ">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        url
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>location of the translations</p>
+
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+    
+
+    
+    
+    
+
+    
+  </li>
+  </ul>
+  
+<h2>Events</h2>
+<ul class="events">
+  <li id="gettextLanguageChanged">
+    <h3 class="">
+      <span class="title"><code>gettextLanguageChanged</code></span>
+      
+  
+    </h3>
+    <div><p>Fires language change notification without any additional parameters.</p>
+</div>
+    <div class="inline">
+      <h4>Type:</h4>
+      <div class="type">broadcast</div>
+    </div>
+    <div class="inline">
+      <h4>Target:</h4>
+      <div class="target">$rootScope</div>
+    </div>
+    
+    <section class="api-section">
+      <h4 id="usage">Usage</h4>
+      <div class="usage">
+        <pre><code>$rootScope.$on(&#39;gettextLanguageChanged&#39;, function (evt) {&#10;  ...&#10;});</code></pre>
+        </section>
+    </li>
+  </ul>
+
+  
+<h2>Properties</h2>
+<ul class="properties">
+  <li id="debug">
+    <h3 class="">
+      <span class="title"><code>debug</code></span>
+      
+  <span class="label label-hint hint-access access-public">
+    public
+  </span>
+  
+      
+  
+    </h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="label type-hint type-hint-boolean">Boolean</a></td>
+    <td><p>Whether or not to prefix untranslated strings with <code>[MISSING]:</code> or a custom prefix.</p>
+</td>
+  </tr>
+</table>
+  </li>
+  
+  <li id="debugPrefix">
+    <h3 class="">
+      <span class="title"><code>debugPrefix</code></span>
+      
+  <span class="label label-hint hint-access access-public">
+    public
+  </span>
+  
+      
+  
+    </h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
+    <td><p>Custom prefix for untranslated strings when <a href="api/gettext/service/gettextCatalog#debug">gettextCatalog#debug</a> set to <code>true</code>.</p>
+</td>
+  </tr>
+</table>
+  </li>
+  
+  <li id="showTranslatedMarkers">
+    <h3 class="">
+      <span class="title"><code>showTranslatedMarkers</code></span>
+      
+  <span class="label label-hint hint-access access-public">
+    public
+  </span>
+  
+      
+  
+    </h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="label type-hint type-hint-boolean">Boolean</a></td>
+    <td><p>Whether or not to wrap all processed text with markers.</p>
+<p>Example output: <code>[Welcome]</code></p>
+</td>
+  </tr>
+</table>
+  </li>
+  
+  <li id="translatedMarkerPrefix">
+    <h3 class="">
+      <span class="title"><code>translatedMarkerPrefix</code></span>
+      
+  <span class="label label-hint hint-access access-public">
+    public
+  </span>
+  
+      
+  
+    </h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
+    <td><p>Custom prefix to mark strings that have been run through <a href="angular-gettext">angular-gettext</a>.</p>
+</td>
+  </tr>
+</table>
+  </li>
+  
+  <li id="translatedMarkerSuffix">
+    <h3 class="">
+      <span class="title"><code>translatedMarkerSuffix</code></span>
+      
+  <span class="label label-hint hint-access access-public">
+    public
+  </span>
+  
+      
+  
+    </h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
+    <td><p>Custom suffix to mark strings that have been run through <a href="angular-gettext">angular-gettext</a>.</p>
+</td>
+  </tr>
+</table>
+  </li>
+  
+  <li id="strings">
+    <h3 class="">
+      <span class="title"><code>strings</code></span>
+      
+  <span class="label label-hint hint-access access-private">
+    private
+  </span>
+  
+      
+  
+    </h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="label type-hint type-hint-object">Object</a></td>
+    <td><p>An object of loaded translation strings. Shouldn&#39;t be used directly.</p>
+</td>
+  </tr>
+</table>
+  </li>
+  
+  <li id="baseLanguage">
+    <h3 class="member-deprecated">
+      <span class="title"><code>baseLanguage</code></span>
+      
+  <span class="label label-hint hint-access access-protected">
+    protected
+  </span>
+  
+      
+  <span class="label label-hint hint-deprecated">
+    Deprecated 
+      since 2.0
+  </span>
+  
+    </h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
+    <td><p>The default language, in which you&#39;re application is written.</p>
+<p>This defaults to English and it&#39;s generally a bad idea to use anything else:
+if your language has different pluralization rules you&#39;ll end up with incorrect translations.</p>
+</td>
+  </tr>
+</table>
+  </li>
+  
+  <li id="currentLanguage">
+    <h3 class="">
+      <span class="title"><code>currentLanguage</code></span>
+      
+  <span class="label label-hint hint-access access-public">
+    public
+  </span>
+  
+      
+  
+    </h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
+    <td><p>Active language.</p>
+</td>
+  </tr>
+</table>
+  </li>
+  
+  <li id="cache">
+    <h3 class="">
+      <span class="title"><code>cache</code></span>
+      
+  <span class="label label-hint hint-access access-public">
+    public
+  </span>
+  
+      
+  
+    </h3>
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
+    <td><p>Language cache for lazy load</p>
+</td>
+  </tr>
+</table>
+  </li>
+  </ul>
+
+
+
+  
+</div>
+
+
