@@ -6,7 +6,7 @@ module.exports = function generateConfigProcessor(log) {
 
   var title = "";
   var version = "";
-  var root = "";
+  var root = "api";
 
   return {
     title: function(t) {

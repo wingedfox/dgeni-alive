@@ -2,11 +2,12 @@
 Live docs on top of dgeni documentation generator
 
 ## Motivation
-Dgeni-alive documentation generator has been built after a long search for a documentation generator.
+`Dgeni-alive` documentation generator has been built after a long search for working one with AngularJS doc flavour.
 
 1. [ngdocs](//github.com/idanush/ngdocs) ([grunt-ngdoc](//github.com/bevacqua/grunt-ngdoc), [grunt-ngdocs](//github.com/m7r/grunt-ngdocs), etc) - has no updates for a long time
 2. [docular](//grunt-docular.com/) - has no activity as well
 3. [generator-ngdoc](//github.com/Quramy/generator-ngdoc) - has no activity as well and forces to use Yeoman tools, is not suitable for CI
+4. [sia](//github.com/boundstate/sia) - really good one, but it likes Gulp and does not provide standalone extensible generator
 
 With dgeni-alive you can
 
@@ -17,13 +18,18 @@ With dgeni-alive you can
 
 Parts of code were taken from generator-ngdoc.
 
-## What's done
+## Demo Projects
+1. [angular-route-segment](http://wingedfox.github.io/dgeni-alive/docs/angular-route-segment/), [sources](https://github.com/wingedfox/angular-route-segment/blob/master/src/)
+2. TBD
+
+## What's Done
 1. Migrated to Angular 1.5
 2. Added controller and factory templates
 3. Added links to internal/external components and types to method params
 4. Added api-index component to show title API page
-5. Built-in docs server
-6. TBD
+5. Added @deprecated, @since and @access tags
+6. Built-in docs server
+7. TBD
 
 ## How it works
 1. Configure Dgeni package

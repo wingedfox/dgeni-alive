@@ -3,7 +3,11 @@
 <ul class="methods">
   {%- for method in doc.methods %}
   <li id="{$ method.name $}">
-    <h3>{$ functionSyntax(method) $}</h3>
+    <h3 class="{% if method.deprecated != null %}member-deprecated{% endif %}">
+      <span class="title">{$ functionSyntax(method) $}</span>
+      {$ memberAccess(method) $}
+      {$ deprecatedOrSince(method) $}
+    </h3>
     <div>{$ method.description | marked $}</div>
 
     {% if method.params %}

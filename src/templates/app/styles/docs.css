@@ -1,68 +1,31 @@
-
-html, body {
-  position:relative;
-  height:100%;
+.title > p {
+  display: inline-block;
 }
 
-#wrapper {
-  min-height:100%;
-  position:relative;
-  padding-bottom:120px;
+.inline {
+  display: inline-block;
+  margin: 0 20px;
 }
 
-/*
-.footer {
-  border-top:20px solid white;
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  z-index:100;
-  padding-top: 2em;
-  background-color: #333;
-  color: white;
-  padding-bottom: 2em;
-}*/
-
-.header-fixed {
-  position:fixed;
-  z-index:1000;
-  top:0;
-  left:0;
-  right:0;
+.member-deprecated > .title {
+  text-decoration: line-through;
+  opacity: 0.9;
 }
 
-.header-branding {
-  min-height:41px!important;
+.definition-table > tbody > tr > td,
+.definition-table > tbody > tr > th {
+  padding: 3px 6px;
 }
 
-.docs-navbar-primary {
-  border-radius:0!important;
-  margin-bottom:0!important;
+.definition-table > tbody > tr > td > a,
+.definition-table > tbody > tr > td > p
+{
+  line-height: normal;
+  padding: 0;
+  margin: 0;
 }
 
 /* Logo */
-/*.dropdown-menu {
-  display:none;
-}
-*/
-h1,h2,h3,h4,h5,h6 {
-  font-family: "Open Sans";
-}
-
-.subnav-body {
-  margin:70px 0 20px;
-}
-
-.header .brand {
-  padding-top: 6px;
-  padding-bottom: 0px;
-}
-
-.header .brand img {
-  margin-top:5px;
-  height: 30px;
-}
 
 .docs-search {
   margin:10px 0;
@@ -433,6 +396,35 @@ iframe.example {
   padding:5px;
 }
 
+/*** Common hints ***/
+.label-hint {
+  display: inline-block;
+  font-size: x-small;
+  vertical-align: super;
+}
+
+/*** Access hints ***/
+.label-hint.access-public {
+  background-color: yellowgreen;
+}
+.label-hint.access-protected {
+  background-color: chocolate;
+}
+.label-hint.access-private {
+  background-color: darkred;
+}
+
+/*** Method hints ***/
+.hint-deprecated {
+  background: gray; 
+}
+
+.hint-since {
+  background: mediumseagreen; 
+  display: inline-block;
+}
+
+/*** Type hints ***/
 .type-hint {
   display:inline-block;
   background: gray;

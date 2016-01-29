@@ -26,6 +26,7 @@ function configurePackage(p) {
     p.factory(require('./services/getNativeTypeLink'))
      .factory(require('./services/getTypeLink'))
      .factory(require('./services/getTypeName'))
+     .factory(require('./services/transforms/accessTagTransform'))
 
      // build navigation
      .processor(require('./processors/config'))
