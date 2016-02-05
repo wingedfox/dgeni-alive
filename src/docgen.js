@@ -30,6 +30,7 @@ function configurePackage(p) {
 
      // build navigation
      .processor(require('./processors/config'))
+     .processor(require('./processors/index'))
      .processor(require('./processors/navigation'))
      .processor(require('./processors/structuredParam'))
      .processor(require('./processors/website'))

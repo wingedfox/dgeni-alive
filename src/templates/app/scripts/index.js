@@ -3,6 +3,7 @@ var DOCS_OVERWRITELINK = true;
 
 angular.module('docApp', ['ngMaterial'])
 .constant('DOCS_OVERWRITELINK', typeof DOCS_OVERWRITELINK === 'undefined' ? false : DOCS_OVERWRITELINK)
+.constant('SEARCH', [])
 .provider('DOCS_OVERWRITELINK', function (DOCS_OVERWRITELINK) {
     return {
         $get: function () {
@@ -31,6 +32,7 @@ angular.module('docApp', ['ngMaterial'])
             key: nav.id
         };
     })
+
     $provide.constant('NAV', nav);
 })
 .config(function($mdThemingProvider) {
@@ -44,5 +46,28 @@ angular.module('docApp', ['ngMaterial'])
     if(!$location.path() && CONFIG.ROOT) {
         $location.path(CONFIG.ROOT).replace();
     }
-});
-
+})
+.run(function($http, $q, $window, SEARCH){
+    $q.all({
+        i: $http.get('data/search.index'),
+        m: $http.get('data/search-meta.js')
+    }).then(function(d) {
+        var buffer = $window.dcodeIO.ByteBuffer.fromBinary(d.i.data);
+        d.m.data.forEach(function(v) {
+            var i = v.size;
+            var arr = [];
+            while (i--) {
+                arr.push(buffer.readInt32());
+            }
+            SEARCH.push({
+                path: v.path,
+                name: v.name,
+                filter: new $window.BloomFilter(
+                    arr,
+                    Math.ceil(Math.log2(1/0.001))
+                )
+            });
+        });
+    });
+})
+;

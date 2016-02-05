@@ -31,8 +31,6 @@ angular.module('docApp').controller('DocsCtrl', function($scope, $location, $win
         }
         newPath = 'partials/' + newPath;
 
-        //console.log(newPath, hash);
-
         docs.currentHash = hash;
         docs.partialPath = newPath;
     };

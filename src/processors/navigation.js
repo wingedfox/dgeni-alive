@@ -106,20 +106,18 @@ module.exports = function generateNavigationProcessor(aliasMap, log) {
     $process: function (docs) {
 
       var areas = {}, areaIds = [];
-      var pages = _(docs)
+      _(docs)
       .filter(function (it) {
         return it.area;
-      });
-
-      _(pages).groupBy('area').forEach(function (pages, key) {
+      }).groupBy('area').forEach(function (pages, key) {
         debug('start process area:', key);
         // take area aliases and link doc to first one
         var doc = aliasMap.getDocs(key + '-index');
         if (doc.length > 0) {
             doc = doc[0];
         } else {
-            log.warn('No index document found for "%s"\nCreate %s-index.ngdoc file in the documents area with template' +
-                     '\n===================\n@ngdoc overview\n@name %s docs\n@area %s\n@description', key, key, key, key);
+            log.warn('No index document found for "%s"\nCreate index.ngdoc file in the documents area with template' +
+                     '\n===================\n@ngdoc overview\n@id %s-index @name %s docs\n@area %s\n@description', key, key, key, key);
             doc = { path: key };
         }
 
@@ -137,13 +135,15 @@ module.exports = function generateNavigationProcessor(aliasMap, log) {
       docs.push({
         docType: 'nav-data',
         id: 'nav-data',
-        template: 'nav-data.template.js',
+        template: 'app/data/nav-data.template.js',
         outputPath: 'data/nav-data.js',
         areas: areas
       });
 
       docs.push({
-        template: 'area-data.template.js',
+        docType: 'nav-data',
+        id: 'area-data',
+        template: 'app/data/area-data.template.js',
         outputPath: 'data/area-data.js',
         areaIds: areaIds
       });
