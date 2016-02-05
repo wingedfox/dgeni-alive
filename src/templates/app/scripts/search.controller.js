@@ -13,8 +13,8 @@ angular.module('docApp')
     }
 
     this.query = function query (text) {
-        return SEARCH.filter(function(v){
-            return v.filter.test(text);
-        });
+        return text && SEARCH.filter(function(v){
+            return !!text && v.filter.test(text) || !!v.name && v.name.indexOf(text) === 0;
+        }) || [];
     }
 });

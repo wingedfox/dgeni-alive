@@ -55,15 +55,16 @@ module.exports = function generateIndexProcessor(aliasMap, log, renderMarkdown) 
             return '';
           }
         }).join(' ').replace(/(\$(\w+))/g, '$1 $2'), {
-          language:"english",
+          language: "english",
           remove_digits: true,
-          return_changed_case:true,
+          return_changed_case: true,
           remove_duplicates: true
         });
 
         var filter = new bloom.BloomFilter(
           Math.ceil(index.length * Math.abs(Math.log(errorRate)) / (Math.pow(Math.LN2, 2))),
           Math.ceil(Math.log2(1/errorRate)));
+
         index.forEach(function(v) {
           filter.add(v);
         })
@@ -77,7 +78,7 @@ module.exports = function generateIndexProcessor(aliasMap, log, renderMarkdown) 
         // update index
         tokens.push({
           name: v.name,
-          path: v.path,
+          path: v.areaKey || v.path,
           type: v.docType,
           size: filter.buckets.length
         });

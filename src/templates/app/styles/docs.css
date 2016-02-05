@@ -1,3 +1,10 @@
+/** autocomplete **/
+.autocomplete-item__metadata {
+  font-size: smaller;
+  opacity: 0.6;
+}
+
+/** docs **/
 .title > p {
   display: inline-block;
 }

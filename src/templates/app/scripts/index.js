@@ -62,6 +62,7 @@ angular.module('docApp', ['ngMaterial'])
             SEARCH.push({
                 path: v.path,
                 name: v.name,
+                type: v.type,
                 filter: new $window.BloomFilter(
                     arr,
                     Math.ceil(Math.log2(1/0.001))

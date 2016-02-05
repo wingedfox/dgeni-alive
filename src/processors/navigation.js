@@ -117,7 +117,7 @@ module.exports = function generateNavigationProcessor(aliasMap, log) {
             doc = doc[0];
         } else {
             log.warn('No index document found for "%s"\nCreate index.ngdoc file in the documents area with template' +
-                     '\n===================\n@ngdoc overview\n@id %s-index @name %s docs\n@area %s\n@description', key, key, key, key);
+                     '\n===================\n@ngdoc overview\n@id %s-index\n @name %s docs\n@area %s\n@description', key, key, key, key);
             doc = { path: key };
         }
 
@@ -128,6 +128,7 @@ module.exports = function generateNavigationProcessor(aliasMap, log) {
             name: AREA_NAMES[key] || key,
             navGroups: mappers[key](pages, key)
           };
+          doc.areaKey = key;
           areaIds.push(key);
         }
       });
