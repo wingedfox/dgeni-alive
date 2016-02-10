@@ -27,9 +27,11 @@ function configurePackage(p) {
      .factory(require('./services/getTypeLink'))
      .factory(require('./services/getTypeName'))
      .factory(require('./services/transforms/accessTagTransform'))
+     .factory(require('./services/transforms/errorTagTransform'))
 
      // build navigation
      .processor(require('./processors/config'))
+     .processor(require('./processors/generateErrorsGroupArea'))
      .processor(require('./processors/index'))
      .processor(require('./processors/navigation'))
      .processor(require('./processors/structuredParam'))
@@ -39,6 +41,7 @@ function configurePackage(p) {
 //     .config(function(getNativeTypeLink) {
 //        getNativeTypeLink.nativeTypeRoot = 'http://w3.org';
 //      })
+
      // generate website
      .config(function(generateWebsite) {
         generateWebsite
@@ -73,10 +76,11 @@ function configurePackage(p) {
 
      // setting readFilesProcessor configuration
      .config(function(computePathsProcessor, computeIdsProcessor, createDocMessage, getAliases) {
+
         computeIdsProcessor.idTemplates.push({
             docTypes: ['overview'],
             getId: function (doc) {
-                return doc.fileInfo.baseName;
+                return doc.id;
             },
             getAliases: function (doc) {
                 return [doc.id];
@@ -91,6 +95,12 @@ function configurePackage(p) {
 
         computeIdsProcessor.idTemplates.push({
             docTypes: ['controller'],
+            idTemplate: 'module:${module}.${docType}:${name}',
+            getAliases: getAliases
+        });
+
+        computeIdsProcessor.idTemplates.push({
+            docTypes: ['error'],
             idTemplate: 'module:${module}.${docType}:${name}',
             getAliases: getAliases
         });
@@ -120,15 +130,21 @@ function configurePackage(p) {
         });
 
         computePathsProcessor.pathTemplates.push({
+            docTypes: ['error'],
+            pathTemplate: '${area}/${module}/${name}',
+            outputPathTemplate: 'partials/error/${module}/${name}.html'
+        });
+
+        computePathsProcessor.pathTemplates.push({
             docTypes: ['module'],
-            getPath: function (doc) {
-                return doc.area + '/' + doc.name;
-            },
+            pathTemplate: '${area}/${name}',
             outputPathTemplate: 'partials/${path}.html'
         });
 
         computePathsProcessor.pathTemplates.push({
             docTypes: ['overview'],
+            pathTemplate: '${area}/index',
+/*
             getPath: function(doc) {
                 var docPath = path.dirname(doc.fileInfo.relativePath);
                 if (doc.fileInfo.baseName !== 'index') {
@@ -139,7 +155,8 @@ function configurePackage(p) {
                 }
                 return docPath;
             },
-            outputPathTemplate: 'partials/${path}.html'
+*/
+            outputPathTemplate: 'partials/${area}/index.html'
         });
 
         computePathsProcessor.pathTemplates.push({
