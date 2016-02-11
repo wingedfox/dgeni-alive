@@ -1,7 +1,8 @@
-module.exports = function(extractTypeTransform, wholeTagTransform) {
+module.exports = function(extractTypeTransform, extractNameTransform, wholeTagTransform) {
   return {
     name: 'throws',
     aliases: ['throw'],
-    transforms: [ extractTypeTransform, wholeTagTransform ]
+    multi: true,
+    transforms: [ extractTypeTransform, extractNameTransform, wholeTagTransform ]
   };
 };

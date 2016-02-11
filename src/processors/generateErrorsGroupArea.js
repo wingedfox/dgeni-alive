@@ -18,7 +18,7 @@ module.exports = function generateErrorsGroupArea(log, aliasMap, moduleMap, crea
           .thru(function(groups) {
             if (groups.error) {
               module.components = module.components.filter(function(component) {
-                return 'error' == component.docType;
+                return 'error' !== component.docType;
               });
             }
             return {
@@ -26,6 +26,7 @@ module.exports = function generateErrorsGroupArea(log, aliasMap, moduleMap, crea
               docType: 'module',
               groupType: 'error',
               moduleName: module.name,
+              module: module.name,
               moduleDoc: {},
               area: 'error',
               name: module.name,

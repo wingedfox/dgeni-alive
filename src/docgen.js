@@ -31,6 +31,7 @@ function configurePackage(p) {
 
      // build navigation
      .processor(require('./processors/config'))
+     .processor(require('./processors/embedImages'))
      .processor(require('./processors/generateErrorsGroupArea'))
      .processor(require('./processors/index'))
      .processor(require('./processors/navigation'))
@@ -50,6 +51,17 @@ function configurePackage(p) {
          .locals('url', pkg.homepage);
      })
 
+     // add navigation area mappers
+     .config(function(generateNavigationProcessor, getInjectables) {
+        generateNavigationProcessor.addMappers(getInjectables([
+          require('./processors/mappers/api'),
+          require('./processors/mappers/docs'),
+          require('./processors/mappers/error'),
+          require('./processors/mappers/guide')
+        ]));
+      })
+
+     // add filters
      .config(function(templateEngine, getInjectables) {
         templateEngine.filters = templateEngine.filters.concat(getInjectables([
           require('./rendering/filters/keys'),
@@ -79,12 +91,8 @@ function configurePackage(p) {
 
         computeIdsProcessor.idTemplates.push({
             docTypes: ['overview'],
-            getId: function (doc) {
-                return doc.id;
-            },
-            getAliases: function (doc) {
-                return [doc.id];
-            }
+            idTemplate: '${area}:${name}',
+            getAliases: getAliases
         });
 
         computeIdsProcessor.idTemplates.push({
@@ -143,7 +151,7 @@ function configurePackage(p) {
 
         computePathsProcessor.pathTemplates.push({
             docTypes: ['overview'],
-            pathTemplate: '${area}/index',
+            pathTemplate: '${area}/${name}',
 /*
             getPath: function(doc) {
                 var docPath = path.dirname(doc.fileInfo.relativePath);
@@ -156,7 +164,8 @@ function configurePackage(p) {
                 return docPath;
             },
 */
-            outputPathTemplate: 'partials/${area}/index.html'
+//            outputPathTemplate: 'partials/${path}.html'
+            outputPathTemplate: 'partials/${area}/${name}.html'
         });
 
         computePathsProcessor.pathTemplates.push({
