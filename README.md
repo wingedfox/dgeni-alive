@@ -30,7 +30,9 @@ Parts of code were taken from generator-ngdoc.
 4. Added api-index component to show title API page
 5. Added @deprecated, @since and @access tags
 6. Built-in docs server
-7. TBD
+7. Added Errors Reference
+8. Added Search
+9. TBD
 
 ## How it works
 1. Configure Dgeni package
