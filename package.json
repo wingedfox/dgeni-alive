@@ -26,6 +26,7 @@
     "bloomfilter": "~0.0.16",
     "bower": "~1.7.2",
     "bytebuffer": "~5.0.0",
+    "catharsis": "~0.8.7",
     "dgeni": "~0.4.2",
     "dgeni-packages": "~0.11.1",
     "ent": "~2.2.0",
