@@ -79,3 +79,5 @@ module.exports = function (grunt) {
         });
     });
 };
+
+module.exports.docgen = docgen;
