@@ -15,7 +15,7 @@ var pkg = require('../package.json');
 var DEFAULT_PACKAGES = [
     require('dgeni-packages/ngdoc'),
     require('dgeni-packages/nunjucks'),
-//    require('dgeni-packages/examples')
+    require('dgeni-packages/examples')
 ];
 
 /**
@@ -38,6 +38,17 @@ function configurePackage(p) {
      .processor(require('./processors/structuredParam'))
      .processor(require('./processors/website'))
 
+     .config(function(generateExamplesProcessor, generateProtractorTestsProcessor) {
+       var deployments = [{
+         name: 'default',
+         examples: {
+           commonFiles: ['../../dist/angular-gettext.js']
+         }
+       }];
+
+       generateExamplesProcessor.deployments = deployments;
+       generateProtractorTestsProcessor.deployments = deployments;
+     })
      // change default url for native types doc
 //     .config(function(getNativeTypeLink) {
 //        getNativeTypeLink.nativeTypeRoot = 'http://w3.org';
