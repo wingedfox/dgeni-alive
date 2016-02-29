@@ -15,7 +15,7 @@ var pkg = require('../package.json');
 var DEFAULT_PACKAGES = [
     require('dgeni-packages/ngdoc'),
     require('dgeni-packages/nunjucks'),
-//    require('dgeni-packages/examples')
+    require('dgeni-packages/examples')
 ];
 
 /**
@@ -37,6 +37,7 @@ function configurePackage(p) {
      .processor(require('./processors/navigation'))
      .processor(require('./processors/structuredParam'))
      .processor(require('./processors/website'))
+     .processor(require('./processors/exampleDependenciesBuilder'))
 
      // change default url for native types doc
 //     .config(function(getNativeTypeLink) {
