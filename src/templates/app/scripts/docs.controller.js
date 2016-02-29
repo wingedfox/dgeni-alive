@@ -7,6 +7,7 @@ angular.module('docApp').controller('DocsCtrl', function($scope, $location, $win
     docs.currentArea = null;
     docs.currentHash = null;
     docs.partialPath = null;
+    docs.fullscreen = false;
 
     docs.isCurrent = function (navItem) {
         return ('/' + navItem.href === docs.currentPath);
@@ -18,6 +19,7 @@ angular.module('docApp').controller('DocsCtrl', function($scope, $location, $win
         newPath = newPath.replace(new RegExp('^' + basePath), '');
         area = newPath.split('/')[0];
         docs.currentArea = DOCS_NAVIGATION[area];
+        docs.fullscreen = false;
 
         if (newPath === '' || newPath === 'index.html') {
             newPath = 'index';
@@ -25,6 +27,7 @@ angular.module('docApp').controller('DocsCtrl', function($scope, $location, $win
 
         if (!newPath.match(/\.html$/)) {
             if (DOCS_NAVIGATION[newPath] && DOCS_NAVIGATION[newPath].href) {
+                docs.fullscreen = DOCS_NAVIGATION[newPath].fullscreen;
                 newPath = DOCS_NAVIGATION[newPath].href;
             }
             newPath = newPath + '.html';

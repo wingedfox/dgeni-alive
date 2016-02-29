@@ -44,7 +44,8 @@ module.exports = function generateNavigationProcessor(aliasMap, log) {
             id: key,
             href: doc.path,
             name: AREAS[key].title || key,
-            navGroups: AREAS[key](pages, key)
+            navGroups: AREAS[key](pages, key),
+            fullscreen: doc.fullscreen
           };
           doc.areaKey = key;
           areaIds.push(key);

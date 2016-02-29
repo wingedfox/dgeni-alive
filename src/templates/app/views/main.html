@@ -32,14 +32,13 @@
       md-is-locked-open="$mdMedia('gt-md')"
       flex="25"
       layout="column"
-      ng-if="docs.currentArea"
+      ng-if="docs.currentArea && !docs.fullscreen"
       ng-include="'views/sidebar.html'"></md-sidenav>
 
     <md-content
       flex-gt-md="75"
       flex="100"
       layout="column"
-      g-if="docs.currentArea"
       ng-include="'views/content.html'"></md-content>
 
   </main>

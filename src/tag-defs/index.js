@@ -6,4 +6,5 @@ module.exports = [
     require('./public-tag'),
     require('./since-tag'),
     require('./throws-tag'),
+    require('./fullscreen-tag'),
 ];

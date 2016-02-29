@@ -14,7 +14,7 @@ angular.module('docApp', ['ngMaterial'])
 .config(function($locationProvider, DOCS_OVERWRITELINK){
     if(!DOCS_OVERWRITELINK){
         $locationProvider.hashPrefix('!');
-            $locationProvider.html5Mode({
+        $locationProvider.html5Mode({
             enabled: true,
             requireBase: true,
             rewriteLinks: true
@@ -26,7 +26,7 @@ angular.module('docApp', ['ngMaterial'])
     var nav = DOCS_AREA_DATA.map(function (id) {
         var nav = DOCS_NAVIGATION[id];
         return {
-            title: nav.name,
+            title: nav.title || nav.name,
             href: nav.id,
             path: nav.path,
             key: nav.id

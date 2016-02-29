@@ -18,7 +18,9 @@ module.exports = function navigationMapper_DOCS(aliasMap, log) {
       res.navItems.push({
         name: page.name,
         type: '',
-        href: page.path
+        href: page.path,
+        title: page.title,
+        fullscreen: page.fullscreen
       });
     });
 
