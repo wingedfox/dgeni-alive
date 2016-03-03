@@ -14,7 +14,7 @@ angular.module('docApp', ['ngMaterial'])
 .config(function($locationProvider, DOCS_OVERWRITELINK){
     if(!DOCS_OVERWRITELINK){
         $locationProvider.hashPrefix('!');
-        $locationProvider.html5Mode({
+            $locationProvider.html5Mode({
             enabled: true,
             requireBase: true,
             rewriteLinks: true

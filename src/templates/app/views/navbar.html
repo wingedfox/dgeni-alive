@@ -9,7 +9,7 @@
     layout="row"
     layout-align="start center"
     >
-    <div>{$ doc.locals.productTitle $} {$ doc.locals.productVersion $}</div>
+    <div flex="none">{$ doc.locals.productTitle $} {$ doc.locals.productVersion $}</div>
     <md-button
       ng-class="{'md-active': isActive(area)}"
       ng-repeat="area in navbar.areas"
