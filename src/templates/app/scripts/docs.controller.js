@@ -15,19 +15,18 @@ angular.module('docApp').controller('DocsCtrl', function($scope, $location, $win
 
     docs.changeCurrent = function(newPath, hash){
         var area;
+        var fullscreen = false;
         docs.currentPath = newPath;
         newPath = newPath.replace(new RegExp('^' + basePath), '');
         area = newPath.split('/')[0];
         docs.currentArea = DOCS_NAVIGATION[area];
-        docs.fullscreen = false;
 
         if (newPath === '' || newPath === 'index.html') {
             newPath = 'index';
         }
-
         if (!newPath.match(/\.html$/)) {
             if (DOCS_NAVIGATION[newPath] && DOCS_NAVIGATION[newPath].href) {
-                docs.fullscreen = DOCS_NAVIGATION[newPath].fullscreen;
+                fullscreen = !!DOCS_NAVIGATION[newPath].fullscreen;
                 newPath = DOCS_NAVIGATION[newPath].href;
             }
             newPath = newPath + '.html';
@@ -36,6 +35,7 @@ angular.module('docApp').controller('DocsCtrl', function($scope, $location, $win
 
         docs.currentHash = hash;
         docs.partialPath = newPath;
+        docs.fullscreen = fullscreen;
     };
 
     $scope.$on('$locationChangeStart', function(){

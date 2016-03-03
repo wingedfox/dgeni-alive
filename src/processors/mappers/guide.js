@@ -19,8 +19,7 @@ module.exports = function navigationMapper_GUIDE(aliasMap, log) {
         name: page.name,
         type: '',
         href: page.path,
-        title: page.title,
-        fullscreen: page.fullscreen
+        title: page.title
       });
     });
 

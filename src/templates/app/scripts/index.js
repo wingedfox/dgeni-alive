@@ -26,10 +26,11 @@ angular.module('docApp', ['ngMaterial'])
     var nav = DOCS_AREA_DATA.map(function (id) {
         var nav = DOCS_NAVIGATION[id];
         return {
-            title: nav.title || nav.name,
+            title: nav.name,
             href: nav.id,
             path: nav.path,
-            key: nav.id
+            key: nav.id,
+            fullscreen: nav.fullscreen
         };
     })
 

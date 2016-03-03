@@ -3,6 +3,7 @@
  */
 module.exports = function() {
   return {
-    name: 'fullscreen'
+    name: 'fullscreen',
+    transforms: [function (doc) { return true; }]
   };
 };
