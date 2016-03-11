@@ -187,7 +187,7 @@ function DocGen () {
      * Builds package and returns instance
      * @returns {Package} package instance singleton
      */
-    this.package = function (p) {
+    this.Package = function (p) {
         if (!pkg) {
             var packages = (p && [].concat(p) || DEFAULT_PACKAGES || []).map(function(packageName) {
                 if ('string' == typeof packageName) {
@@ -209,7 +209,7 @@ function DocGen () {
      * @returns {DocGen}
      */
     this.src = function (src, basepath) {
-        this.package().config(function(readFilesProcessor) {
+        this.Package().config(function(readFilesProcessor) {
             readFilesProcessor.basePath = path.resolve(basepath || '');
 
             readFilesProcessor.sourceFiles = (readFilesProcessor.sourceFiles || []).concat([].concat(src.map(function(sourceInfo) {
@@ -228,7 +228,7 @@ function DocGen () {
      * @returns {DocGen}
      */
     this.title = function (title) {
-        this.package().config(function(generateConfigProcessor, generateWebsite) {
+        this.Package().config(function(generateConfigProcessor, generateWebsite) {
             generateConfigProcessor.title(title);
             generateWebsite.locals('productTitle', title);
         });
@@ -242,7 +242,7 @@ function DocGen () {
      * @returns {DocGen}
      */
     this.version = function (version) {
-        this.package().config(function(generateConfigProcessor, generateWebsite) {
+        this.Package().config(function(generateConfigProcessor, generateWebsite) {
             generateConfigProcessor.version(version);
             generateWebsite.locals('productVersion', version);
         });
@@ -256,7 +256,7 @@ function DocGen () {
      */
     this.dest = function (p) {
         dest = path.resolve(p);
-        this.package().config(function(writeFilesProcessor) {
+        this.Package().config(function(writeFilesProcessor) {
             writeFilesProcessor.outputFolder = dest;
         });
         return this;
@@ -267,7 +267,7 @@ function DocGen () {
      * @returns {Promise}
      */
     this.generate = function () {
-        return new Dgeni([this.package()]).generate().then(function(data) {
+        return new Dgeni([this.Package()]).generate().then(function(data) {
             var defer = Q.defer();
 
             // copy app data

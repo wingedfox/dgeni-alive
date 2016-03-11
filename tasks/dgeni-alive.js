@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         var dest = path.resolve(this.data.dest);
 
         // enable debug
-        docgen.package().config(function(log) {
+        docgen.Package().config(function(log) {
             log.level = debug? 'debug': 'info';
         });
 
