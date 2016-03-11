@@ -18,7 +18,7 @@ module.exports = function navigationMapper_API(aliasMap, log) {
         var mod = _.find(components, {name: moduleName, module: moduleName});
 
         // module is defined and not only the module
-        if (mod && components.length > 1) {
+        if (mod) {
           var navGroup = {
             name: moduleName,
             type: 'groups',
