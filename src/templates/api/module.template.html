@@ -11,6 +11,7 @@
 {% block installation %}{% endblock %}
 {% endif %}
 
+{% if doc.componentGroups and doc.componentGroups.length > 0 %}
 <div class="component-breakdown">
   <h2>Module Components</h2>
   {% for componentGroup in doc.componentGroups %}
@@ -31,6 +32,7 @@
   </div>
   {% endfor %}
 </div>
+{% endif %}
 
 {% if doc.usage %}
   <h2>Usage</h2>
