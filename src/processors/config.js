@@ -26,7 +26,7 @@ module.exports = function generateConfigProcessor(log) {
       docs.push({
         docType: 'config',
         id: 'config',
-        template: 'config.template.js',
+        template: 'app/data/config.template.js',
         outputPath: 'data/config.js',
         config: {
             TITLE: title,

@@ -1,4 +1,4 @@
-var tagDefFactory = require('./since');
+var tagDefFactory = require('./since-tag');
 
 describe("returns tagDef", function() {
   it("should add the injected transforms to the transforms property", function() {

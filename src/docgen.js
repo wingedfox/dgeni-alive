@@ -15,7 +15,7 @@ var pkg = require('../package.json');
 var DEFAULT_PACKAGES = [
     require('dgeni-packages/ngdoc'),
     require('dgeni-packages/nunjucks'),
-//    require('dgeni-packages/examples')
+    require('dgeni-packages/examples')
 ];
 
 /**
@@ -27,17 +27,23 @@ function configurePackage(p) {
      .factory(require('./services/getTypeLink'))
      .factory(require('./services/getTypeName'))
      .factory(require('./services/transforms/accessTagTransform'))
+     .factory(require('./services/transforms/errorTagTransform'))
 
      // build navigation
      .processor(require('./processors/config'))
+     .processor(require('./processors/embedImages'))
+     .processor(require('./processors/generateErrorsGroupArea'))
+     .processor(require('./processors/index'))
      .processor(require('./processors/navigation'))
      .processor(require('./processors/structuredParam'))
      .processor(require('./processors/website'))
+     .processor(require('./processors/exampleDependenciesBuilder'))
 
      // change default url for native types doc
 //     .config(function(getNativeTypeLink) {
 //        getNativeTypeLink.nativeTypeRoot = 'http://w3.org';
 //      })
+
      // generate website
      .config(function(generateWebsite) {
         generateWebsite
@@ -46,6 +52,17 @@ function configurePackage(p) {
          .locals('url', pkg.homepage);
      })
 
+     // add navigation area mappers
+     .config(function(generateNavigationProcessor, getInjectables) {
+        generateNavigationProcessor.addMappers(getInjectables([
+          require('./processors/mappers/api'),
+          require('./processors/mappers/docs'),
+          require('./processors/mappers/error'),
+          require('./processors/mappers/guide')
+        ]));
+      })
+
+     // add filters
      .config(function(templateEngine, getInjectables) {
         templateEngine.filters = templateEngine.filters.concat(getInjectables([
           require('./rendering/filters/keys'),
@@ -72,14 +89,11 @@ function configurePackage(p) {
 
      // setting readFilesProcessor configuration
      .config(function(computePathsProcessor, computeIdsProcessor, createDocMessage, getAliases) {
+
         computeIdsProcessor.idTemplates.push({
             docTypes: ['overview'],
-            getId: function (doc) {
-                return doc.fileInfo.baseName;
-            },
-            getAliases: function (doc) {
-                return [doc.id];
-            }
+            idTemplate: '${area}:${name}',
+            getAliases: getAliases
         });
 
         computeIdsProcessor.idTemplates.push({
@@ -90,6 +104,12 @@ function configurePackage(p) {
 
         computeIdsProcessor.idTemplates.push({
             docTypes: ['controller'],
+            idTemplate: 'module:${module}.${docType}:${name}',
+            getAliases: getAliases
+        });
+
+        computeIdsProcessor.idTemplates.push({
+            docTypes: ['error'],
             idTemplate: 'module:${module}.${docType}:${name}',
             getAliases: getAliases
         });
@@ -119,15 +139,21 @@ function configurePackage(p) {
         });
 
         computePathsProcessor.pathTemplates.push({
+            docTypes: ['error'],
+            pathTemplate: '${area}/${module}/${name}',
+            outputPathTemplate: 'partials/error/${module}/${name}.html'
+        });
+
+        computePathsProcessor.pathTemplates.push({
             docTypes: ['module'],
-            getPath: function (doc) {
-                return doc.area + '/' + doc.name;
-            },
+            pathTemplate: '${area}/${name}',
             outputPathTemplate: 'partials/${path}.html'
         });
 
         computePathsProcessor.pathTemplates.push({
             docTypes: ['overview'],
+            pathTemplate: '${area}/${name}',
+/*
             getPath: function(doc) {
                 var docPath = path.dirname(doc.fileInfo.relativePath);
                 if (doc.fileInfo.baseName !== 'index') {
@@ -138,7 +164,9 @@ function configurePackage(p) {
                 }
                 return docPath;
             },
-            outputPathTemplate: 'partials/${path}.html'
+*/
+//            outputPathTemplate: 'partials/${path}.html'
+            outputPathTemplate: 'partials/${area}/${name}.html'
         });
 
         computePathsProcessor.pathTemplates.push({
@@ -159,7 +187,7 @@ function DocGen () {
      * Builds package and returns instance
      * @returns {Package} package instance singleton
      */
-    this.package = function (p) {
+    this.Package = function (p) {
         if (!pkg) {
             var packages = (p && [].concat(p) || DEFAULT_PACKAGES || []).map(function(packageName) {
                 if ('string' == typeof packageName) {
@@ -181,7 +209,7 @@ function DocGen () {
      * @returns {DocGen}
      */
     this.src = function (src, basepath) {
-        this.package().config(function(readFilesProcessor) {
+        this.Package().config(function(readFilesProcessor) {
             readFilesProcessor.basePath = path.resolve(basepath || '');
 
             readFilesProcessor.sourceFiles = (readFilesProcessor.sourceFiles || []).concat([].concat(src.map(function(sourceInfo) {
@@ -200,7 +228,7 @@ function DocGen () {
      * @returns {DocGen}
      */
     this.title = function (title) {
-        this.package().config(function(generateConfigProcessor, generateWebsite) {
+        this.Package().config(function(generateConfigProcessor, generateWebsite) {
             generateConfigProcessor.title(title);
             generateWebsite.locals('productTitle', title);
         });
@@ -214,7 +242,7 @@ function DocGen () {
      * @returns {DocGen}
      */
     this.version = function (version) {
-        this.package().config(function(generateConfigProcessor, generateWebsite) {
+        this.Package().config(function(generateConfigProcessor, generateWebsite) {
             generateConfigProcessor.version(version);
             generateWebsite.locals('productVersion', version);
         });
@@ -228,7 +256,7 @@ function DocGen () {
      */
     this.dest = function (p) {
         dest = path.resolve(p);
-        this.package().config(function(writeFilesProcessor) {
+        this.Package().config(function(writeFilesProcessor) {
             writeFilesProcessor.outputFolder = dest;
         });
         return this;
@@ -239,7 +267,7 @@ function DocGen () {
      * @returns {Promise}
      */
     this.generate = function () {
-        return new Dgeni([this.package()]).generate().then(function(data) {
+        return new Dgeni([this.Package()]).generate().then(function(data) {
             var defer = Q.defer();
 
             // copy app data

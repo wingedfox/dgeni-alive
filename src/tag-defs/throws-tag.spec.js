@@ -1,4 +1,4 @@
-var tagDefFactory = require('./throws');
+var tagDefFactory = require('./throws-tag');
 
 describe("returns tagDef", function() {
   it("should add the injected transforms to the transforms property", function() {

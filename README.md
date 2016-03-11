@@ -20,7 +20,8 @@ Parts of code were taken from generator-ngdoc.
 
 ## Demo Projects
 1. [angular-route-segment](http://wingedfox.github.io/dgeni-alive/docs/angular-route-segment/), [sources](https://github.com/wingedfox/angular-route-segment/blob/master/src/)
-2. TBD
+2. [angular-gettext](http://wingedfox.github.io/dgeni-alive/docs/angular-gettext/), [sources](https://github.com/wingedfox/angular-gettext/blob/master/src/)
+3. TBD
 
 ## What's Done
 1. Migrated to Angular 1.5
@@ -29,7 +30,9 @@ Parts of code were taken from generator-ngdoc.
 4. Added api-index component to show title API page
 5. Added @deprecated, @since and @access tags
 6. Built-in docs server
-7. TBD
+7. Added Errors Reference
+8. Added Search
+9. TBD
 
 ## How it works
 1. Configure Dgeni package

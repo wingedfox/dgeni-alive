@@ -34,10 +34,14 @@
 {% endmacro -%}
 
 
-{%- macro directiveParam(name, type, join, sep) %}
-  {%- if type.optional %}[{% endif -%}
-  {$ name | dashCase $}{$ join $}{$ type.description $}{$ sep $}
-  {%- if type.optional %}]{% endif -%}
+{%- macro directiveParam(name, type, join, sep, param) %}
+  {%- if param.optional or param.type.optional %}[{% endif -%}
+  {%- if param.type.name == "boolean" or param.type.name == "Boolean" -%}
+    {$ param.name | dashCase $}
+  {%- else -%}
+    {$ param.name | dashCase $}{$ join $}{$ param.defaultValue $}{$ sep $}
+  {%- endif -%}
+  {%- if param.optional or param.type.optional %}]{% endif -%}
 {% endmacro -%}
 
 {%- macro functionSyntax(fn) %}

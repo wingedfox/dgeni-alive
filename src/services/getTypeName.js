@@ -15,7 +15,7 @@ module.exports = function getTypeName(aliasMap, log, getNativeTypeLink) {
                 typeName = '{' + typeName + '}';
             }
             type = catharsis.parse(typeName);
-            if (type.type === catharsis.Types.TypeApplication && type.expression.name === 'Array') {
+            if (type.type === catharsis.Types.TypeApplication && (type.expression.name === 'Array' || type.expression.name === 'Object')) {
                 typeName = type.applications[0].name;
             } else if (type.type === catharsis.Types.FunctionType) {
                 typeName = 'Function';

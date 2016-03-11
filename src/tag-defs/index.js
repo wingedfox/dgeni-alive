@@ -1,8 +1,10 @@
 module.exports = [
-    require('./access'),
-    require('./private'),
-    require('./protected'),
-    require('./public'),
-    require('./since'),
-    require('./throws')
+    require('./access-tag'),
+    require('./error-tag'),
+    require('./fullscreen-tag'),
+    require('./private-tag'),
+    require('./protected-tag'),
+    require('./public-tag'),
+    require('./since-tag'),
+    require('./throws-tag'),
 ];

@@ -13,11 +13,11 @@
       <md-button
         aria-label="Components"
         class="md-icon-button"
-        hide-gt-md
+        hide-gt-sm
         ng-click="Main.toggleSidebar('left')" >
         <i class="fa fa-bars"></i>
       </md-button>
-      <ng-include src="'views/navbar.html'" ></ng-include>
+      <ng-include src="'views/navbar.html'" flex></ng-include>
     </md-toolbar>
   </header>
 
@@ -25,18 +25,22 @@
     flex
     layout-margin
     layout="row">
-
     <md-sidenav
       class="md-sidenav-left md-whiteframe-z2"
       md-component-id="left"
-      md-is-locked-open="$mdMedia('gt-md')"
+      md-is-locked-open="$mdMedia('gt-sm')"
+      flex-gt-lg="15"
+      flex-md="20"
+      flex-sm="25"
       flex="25"
       layout="column"
-      ng-if="docs.currentArea"
+      ng-if="docs.currentArea && !docs.fullscreen"
       ng-include="'views/sidebar.html'"></md-sidenav>
 
     <md-content
-      flex-gt-md="75"
+      flex-gt-lg="{{docs.fullscreen ? 100 : 85}}"
+      flex-md="{{docs.fullscreen ? 100 : 80}}"
+      flex-sm="{{docs.fullscreen ? 100 : 75}}"
       flex="100"
       layout="column"
       g-if="docs.currentArea"

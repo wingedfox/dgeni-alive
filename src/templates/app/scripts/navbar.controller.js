@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('docApp').controller('NavbarCtrl', function ($scope, NAV) {
+angular.module('docApp').controller('NavbarCtrl', function ($scope, $location, NAV) {
 	var navbar = this;
 	navbar.areas = NAV;
 /*
@@ -12,5 +12,9 @@ angular.module('docApp').controller('NavbarCtrl', function ($scope, NAV) {
 		});
 	});
 */
+        $scope.isActive = function isActive (area) {
+            return $location.path().indexOf('/' + area.href) === 0;
+        }
+
 	$scope.date = new Date();
 });
