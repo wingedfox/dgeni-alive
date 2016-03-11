@@ -39,7 +39,7 @@
         {% code %}
         <{$ doc.element $}
           {%- for param in doc.params %}
-          {$ directiveParam(param.name, param.type, '="', '"') $}
+          {$ directiveParam(param.name, param.type, '="', '"', param) $}
           {%- endfor %}>
         ...
         </{$ doc.element $}>
