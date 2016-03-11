@@ -25,7 +25,7 @@
       <{$ doc.name | dashCase $}
         {%- for param in doc.params %}
          {%- if (doc.name != param.alias and doc.name != param.name) %}
-          {$ directiveParam(param.alias or param.name, param.type, '="', '"') $}
+          {$ directiveParam('="', '"', param) $}
          {%- endif %}
         {%- endfor %}>
         ...
@@ -39,7 +39,7 @@
         {% code %}
         <{$ doc.element $}
           {%- for param in doc.params %}
-          {$ directiveParam(param.name, param.type, '="', '"', param) $}
+          {$ directiveParam('="', '"', param) $}
           {%- endfor %}>
         ...
         </{$ doc.element $}>
@@ -53,7 +53,7 @@
         {% set sep = joiner(' ') %}
         <{$ doc.element $} class="
         {%- for param in doc.params -%}
-          {$ sep() $}{$ directiveParam(param.name, param.type, ': ', ';') $}
+          {$ sep() $}{$ directiveParam(': ', ';', param, true) $}
         {%- endfor %}"> ... </{$ doc.element $}>
         {% endcode %}
       </li>
