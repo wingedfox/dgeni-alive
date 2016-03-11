@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example - example-gettextExample</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+  <script src="../../examples-dep/default/dist/angular-gettext.js"></script>
+  <script src="script.js"></script>
+  
+
+  
+</head>
+<body ng-app="gettextExample">
+  <div ng-controller="GettextController as gtx">
+  <section class="left">
+    <label>
+      <span>Translation:</span>
+      <select
+        aria-label="current language"
+        ng-model="gtx.options.currentLanguage"
+        ng-change="gtx.options.setCurrentLanguage(gtx.options.currentLanguage)">
+        <option ng-repeat="(k, lang) in gtx.options.strings" value="{{k}}">{{k}}</option>
+      </select>
+    </label>
+    <label>
+    <span>Debug mode:</span>
+      <input type="checkbox"
+        ng-model="gtx.options.debug"
+        ng-change="gtx.update()"
+        aria-label="debug mode"/></label>
+    <label>
+      <span>Debug prefix:</span>
+      <input type="text"
+        ng-model="gtx.options.debugPrefix"
+        ng-change="gtx.update()"
+        placeholder="non-translated string prefix"
+        aria-label="debug prefix for untranslated strings" /></label>
+    <label>
+      <span>Show translated markers:</span>
+      <input type="checkbox"
+        ng-model="gtx.options.showTranslatedMarkers"
+        ng-change="gtx.update()"
+        aria-label="debug mode" /></label>
+    <label>
+      <span>Translated marker prefix:</span>
+      <input type="text"
+        ng-model="gtx.options.translatedMarkerPrefix"
+        ng-change="gtx.update()"
+        placeholder="translated string prefix"
+        aria-label="translated strings prefix for debug mode" /></label>
+    <label>
+      <span>Translated marker suffix:</span>
+      <input type="text"
+        ng-model="gtx.options.translatedMarkerSuffix"
+        ng-change="gtx.update()"
+        placeholder="translated string suffix"
+        aria-label="translated strings prefix for debug mode" /></label>
+  </section>
+  <section class="right">
+    <label>
+      <span>Your name:</span>
+      <input type="text" ng-model="gtx.name" placeholder="enter your name" aria-label="your name"/></label>
+    <label>
+      <span>"Hello" string</span>
+      <input type="text"
+        ng-change="gtx.update()"
+        ng-model="gtx.options.strings[gtx.options.currentLanguage]['Hi, \{\{gtx.name\}\}!'].$$noContext[0]" placeholder="{{'Hi, {{gtx.name}\}!'}}" aria-label="Hello string"/></label>
+    <label>
+      <span>"Bye" string</span>
+      <input type="text"
+        ng-change="gtx.update()"
+        ng-model="gtx.options.strings[gtx.options.currentLanguage]['Bye, \{\{gtx.name\}\}!'].$$noContext[0]" placeholder="{{'Bye, {{gtx.name}\}!'}}" aria-label="Bye string"/></label>
+  </section>
+  <ul>
+    <li class="translation">
+      <span>Translation: {{gtx.options.currentLanguage}}</span>
+      <ul>
+        <li>
+          <span translate>Hi, {{gtx.name}}!</span>
+        </li>
+        <li>
+          <span translate>Bye, {{gtx.name}}!</span>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

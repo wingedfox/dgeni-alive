@@ -1,3 +1,10 @@
+/** autocomplete **/
+.autocomplete-item__metadata {
+  font-size: smaller;
+  opacity: 0.6;
+}
+
+/** docs **/
 .title > p {
   display: inline-block;
 }
@@ -501,7 +508,8 @@ h2 + ul, h2 + ul > li,
 ul.tutorial-nav, ul.tutorial-nav > li,
 .usage > ul, .usage > ul > li,
 ul.methods, ul.methods > li,
-ul.events, ul.events > li {
+ul.events, ul.events > li,
+ul.throws, ul.throws > li {
   list-style:none;
   padding:0;
 }

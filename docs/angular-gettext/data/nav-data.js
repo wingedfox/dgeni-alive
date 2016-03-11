@@ -1,7 +1,7 @@
 angular.module('docApp').constant('DOCS_NAVIGATION', {
   "api": {
     "id": "api",
-    "href": "index",
+    "href": "api/index",
     "name": "API",
     "navGroups": [
       {
@@ -75,12 +75,110 @@ angular.module('docApp').constant('DOCS_NAVIGATION', {
             ]
           }
         ]
-      },
+      }
+    ]
+  },
+  "guide": {
+    "id": "guide",
+    "href": "guide/index",
+    "name": "Guide",
+    "fullscreen": true,
+    "navGroups": [
       {
-        "name": "src",
+        "name": "Guide",
         "type": "groups",
-        "href": "api/src",
-        "navItems": []
+        "href": "guide",
+        "navItems": [
+          {
+            "name": "annotate",
+            "type": "",
+            "href": "guide/annotate",
+            "title": "Annotating markup"
+          },
+          {
+            "name": "compile",
+            "type": "",
+            "href": "guide/compile",
+            "title": "Compiling translations"
+          },
+          {
+            "name": "extract",
+            "type": "",
+            "href": "guide/extract",
+            "title": "Extracting strings"
+          },
+          {
+            "name": "index",
+            "type": "",
+            "href": "guide/index",
+            "title": "Developer guide"
+          }
+        ]
+      }
+    ]
+  },
+  "docs": {
+    "id": "docs",
+    "href": "docs",
+    "name": "Docs",
+    "navGroups": [
+      {
+        "name": "Docs",
+        "type": "groups",
+        "href": "docs",
+        "navItems": [
+          {
+            "name": "context",
+            "type": "",
+            "href": "docs/context",
+            "title": "Translation Contexts"
+          },
+          {
+            "name": "custom-annotations",
+            "type": "",
+            "href": "docs/custom-annotations",
+            "title": "Custom Annotations"
+          },
+          {
+            "name": "manual-setstrings",
+            "type": "",
+            "href": "docs/manual-setstrings",
+            "title": "Manual Set Strings"
+          },
+          {
+            "name": "translate",
+            "type": "",
+            "href": "docs/translate",
+            "title": "Translating"
+          }
+        ]
+      }
+    ]
+  },
+  "error": {
+    "id": "error",
+    "href": "error/index",
+    "name": "Errors",
+    "navGroups": [
+      {
+        "name": "Errors",
+        "title": "Error Reference",
+        "type": "groups",
+        "href": "error",
+        "navItems": [
+          {
+            "name": "gettext",
+            "type": "section",
+            "href": "error/gettext",
+            "navItems": [
+              {
+                "name": "MissingPlural",
+                "type": "error",
+                "href": "error/gettext/MissingPlural"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

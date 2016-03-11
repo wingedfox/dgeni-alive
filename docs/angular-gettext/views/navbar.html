@@ -2,10 +2,19 @@
   class="md-toolbar-tools"
   flex
   layout="row"
+  layout-align="space-between center"
   ng-controller="NavbarCtrl as navbar">
-  <div>Angular Gettext 2.2.0</div>
-  <md-button
-    ng-repeat="area in navbar.areas"
-    ng-href="{{area.href}}"
-    aria-label="{{area.title}}">{{area.title}}</md-button>
+  <div
+    flex="grow"
+    layout="row"
+    layout-align="start center"
+    >
+    <div flex="none">Angular Gettext 2.2.1</div>
+    <md-button
+      ng-class="{'md-active': isActive(area)}"
+      ng-repeat="area in navbar.areas"
+      ng-href="{{area.href}}"
+      aria-label="{{area.title}}">{{area.title}}</md-button>
+  </div>
+  <div ng-include="'../views/searchbox.html'"></div>
 </nav>

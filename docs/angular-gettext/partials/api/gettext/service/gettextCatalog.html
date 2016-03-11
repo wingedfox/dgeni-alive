@@ -32,10 +32,6 @@
   </ul>
   
 
-    
-
-  
-
   
 <h2>Methods</h2>
 <ul class="methods">
@@ -144,7 +140,7 @@
       
   
     </h3>
-    <div><p>Processes an object of string definitions. <a href="guide:manual-setstrings">More details here</a>.</p>
+    <div><p>Processes an object of string definitions. <a href="docs/manual-setstrings">More details here</a>.</p>
 </div>
 
     
@@ -184,7 +180,7 @@
         
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-object">Object.&lt;String&gt;</a>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-object">Object.&lt;String&gt;</a>
       </td>
       <td>
         <p>set of strings where the key is the translation <code>key</code> and <code>value</code> is the translated text</p>
@@ -296,7 +292,7 @@
         <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
       </td>
       <td>
-        <p>translation key context, e.g. <a href="doc:context">Verb, Noun</a></p>
+        <p>translation key context, e.g. <a href="docs/context">Verb, Noun</a></p>
 
         
         
@@ -403,7 +399,7 @@
         <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
       </td>
       <td>
-        <p>translation key context, e.g. <a href="doc:context">Verb, Noun</a></p>
+        <p>translation key context, e.g. <a href="docs/context">Verb, Noun</a></p>
 
         
         
@@ -538,7 +534,7 @@
         <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
       </td>
       <td>
-        <p>translation key context, e.g. <a href="doc:context">Verb, Noun</a></p>
+        <p>translation key context, e.g. <a href="docs/context">Verb, Noun</a></p>
 
         
         
@@ -581,7 +577,7 @@
     </h3>
     <div><p>Load a set of translation strings from a given URL.</p>
 <p>This should be a JSON catalog generated with <a href="https://github.com/rubenv/angular-gettext-tools">angular-gettext-tools</a>.
-<a href="guide:lazy-loading">More details here</a>.</p>
+<a href="docs:lazy-loading">More details here</a>.</p>
 </div>
 
     
@@ -626,7 +622,6 @@
     
   </li>
   </ul>
-  
 <h2>Events</h2>
 <ul class="events">
   <li id="gettextLanguageChanged">
@@ -654,7 +649,6 @@
     </li>
   </ul>
 
-  
 <h2>Properties</h2>
 <ul class="properties">
   <li id="debug">
@@ -732,7 +726,7 @@
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
-    <td><p>Custom prefix to mark strings that have been run through <a href="angular-gettext">angular-gettext</a>.</p>
+    <td><p>Custom prefix to mark strings that have been run through <a href="api/gettext">angular-gettext</a>.</p>
 </td>
   </tr>
 </table>
@@ -752,7 +746,7 @@
     <table class="variables-matrix return-arguments">
   <tr>
     <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a></td>
-    <td><p>Custom suffix to mark strings that have been run through <a href="angular-gettext">angular-gettext</a>.</p>
+    <td><p>Custom suffix to mark strings that have been run through <a href="api/gettext">angular-gettext</a>.</p>
 </td>
   </tr>
 </table>
@@ -845,9 +839,52 @@ if your language has different pluralization rules you&#39;ll end up with incorr
   </li>
   </ul>
 
-
-
   
+  <h2 id="example">Example</h2><p>This example shows translations behaviour with different settings.
+  
+
+
+<div class="runnable-example"
+    path="examples/example-gettextExample"
+    module="gettextExample"
+    name="gettextExample">
+
+  <md-content>
+    <md-tabs md-dynamic-height="false" md-border-bottom>
+    
+      <md-tab label="index.html">
+        <md-content class="md-padding">
+          <div class="runnable-example-file" name="index.html"language="html"type="html">
+          <pre><code>&lt;div ng-controller=&quot;GettextController as gtx&quot;&gt;&#10;  &lt;section class=&quot;left&quot;&gt;&#10;    &lt;label&gt;&#10;      &lt;span&gt;Translation:&lt;/span&gt;&#10;      &lt;select&#10;        aria-label=&quot;current language&quot;&#10;        ng-model=&quot;gtx.options.currentLanguage&quot;&#10;        ng-change=&quot;gtx.options.setCurrentLanguage(gtx.options.currentLanguage)&quot;&gt;&#10;        &lt;option ng-repeat=&quot;(k, lang) in gtx.options.strings&quot; value=&quot;{{k}}&quot;&gt;{{k}}&lt;/option&gt;&#10;      &lt;/select&gt;&#10;    &lt;/label&gt;&#10;    &lt;label&gt;&#10;    &lt;span&gt;Debug mode:&lt;/span&gt;&#10;      &lt;input type=&quot;checkbox&quot;&#10;        ng-model=&quot;gtx.options.debug&quot;&#10;        ng-change=&quot;gtx.update()&quot;&#10;        aria-label=&quot;debug mode&quot;/&gt;&lt;/label&gt;&#10;    &lt;label&gt;&#10;      &lt;span&gt;Debug prefix:&lt;/span&gt;&#10;      &lt;input type=&quot;text&quot;&#10;        ng-model=&quot;gtx.options.debugPrefix&quot;&#10;        ng-change=&quot;gtx.update()&quot;&#10;        placeholder=&quot;non-translated string prefix&quot;&#10;        aria-label=&quot;debug prefix for untranslated strings&quot; /&gt;&lt;/label&gt;&#10;    &lt;label&gt;&#10;      &lt;span&gt;Show translated markers:&lt;/span&gt;&#10;      &lt;input type=&quot;checkbox&quot;&#10;        ng-model=&quot;gtx.options.showTranslatedMarkers&quot;&#10;        ng-change=&quot;gtx.update()&quot;&#10;        aria-label=&quot;debug mode&quot; /&gt;&lt;/label&gt;&#10;    &lt;label&gt;&#10;      &lt;span&gt;Translated marker prefix:&lt;/span&gt;&#10;      &lt;input type=&quot;text&quot;&#10;        ng-model=&quot;gtx.options.translatedMarkerPrefix&quot;&#10;        ng-change=&quot;gtx.update()&quot;&#10;        placeholder=&quot;translated string prefix&quot;&#10;        aria-label=&quot;translated strings prefix for debug mode&quot; /&gt;&lt;/label&gt;&#10;    &lt;label&gt;&#10;      &lt;span&gt;Translated marker suffix:&lt;/span&gt;&#10;      &lt;input type=&quot;text&quot;&#10;        ng-model=&quot;gtx.options.translatedMarkerSuffix&quot;&#10;        ng-change=&quot;gtx.update()&quot;&#10;        placeholder=&quot;translated string suffix&quot;&#10;        aria-label=&quot;translated strings prefix for debug mode&quot; /&gt;&lt;/label&gt;&#10;  &lt;/section&gt;&#10;  &lt;section class=&quot;right&quot;&gt;&#10;    &lt;label&gt;&#10;      &lt;span&gt;Your name:&lt;/span&gt;&#10;      &lt;input type=&quot;text&quot; ng-model=&quot;gtx.name&quot; placeholder=&quot;enter your name&quot; aria-label=&quot;your name&quot;/&gt;&lt;/label&gt;&#10;    &lt;label&gt;&#10;      &lt;span&gt;&quot;Hello&quot; string&lt;/span&gt;&#10;      &lt;input type=&quot;text&quot;&#10;        ng-change=&quot;gtx.update()&quot;&#10;        ng-model=&quot;gtx.options.strings[gtx.options.currentLanguage][&#39;Hi, \{\{gtx.name\}\}!&#39;].$$noContext[0]&quot; placeholder=&quot;{{&#39;Hi, {{gtx.name}\}!&#39;}}&quot; aria-label=&quot;Hello string&quot;/&gt;&lt;/label&gt;&#10;    &lt;label&gt;&#10;      &lt;span&gt;&quot;Bye&quot; string&lt;/span&gt;&#10;      &lt;input type=&quot;text&quot;&#10;        ng-change=&quot;gtx.update()&quot;&#10;        ng-model=&quot;gtx.options.strings[gtx.options.currentLanguage][&#39;Bye, \{\{gtx.name\}\}!&#39;].$$noContext[0]&quot; placeholder=&quot;{{&#39;Bye, {{gtx.name}\}!&#39;}}&quot; aria-label=&quot;Bye string&quot;/&gt;&lt;/label&gt;&#10;  &lt;/section&gt;&#10;  &lt;ul&gt;&#10;    &lt;li class=&quot;translation&quot;&gt;&#10;      &lt;span&gt;Translation: {{gtx.options.currentLanguage}}&lt;/span&gt;&#10;      &lt;ul&gt;&#10;        &lt;li&gt;&#10;          &lt;span translate&gt;Hi, {{gtx.name}}!&lt;/span&gt;&#10;        &lt;/li&gt;&#10;        &lt;li&gt;&#10;          &lt;span translate&gt;Bye, {{gtx.name}}!&lt;/span&gt;&#10;        &lt;/li&gt;&#10;      &lt;/ul&gt;&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>
+          </div>
+        </md-content>
+      </md-tab>
+    
+      <md-tab label="script.js">
+        <md-content class="md-padding">
+          <div class="runnable-example-file" name="script.js"language="js"type="js">
+          <pre><code>angular.module(&#39;gettextExample&#39;, [&#39;gettext&#39;]).controller(&#39;GettextController&#39;, function($scope, gettextCatalog) {&#10;  gettextCatalog.debug = true;&#10;  gettextCatalog.showTranslatedMarkers = true;&#10;  gettextCatalog.translatedMarkerPrefix = &#39;-&gt;&#39;;&#10;  gettextCatalog.translatedMarkerSuffix = &#39;&lt;-&#39;;&#10;  gettextCatalog.currentLanguage = &#39;nl&#39;;&#10;  gettextCatalog.setStrings(&#39;en-US&#39;, {&#10;    &#39;Hi, {{gtx.name}}!&#39;: &#39;Hello, {{gtx.name}}!&#39;,&#10;    &#39;Bye, {{gtx.name}}!&#39;: &#39;&#39;,&#10;  });&#10;  gettextCatalog.setStrings(&#39;es-ES&#39;, {&#10;    &#39;Hi, {{gtx.name}}!&#39;: &#39;&#39;,&#10;    &#39;Bye, {{gtx.name}}!&#39;: &#39;&iexcl;Adious, {{gtx.name}}!&#39;,&#10;  })&#10;  gettextCatalog.setStrings(&#39;nl&#39;, {&#10;    &#39;Hi, {{gtx.name}}!&#39;: &#39;Halo, {{gtx.name}}!&#39;,&#10;    &#39;Bye, {{gtx.name}}!&#39;: &#39;Doei, {{gtx.name}}!&#39;,&#10;  });&#10;&#10;  this.name = &#39;Ruben&#39;;&#10;  this.options = gettextCatalog;&#10;&#10;  this.update = function () {&#10;    // a kind of hack, service settings are not tracked for real time changes&#10;    $scope.$root.$broadcast(&#39;gettextLanguageChanged&#39;);&#10;  }&#10;});</code></pre>
+          </div>
+        </md-content>
+      </md-tab>
+    
+      <md-tab label="style.css">
+        <md-content class="md-padding">
+          <div class="runnable-example-file" name="style.css"language="css"type="css">
+          <pre><code>select,&#10;input[type=text] {&#10;    width: 200px;&#10;}&#10;.translation {&#10;  display: inline-block;&#10;  list-style: none;&#10;}&#10;label {&#10;  display: block;&#10;}&#10;label &gt; span {&#10;  display: inline-block;&#10;  width: 250px;&#10;}&#10;section {&#10;  display: inline-block;&#10;  padding: 5px;&#10;}&#10;section.right &gt; label &gt; span {&#10;  width: 120px;&#10;}</code></pre>
+          </div>
+        </md-content>
+      </md-tab>
+    
+    </md-tabs>
+  </md-content>
+  <iframe class="runnable-example-frame" src="examples/example-gettextExample/index.html" name="example-gettextExample"></iframe>
+</div>
+
+
+
+</p>
+
 </div>
 
 

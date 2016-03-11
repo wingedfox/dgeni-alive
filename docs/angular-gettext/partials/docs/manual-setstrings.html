@@ -1,0 +1,37 @@
+
+
+<h1>
+  <p>Manual Set Strings</p>
+
+</h1>
+
+<p>Setting strings manually</p>
+<p>You can set translated strings by injecting the <a href="api/gettext/service/gettextCatalog">gettextCatalog</a> and using the <a href="api/gettext/service/gettextCatalog#setStrings">setStrings</a> method.</p>
+<p>As an example, you may have the following code in your application:</p>
+<pre><code class="lang-javascript">angular.module(&quot;myApp&quot;).run(function (gettextCatalog) {
+    // Load the strings automatically during initialization.
+    gettextCatalog.setStrings(&quot;nl&quot;, {
+        &quot;Hello&quot;: &quot;Hallo&quot;,
+        &quot;One boat&quot;: [&quot;Een boot&quot;, &quot;{{$count}} boats&quot;]
+    });
+});
+</code></pre>
+<p>The <a href="api/gettext/service/gettextCatalog#setStrings">setStrings</a> method accepts two parameters:</p>
+<ol>
+<li><code>language</code>: A language code.</li>
+<li><p><code>strings</code>: A dictionary of strings. The format of this dictionary is:</p>
+<ul>
+<li>Keys: Singular English strings (as defined in the source files)</li>
+<li>Values: Either a single string for signular-only strings or an array of plural forms.</li>
+</ul>
+</li>
+</ol>
+<p>Converting translated <code>.po</code> files into angular-compatible JavaScript files can be done automatically using the `<a href="https://github.com/rubenv/grunt-angular-gettext">grunt-angular-gettext</a>
+ module (<a href="guide/compile">instructions on how to do this</a>).</p>
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+select,
+input[type=text] {
+    width: 200px;
+}
+.translation {
+  display: inline-block;
+  list-style: none;
+}
+label {
+  display: block;
+}
+label > span {
+  display: inline-block;
+  width: 250px;
+}
+section {
+  display: inline-block;
+  padding: 5px;
+}
+section.right > label > span {
+  width: 120px;
+}

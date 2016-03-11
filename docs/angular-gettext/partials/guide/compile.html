@@ -1,0 +1,45 @@
+
+
+<h1>
+  <p>Compiling translations</p>
+
+</h1>
+
+<p>Compiling translations</p>
+<p>Converting translated <code>.po</code> files into angular-compatible JavaScript files can be done automatically using the <a href="https://github.com/rubenv/grunt-angular-gettext"><code>grunt-angular-gettext</code></a> module.
+You will already have this module added to your project if you followed the instructions on the <a href="guide/extract">extracting strings</a> page. If this is not the case, please refer to that page first.</p>
+<p>The <code>nggettext_compile</code> task converts a set of translated <code>.po</code> files into a JavaScript file that can be included in your project.</p>
+<p>In your project&#39;s Gruntfile, add a section named <code>nggettext_compile</code> to the data object passed into <code>grunt.initConfig()</code>.</p>
+<pre><code class="lang-javascript">grunt.initConfig({
+  nggettext_compile: {
+    all: {
+      files: {
+        &#39;src/js/translations.js&#39;: [&#39;po/*.po&#39;]
+      }
+    },
+  },
+})
+</code></pre>
+<p>Be sure to add this file (in this case <code>src/js/translations.js</code>) to your project.</p>
+<p>Optionally, you can specify a <code>module</code> parameter, which defines the Angular.JS module for which the translations JavaScript is generated:</p>
+<pre><code class="lang-javascript">grunt.initConfig({
+  nggettext_compile: {
+    all: {
+      options: {
+        module: &#39;myApp&#39;
+      },
+      files: {
+        &#39;src/js/translations.js&#39;: [&#39;po/*.po&#39;]
+      }
+    },
+  },
+})
+</code></pre>
+<p><a href="/dev-guide/configure/" class="btn btn-primary">Next: Configuring angular-gettext</a></p>
+
+
+
+
+
+
+

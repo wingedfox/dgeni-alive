@@ -27,6 +27,11 @@
 
 <div>
   
+  <h2 id="dependencies">Dependencies</h2>
+  <ul>
+    <li><a href="api/gettext/service/gettextCatalog"><code>gettextCatalog</code></a></li><li><a href="https://docs.angularjs.org/api/ng/service/$parse">$parse</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$animate">$animate</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$compile">$compile</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$window">$window</a></li>
+  </ul>
+  
 
   
   <h2>Directive Info</h2>
@@ -44,10 +49,10 @@
     
       <li>as element:
       
-      <pre><code>&lt;translate&#10;  translate-plural=&quot;&quot;&#10;  translate-n=&quot;&quot;&#10;  translate-context=&quot;&quot;&gt;&#10;...&#10;&lt;/translate&gt;</code></pre>
+      <pre><code>&lt;translate&#10;    =&quot;&quot;&#10;    =&quot;&quot;&#10;    =&quot;&quot;&gt;&#10;  ...&#10;&lt;/translate&gt;</code></pre>
       </li>
     <li>as attribute:
-        <pre><code>&lt;ANY&#10;  translate-plural=&quot;&quot;&#10;  translate-n=&quot;&quot;&#10;  translate-context=&quot;&quot;&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
+        <pre><code>&lt;ANY&#10;  translate=&quot;&quot;&#10;  [translate-plural=&quot;&quot;]&#10;  [translate-n=&quot;&quot;]&#10;  [translate-context=&quot;&quot;]&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
       </li>
     
   </div>
@@ -67,9 +72,26 @@
     
     <tr>
       <td>
+        translate
+        
+        
+      </td>
+      <td>
+        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+      </td>
+      <td>
+        <p>key to translate</p>
+
+        
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
         translatePlural
         
-        
+        <div><em>(optional)</em></div>
       </td>
       <td>
         <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
@@ -86,7 +108,7 @@
       <td>
         translateN
         
-        
+        <div><em>(optional)</em></div>
       </td>
       <td>
         <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="label type-hint type-hint-number">Number</a>
@@ -103,13 +125,13 @@
       <td>
         translateContext
         
-        
+        <div><em>(optional)</em></div>
       </td>
       <td>
         <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
       </td>
       <td>
-        <p>context value, e.g. <a href="doc:context">Verb, Noun</a></p>
+        <p>context value, e.g. <a href="docs/context">Verb, Noun</a></p>
 
         
         
@@ -121,6 +143,34 @@
 
 </section>
   
+<h2>Events</h2>
+<ul class="events">
+  <li id="gettextLanguageChanged">
+    <h3 class="">
+      <span class="title"><code>gettextLanguageChanged</code></span>
+      
+  
+    </h3>
+    <div><p>Listens for language updates and changes translation accordingly</p>
+</div>
+    <div class="inline">
+      <h4>Listen on: scope</h4>
+    </div>
+    </li>
+  </ul>
+
+  <h3>Throws</h3>
+<ul class="throws">
+  <li id="MissingPlural">
+    <table class="variables-matrix return-arguments">
+  <tr>
+    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="label type-hint type-hint-error">Error</a></td>
+    <td><p><a href="error/gettext/MissingPlural">MissingPlural</a> for malformed plurals</p>
+</td>
+  </tr>
+</table>
+  </li>
+  </ul>
 
 
   

@@ -1,0 +1,8 @@
+{
+  "name": "example-gettextExample",
+  "files": [
+    "index-production.html",
+    "script.js",
+    "style.css"
+  ]
+}
