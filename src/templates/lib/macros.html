@@ -34,18 +34,47 @@
 {% endmacro -%}
 
 
-{%- macro directiveParam(join, sep, param, force) %}
-  {%- if param.optional or param.type.optional -%}[{%- endif -%}
-  {%- if param.type.name == "boolean" or param.type.name == "Boolean" -%}
+{%- macro directiveParam(param, join, sep, css, name) -%}
+  {#
+     boolean params are treated as flags and values are stripped for element and attribute
+     when they are either optional or param name equals to attribute name
+     @name value + @param {boolean} value  -> value
+     @param {boolean} value                -> value="boolean"
+     @param {boolean=} value               -> [value]
+     @param {boolean} [value]              -> [value]
+     @param {boolean} [value=false]        -> [value="boolean(false)"]
+     @param {string|boolean} [value]       -> [value="string|boolean"]
+     @param {string|boolean} [value=test]  -> [value="string|boolean(test)"]
+  #}
+  {%- if (param.type.name == "boolean" or param.type.name == "Boolean") and param.name == name and not css -%}
     {$ param.name | dashCase $}
-    {%- if force -%}{$ join $}true{$ sep $}{%- endif -%}
   {%- else -%}
-    {$ param.name | dashCase $}{$ join $}{$ param.type.name $}
-    {%- if param.defaultValue -%}({$ param.defaultValue $}){%- endif -%}
-    {$ sep $}
+    {%- if param.optional or param.type.optional -%}[{%- endif -%}
+    {%- if (param.type.name == "boolean" or param.type.name == "Boolean") and (param.optional or param.type.optional) and not param.defaultValue and not css -%}
+      {$ param.name | dashCase $}
+    {%- else -%}
+      {$ param.name | dashCase $}{$ join $}
+      {%- if (param.type.name) -%}
+        {$ param.type.name $}
+      {%- elif param.type.elements -%}
+        {%- for type in param.type.elements -%}
+          {%- if not loop.first -%}|{%- endif -%}
+          {$ type.name $}
+        {%- endfor -%}
+      {%- endif -%}
+      {%- if param.defaultValue -%}
+        ({$ param.defaultValue $})
+      {%- else -%}
+        {%- if css and (param.optional or param.type.optional) -%}
+          {# css representation for boolean value
+             @param {boolean} [value] -> [value: false;]     #}(false)
+        {%- endif -%}
+      {%- endif -%}
+      {$ sep $}
+    {%- endif -%}
+    {%- if param.optional or param.type.optional %}]{%- endif -%}
   {%- endif -%}
-  {%- if param.optional or param.type.optional %}]{%- endif -%}
-{% endmacro -%}
+{%- endmacro -%}
 
 {%- macro functionSyntax(fn) %}
   {%- set sep = joiner(', ') -%}

@@ -23,10 +23,11 @@
       {%- endif %}
       {% code %}
       <{$ doc.name | dashCase $}
-        {%- for param in doc.params %}
+        {%- for param in doc.params -%}
+         {# skip attribute with name equal to directive name #}
          {%- if (doc.name != param.alias and doc.name != param.name) %}
-          {$ directiveParam('="', '"', param) $}
-         {%- endif %}
+          {$ directiveParam(param, '="', '"') $}
+         {%- endif -%}
         {%- endfor %}>
         ...
       </{$ doc.name | dashCase $}>
@@ -39,7 +40,7 @@
         {% code %}
         <{$ doc.element $}
           {%- for param in doc.params %}
-          {$ directiveParam('="', '"', param) $}
+          {$ directiveParam(param, '="', '"', false, doc.name) $}
           {%- endfor %}>
         ...
         </{$ doc.element $}>
@@ -53,7 +54,7 @@
         {% set sep = joiner(' ') %}
         <{$ doc.element $} class="
         {%- for param in doc.params -%}
-          {$ sep() $}{$ directiveParam(': ', ';', param, true) $}
+          {$ sep() $}{$ directiveParam(param, ': ', ';', true) $}
         {%- endfor %}"> ... </{$ doc.element $}>
         {% endcode %}
       </li>
