@@ -5,7 +5,8 @@ var Package = require('dgeni').Package;
  * @dgPackage jsdoc
  * @description Tag parsing and extracting for JSDoc-based documentation
  */
-module.exports = new Package('jsdoc-ext', [require('dgeni-packages/jsdoc')])
+//module.exports = new Package('jsdoc-ext', [require('dgeni-packages/jsdoc')])
+module.exports = new Package('jsdoc-ext', [require('../jsdoc')])
 
 // Add in the real processors for this package
 .processor(require('./processors/code-name'))

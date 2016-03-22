@@ -1,14 +1,16 @@
-var Dgeni = require('dgeni');
-var mockPackage = require('../mocks/mockPackage');
+var matcherFactory = require('./variable-declaration');
 
-describe('ArrayExpression matcher', function() {
+describe('VariableDeclaration matcher', function() {
 
-  var matcher;
+  var matcher, codeNameServiceMock;
 
   beforeEach(function() {
-    var dgeni = new Dgeni([mockPackage()]);
-    var injector = dgeni.configureInjector();
-    matcher = injector.get('ArrayExpressionNodeMatcher');
+    codeNameServiceMock = {
+      find: function (arg) {
+        return arg;
+      }
+    };
+    matcher = matcherFactory(codeNameServiceMock);
   });
 
   it("should return null for any argument", function() {

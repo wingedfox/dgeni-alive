@@ -1,9 +1,13 @@
 /**
  * @dgService AssignmentExpressionNodeMatcher
- * @description Returns code name from node
+ * @returns {String|Null} code name from node
  */
 module.exports = function AssignmentExpressionNodeMatcherFactory (codeNameService) {
+  /**
+   * @param {Node} node AST node to process
+   * @returns {String|Null} code name from node
+   */
   return function AssignmentExpressionNodeMatcher (node) {
-    return node && codeNameService.find(node.right) || codeNameService.find(node.left);
+    return codeNameService.find(node.right) || codeNameService.find(node.left) || null;
   }
 };

@@ -1,7 +1,6 @@
-var Dgeni = require('dgeni');
-var mockPackage = require('../mocks/mockPackage');
+var matcherFactory = require('./variable-declarator');
 
-describe('ArrayExpression matcher', function() {
+describe('VariableDeclarator matcher', function() {
 
   var matcher;
 
@@ -11,9 +10,32 @@ describe('ArrayExpression matcher', function() {
     matcher = injector.get('ArrayExpressionNodeMatcher');
   });
 
-  it("should return null for any argument", function() {
+  it("should return null if value is not supported", function() {
     expect(matcher()).toBeNull();
     expect(matcher(null)).toBeNull();
-    expect(matcher({})).toBeNull();
+    expect(matcher({
+      id: null
+    })).toBeNull();
+    expect(matcher({
+      id: {}
+    })).toBeNull();
+    expect(matcher({
+      id: {
+        name: null
+      }
+    })).toBeNull();
+    expect(matcher({
+      id: {
+        name: ""
+      }
+    })).toBeNull();
+  });
+
+  it("should return function name", function() {
+    expect(matcher({
+      id: {
+        name: "test"
+      }
+    })).toEqual("test");
   });
 });

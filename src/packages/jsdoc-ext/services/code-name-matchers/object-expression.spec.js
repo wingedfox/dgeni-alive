@@ -1,7 +1,6 @@
-var Dgeni = require('dgeni');
-var mockPackage = require('../mocks/mockPackage');
+var matcherFactory = require('./object-expression');
 
-describe('ArrayExpression matcher', function() {
+describe('ObjectExpression matcher', function() {
 
   var matcher;
 
@@ -12,8 +11,6 @@ describe('ArrayExpression matcher', function() {
   });
 
   it("should return null for any argument", function() {
-    expect(matcher()).toBeNull();
-    expect(matcher(null)).toBeNull();
     expect(matcher({})).toBeNull();
   });
 });

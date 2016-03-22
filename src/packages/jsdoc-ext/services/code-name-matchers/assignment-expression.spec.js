@@ -1,48 +1,57 @@
-var Dgeni = require('dgeni');
-var mockPackage = require('../mocks/mockPackage');
+var matcherFactory = require('./assignment-expression');
 
 describe('AssignmentExpression matcher', function() {
 
-  var matcher, codeNameService;
+  var matcher, codeNameServiceMock;
 
   beforeEach(function() {
-    var dgeni = new Dgeni([mockPackage()]);
-    var injector = dgeni.configureInjector();
-    matcher = injector.get('AssignmentExpressionNodeMatcher');
-    codeNameService = injector.get('codeNameService');
-    jsParser = injector.get('jsParser');
+    codeNameServiceMock = {
+      find: function (arg) {
+        return arg;
+      }
+    };
+    matcher = matcherFactory(codeNameServiceMock);
   });
 
-  it("should return null for empty argument", function() {
-    spyOn(codeNameService, 'find').and.returnValue(null);
-
-    expect(matcher()).toBeNull();
-    expect(matcher(null)).toBeNull();
-    expect(codeNameService.find).not.toHaveBeenCalled();
-  });
-
-  it("should continue search for left part", function () {
+  it("should start search for right part", function () {
     var expr = {
-      left: 'test'
+      left: 'left',
+      right: 'right'
     };
 
-    spyOn(codeNameService, 'find');
+    spyOn(codeNameServiceMock, 'find').and.callThrough();
 
-    expect(matcher(expr)).toBeNull();
-    expect(codeNameService.find.calls.count()).toEqual(1);
-    expect(codeNameService.find).toHaveBeenCalledWith('test');
+    expect(matcher(expr)).toEqual(expr.right);
+    expect(codeNameServiceMock.find.calls.count()).toEqual(1);
+    expect(codeNameServiceMock.find).toHaveBeenCalledWith(expr.right);
   });
 
-  it("should continue search with right part", function () {
+  it("should continue search with left part", function () {
+    codeNameServiceMock.value = null;
+    var expr = {
+      left: 'test',
+      right: null
+    };
+
+    spyOn(codeNameServiceMock, 'find').and.callThrough();
+
+    expect(matcher(expr)).toEqual('test');
+    expect(codeNameServiceMock.find.calls.count()).toEqual(2);
+    expect(codeNameServiceMock.find).toHaveBeenCalledWith(null);
+    expect(codeNameServiceMock.find).toHaveBeenCalledWith('test');
+  });
+
+  it("should return null for undefined left and right", function () {
+    codeNameServiceMock.value = null;
     var expr = {
       left: null,
-      right: 'test'
+      right: null
     };
 
-    spyOn(codeNameService, 'find');
+    spyOn(codeNameServiceMock, 'find').and.callThrough();
 
-    expect(matcher(expr)).toBeNull();
-    expect(codeNameService.find.calls.count()).toEqual(2);
-    expect(codeNameService.find).toHaveBeenCalledWith(null, 'test');
+    expect(matcher(expr)).toEqual(null);
+    expect(codeNameServiceMock.find.calls.count()).toEqual(2);
+    expect(codeNameServiceMock.find.calls.allArgs()).toEqual([[null],[null]]);;
   });
 });

@@ -1,19 +1,25 @@
-var Dgeni = require('dgeni');
-var mockPackage = require('../mocks/mockPackage');
+var matcherFactory = require('./expression-statement');
 
-describe('ArrayExpression matcher', function() {
+describe('ExpressionStatement matcher', function() {
 
-  var matcher;
+  var matcher, codeNameServiceMock;
 
   beforeEach(function() {
-    var dgeni = new Dgeni([mockPackage()]);
-    var injector = dgeni.configureInjector();
-    matcher = injector.get('ArrayExpressionNodeMatcher');
+    codeNameServiceMock = {
+      find: function (arg) {
+        return arg;
+      }
+    };
+    matcher = matcherFactory(codeNameServiceMock);
   });
 
-  it("should return null for any argument", function() {
-    expect(matcher()).toBeNull();
-    expect(matcher(null)).toBeNull();
+  it("should look for name deeper in code", function() {
+    spyOn(codeNameServiceMock, 'find').and.callThrough();
+
     expect(matcher({})).toBeNull();
+    expect(matcher({
+      expression: 'test'
+    })).toEqual('test');
+    expect(codeNameServiceMock.find.calls.count()).toEqual(2);
   });
 });
