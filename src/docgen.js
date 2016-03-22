@@ -13,9 +13,9 @@ var pkg = require('../package.json');
  * @type {Array}
  */
 var DEFAULT_PACKAGES = [
+    require('./packages/jsdoc'),
     require('dgeni-packages/ngdoc'),
-    require('dgeni-packages/nunjucks'),
-    require('dgeni-packages/examples')
+    require('dgeni-packages/examples'),
 ];
 
 /**
@@ -189,7 +189,9 @@ function DocGen () {
      */
     this.Package = function (p) {
         if (!pkg) {
-            var packages = (p && [].concat(p) || DEFAULT_PACKAGES || []).map(function(packageName) {
+            var packages = (p && [
+                require('./packages/jsdoc')
+            ].concat(p) || DEFAULT_PACKAGES || []).map(function(packageName) {
                 if ('string' == typeof packageName) {
                     return require(packageName);
                 } else {
