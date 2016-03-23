@@ -8,6 +8,6 @@ module.exports = function ProgramNodeMatcherFactory (codeNameService) {
    * @returns {String|Null} code name from node
    */
   return function ProgramNodeMatcher (node) {
-    return node.body[0] ? codeNameService.find(node.body[0]) : null;
+    return node.body && node.body[0] && codeNameService.find(node.body[0]) || null;
   }
 };

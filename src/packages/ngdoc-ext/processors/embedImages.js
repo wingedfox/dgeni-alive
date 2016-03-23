@@ -15,6 +15,8 @@ module.exports = function embedImages(log, aliasMap, moduleMap, createDocMessage
       _(docs)
         .groupBy('docType')
         .tap(function(docs){
+          // TODO: make exclusions configurable
+          // do not embed images references in app templates
           delete docs.website;
         })
         .forEach(function(areas) {

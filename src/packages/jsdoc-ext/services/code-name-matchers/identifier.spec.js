@@ -8,13 +8,12 @@ describe('Identifier matcher', function() {
     matcher = matcherFactory();
   });
 
-  it("should return node name", function() {
-    expect(matcher({
-      name: "test"
-    })).toEqual("test");
+  it("should return null for unsupported node", function() {
+    expect(matcher({})).toBeNull();
+    expect(matcher({foo: "bar"})).toBeNull();
+  });
 
-    expect(matcher({
-      foo: "bar"
-    })).toBeNull();
+  it("should return name for supported node", function() {
+    expect(matcher({name: "test"})).toEqual("test");
   });
 });

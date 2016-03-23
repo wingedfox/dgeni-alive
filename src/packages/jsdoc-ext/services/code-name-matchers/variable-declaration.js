@@ -8,6 +8,6 @@ module.exports = function VariableDeclarationNodeMatcherFactory (codeNameService
    * @returns {String|Null} code name from node
    */
   return function VariableDeclarationNodeMatcher (node) {
-    return codeNameService.find(node.declarations[0]);
+    return node.declarations && node.declarations[0] && codeNameService.find(node.declarations[0]) || null;
   }
 };

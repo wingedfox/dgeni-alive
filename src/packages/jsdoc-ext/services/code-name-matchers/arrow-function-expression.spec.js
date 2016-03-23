@@ -5,7 +5,7 @@ describe('ArrowFunctionExpression matcher', function() {
   var matcher;
 
   beforeEach(function() {
-    matcher = matcherFactory;
+    matcher = matcherFactory();
   });
 
   it("should return null for any argument", function() {

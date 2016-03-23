@@ -6,7 +6,4 @@ module.exports = function mockPackage() {
 
   // provide a mock log service
   .factory('log', function() { return require('dgeni/lib/mocks/log')(false); })
-
-  // provide a mock template engine for the tests
-  .factory('templateEngine', function dummyTemplateEngine() {});
 };

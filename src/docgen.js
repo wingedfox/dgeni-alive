@@ -13,8 +13,8 @@ var pkg = require('../package.json');
  * @type {Array}
  */
 var DEFAULT_PACKAGES = [
-    require('./packages/jsdoc'),
-    require('dgeni-packages/ngdoc'),
+    require('./packages/jsdoc-ext'),
+    require('./packages/ngdoc-ext'),
     require('dgeni-packages/examples'),
 ];
 
@@ -31,8 +31,6 @@ function configurePackage(p) {
 
      // build navigation
      .processor(require('./processors/config'))
-     .processor(require('./processors/embedImages'))
-     .processor(require('./processors/generateErrorsGroupArea'))
      .processor(require('./processors/index'))
      .processor(require('./processors/navigation'))
      .processor(require('./processors/structuredParam'))

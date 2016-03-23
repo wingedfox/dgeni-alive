@@ -5,7 +5,8 @@
   "description": "Live doc generator on top of Dgeni",
   "main": "src/docgen.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine-node .",
+    "cover": "istanbul cover jasmine-node -- ."
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,11 @@
     "opener": "~1.4.1",
     "q": "~1.4.1",
     "stemmer": "~0.1.4",
+    "stringmap": "~0.2.2",
     "wiredep": "~3.0.0"
+  },
+  "devDependencies": {
+    "istanbul": "~0.4.2",
+    "jasmine-node": "~2.0.0"
   }
 }

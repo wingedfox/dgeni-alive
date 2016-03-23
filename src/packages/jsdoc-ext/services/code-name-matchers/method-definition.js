@@ -8,6 +8,6 @@ module.exports = function MethodDefinitionNodeMatcherFactory (codeNameService) {
    * @returns {String|Null} code name from node
    */
   return function MethodDefinitionNodeMatcher (node) {
-    return codeNameService.find(node.key);
+    return codeNameService.find(node.key) || null;
   }
 };

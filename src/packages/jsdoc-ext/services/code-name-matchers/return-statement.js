@@ -8,6 +8,6 @@ module.exports = function ReturnStatementNodeMatcherFactory (codeNameService) {
    * @returns {String|Null} code name from node
    */
   return function ReturnStatementNodeMatcher (node) {
-    return codeNameService.find(node.argument);
+    return codeNameService.find(node.argument) || null;
   }
 };

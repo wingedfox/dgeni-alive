@@ -18,8 +18,12 @@ module.exports = function generateErrorsGroupArea(log, aliasMap, moduleMap, crea
           .thru(function(groups) {
             if (groups.error) {
               module.components = module.components.filter(function(component) {
+                // remove error entries from module
+                // errors should not be shown in the main tree
                 return 'error' !== component.docType;
               });
+
+              // create error entry
               return {
                 id: module.id + '.error',
                 docType: 'module',

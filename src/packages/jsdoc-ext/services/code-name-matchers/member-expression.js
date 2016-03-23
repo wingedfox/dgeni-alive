@@ -8,6 +8,6 @@ module.exports = function MemberExpressionNodeMatcherFactory (codeNameService) {
    * @returns {String|Null} code name from node
    */
   return function MemberExpressionNodeMatcher (node) {
-    return codeNameService.find(node.property);
+    return codeNameService.find(node.property) || null;
   }
 };

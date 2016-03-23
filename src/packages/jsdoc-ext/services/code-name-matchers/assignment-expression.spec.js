@@ -13,7 +13,7 @@ describe('AssignmentExpression matcher', function() {
     matcher = matcherFactory(codeNameServiceMock);
   });
 
-  it("should start search for right part", function () {
+  it("should start search for right", function () {
     var expr = {
       left: 'left',
       right: 'right'
@@ -26,7 +26,7 @@ describe('AssignmentExpression matcher', function() {
     expect(codeNameServiceMock.find).toHaveBeenCalledWith(expr.right);
   });
 
-  it("should continue search with left part", function () {
+  it("should continue search with left", function () {
     codeNameServiceMock.value = null;
     var expr = {
       left: 'test',
@@ -35,13 +35,12 @@ describe('AssignmentExpression matcher', function() {
 
     spyOn(codeNameServiceMock, 'find').and.callThrough();
 
-    expect(matcher(expr)).toEqual('test');
+    expect(matcher(expr)).toEqual(expr.left);
     expect(codeNameServiceMock.find.calls.count()).toEqual(2);
-    expect(codeNameServiceMock.find).toHaveBeenCalledWith(null);
-    expect(codeNameServiceMock.find).toHaveBeenCalledWith('test');
+    expect(codeNameServiceMock.find.calls.allArgs()).toEqual([[null],[expr.left]]);
   });
 
-  it("should return null for undefined left and right", function () {
+  it("should return null for empty left and right", function () {
     codeNameServiceMock.value = null;
     var expr = {
       left: null,
@@ -50,8 +49,8 @@ describe('AssignmentExpression matcher', function() {
 
     spyOn(codeNameServiceMock, 'find').and.callThrough();
 
-    expect(matcher(expr)).toEqual(null);
+    expect(matcher(expr)).toBeNull();
     expect(codeNameServiceMock.find.calls.count()).toEqual(2);
-    expect(codeNameServiceMock.find.calls.allArgs()).toEqual([[null],[null]]);;
+    expect(codeNameServiceMock.find.calls.allArgs()).toEqual([[null],[null]]);
   });
 });
