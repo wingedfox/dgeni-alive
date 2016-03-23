@@ -52,16 +52,6 @@ describe("extract-access transform", function() {
       expect(value).toEqual('public');
     });
 
-    it("should throw an error for unknown doc types", function() {
-      doc.docType = 'other';
-
-      value = 'protected';
-
-      expect(function () {
-        transform(doc, tag, value);
-      }).toThrowError('"@access" tag found on @other document while defined for @propery and @method only - doc (other) ');
-    });
-
     it("should throw an error for unknown value", function() {
       doc.docType = 'method';
 
