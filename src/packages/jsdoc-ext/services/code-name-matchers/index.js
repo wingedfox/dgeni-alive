@@ -3,6 +3,7 @@ module.exports = [
   require('./arrow-function-expression.js'),
   require('./assignment-expression.js'),
   require('./call-expression.js'),
+  require('./class-declaration.js'),
   require('./export-default-declaration.js'),
   require('./expression-statement.js'),
   require('./function-declaration.js'),
