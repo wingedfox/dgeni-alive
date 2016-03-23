@@ -45,7 +45,9 @@
     "wiredep": "~3.0.0"
   },
   "devDependencies": {
+    "coveralls": "~2.11.8",
     "istanbul": "~0.4.2",
-    "jasmine-node": "~2.0.0"
+    "jasmine-node": "~2.0.0",
+    "rimraf": "~2.5.2"
   }
 }
