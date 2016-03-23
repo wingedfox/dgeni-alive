@@ -1,5 +1,3 @@
-var _ = require('lodash');
-
 /**
  * @dgProcessor codeNameService
  * @description  Infer the name of the document from name of the following code
@@ -11,16 +9,13 @@ module.exports = function codeNameService(log, codeNameMap, getInjectables) {
    * Registers code name mappers
    * @param {Function|Function[]}
    */
-  function registerCodeNameMatcher () {
-    var list;
-    if (_.isArray(arguments[0])) {
-      list = arguments[0];
-    } else {
-      list = Array.prototype.slice(arguments);
-    }
-
+  function registerCodeNameMatcher (list) {
     list.forEach(function(v) {
-      codeNameMap.set(v.name.replace(REMOVE_SUFFIX_REGEX, ''), v);
+      if (v && v.name) {
+        codeNameMap.set(v.name.replace(REMOVE_SUFFIX_REGEX, ''), v);
+      } else {
+        log.warn('Anonymous matchers are not supported', v);
+      }
     });
   }
 
@@ -30,25 +25,29 @@ module.exports = function codeNameService(log, codeNameMap, getInjectables) {
    * @return {String}      The name of the code or null if none found.
    */
   function findCodeName(node) {
-    var matcher = codeNameMap.get(node.type);
-    if (matcher) {
-      return matcher(node);
-    } else {
-      log.warn('HELP! Unrecognised node type: ' + node.type);
-      log.warn(node);
-      return null;
+    var res = null;
+    if (node) {
+      var matcher = codeNameMap.get(node.type);
+      if (matcher) {
+        res = matcher(node);
+      } else {
+        log.warn('HELP! Unrecognised node type: %s', node.type);
+        log.warn(node);
+      }
     }
+    return res;
   }
 
-  var api = {}
+  var api = {
+    find: findCodeName
+  }
 
-  Object.defineProperties(api, {
-    matchers: {
-      set: registerCodeNameMatcher
-    },
-    find: {
-      value: findCodeName
-    }
+  /**
+   * @property {Function[]} matchers AST node matchers
+   * @propertyof codeNameService
+   */
+  Object.defineProperty(api, 'matchers', {
+    set: registerCodeNameMatcher
   });
 
   return api;
