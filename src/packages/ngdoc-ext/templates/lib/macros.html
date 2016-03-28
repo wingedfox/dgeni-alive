@@ -1,5 +1,8 @@
 {% macro typeList(types) -%}
-{% for typeName in types %}<a href="{$ typeName | typeLink $}" class="{$ typeName | typeClass $}">{$ typeName | typeName | escape $}</a>{% endfor %}
+  {#
+     Renders list of type hints and links to the types
+   #}
+  {%- for typeName in types %}<span class="{$ typeName | typeClass $}">{$ typeName | typeLink $}</span>{% endfor -%}
 {%- endmacro -%}
 
 {%- macro paramTable(params) %}

@@ -15,6 +15,7 @@ var pkg = require('../package.json');
 var DEFAULT_PACKAGES = [
     require('./packages/jsdoc-ext'),
     require('./packages/ngdoc-ext'),
+    require('./packages/links-ext'),
     require('dgeni-packages/examples'),
 ];
 
@@ -23,10 +24,7 @@ var DEFAULT_PACKAGES = [
  */
 function configurePackage(p) {
     // append services
-    p.factory(require('./services/getNativeTypeLink'))
-     .factory(require('./services/getTypeLink'))
-     .factory(require('./services/getTypeName'))
-     .factory(require('./services/transforms/errorTagTransform'))
+    p.factory(require('./services/transforms/errorTagTransform'))
 
      // build navigation
      .processor(require('./processors/config'))
@@ -35,11 +33,6 @@ function configurePackage(p) {
      .processor(require('./processors/structuredParam'))
      .processor(require('./processors/website'))
      .processor(require('./processors/exampleDependenciesBuilder'))
-
-     // change default url for native types doc
-//     .config(function(getNativeTypeLink) {
-//        getNativeTypeLink.nativeTypeRoot = 'http://w3.org';
-//      })
 
      // generate website
      .config(function(generateWebsite) {
@@ -62,9 +55,7 @@ function configurePackage(p) {
      // add filters
      .config(function(templateEngine, getInjectables) {
         templateEngine.filters = templateEngine.filters.concat(getInjectables([
-          require('./rendering/filters/keys'),
-          require('./rendering/filters/type-link'),
-          require('./rendering/filters/type-name')
+          require('./rendering/filters/keys')
         ]));
       })
 
