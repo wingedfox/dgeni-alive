@@ -432,6 +432,11 @@ iframe.example {
 }
 
 /*** Type hints ***/
+.type-hint.label > a {
+    color: #fff;
+    white-space: nowrap;
+}
+
 .type-hint {
   display:inline-block;
   background: gray;
