@@ -26,14 +26,15 @@
  * gettextPlurals();         // 1
  * ```
  */
-angular.module('gettext', []);
+angular.module('gettext', [])
 /**
- * @ngdoc object
+ * @ngdoc function
  * @module gettext
  * @name gettext
- * @kind function
  * @param {String} str annotation key
- * @description Gettext constant function for annotating strings
+ * @description Gettext constant function for annotating strings.
+ *
+ * This function does nothing but it is used by [angular-gettext-tools](https://github.com/rubenv/angular-gettext-tools) for building of a list of strings <a href="guide/annotate">annotated</a> in JavaScript code.
  *
  * ```js
  * angular.module('myApp', ['gettext']).config(function(gettext) {
@@ -43,7 +44,7 @@ angular.module('gettext', []);
  * })
  * ```
  */
-angular.module('gettext').constant('gettext', function (str) {
+.constant('gettext', function gettext(str) {
     /*
      * Does nothing, simply returns the input string.
      *
@@ -54,15 +55,15 @@ angular.module('gettext').constant('gettext', function (str) {
 });
 
 /**
- * @ngdoc service
+ * @ngdoc factory
  * @module gettext
  * @name gettextCatalog
  * @requires gettextPlurals
  * @requires gettextFallbackLanguage
- * @requires https://docs.angularjs.org/api/ng/service/$http $http
- * @requires https://docs.angularjs.org/api/ng/service/$cacheFactory $cacheFactory
- * @requires https://docs.angularjs.org/api/ng/service/$interpolate $interpolate
- * @requires https://docs.angularjs.org/api/ng/service/$rootScope $rootScope
+ * @requires ng.service.$http
+ * @requires ng.service.$cacheFactory
+ * @requires ng.service.$interpolate
+ * @requires ng.type.$rootScope.Scope
  * @description Provides set of method to translate stings
  * @example
  * This example shows translations behaviour with different settings.
@@ -198,7 +199,7 @@ angular.module('gettext').constant('gettext', function (str) {
     </file>
     </example>
  */
-angular.module('gettext').factory('gettextCatalog', ["gettextPlurals", "gettextFallbackLanguage", "$http", "$cacheFactory", "$interpolate", "$rootScope", function (gettextPlurals, gettextFallbackLanguage, $http, $cacheFactory, $interpolate, $rootScope) {
+angular.module('gettext').factory('gettextCatalog', ["gettextPlurals", "gettextFallbackLanguage", "$http", "$cacheFactory", "$interpolate", "$rootScope", function gettextCatalog(gettextPlurals, gettextFallbackLanguage, $http, $cacheFactory, $interpolate, $rootScope) {
     var catalog;
     var noContext = '$$noContext';
 
@@ -209,21 +210,21 @@ angular.module('gettext').factory('gettextCatalog', ["gettextPlurals", "gettextF
     var test = '<span id="test" title="test" class="tested">test</span>';
     var isHTMLModified = (angular.element('<span>' + test + '</span>').html() !== test);
 
-    var prefixDebug = function (string) {
+    function prefixDebug(string) {
         if (catalog.debug && catalog.currentLanguage !== catalog.baseLanguage) {
             return catalog.debugPrefix + string;
         } else {
             return string;
         }
-    };
+    }
 
-    var addTranslatedMarkers = function (string) {
+    function addTranslatedMarkers(string) {
         if (catalog.showTranslatedMarkers) {
             return catalog.translatedMarkerPrefix + string + catalog.translatedMarkerSuffix;
         } else {
             return string;
         }
-    };
+    }
 
     function broadcastUpdated() {
         /**
@@ -250,7 +251,7 @@ angular.module('gettext').factory('gettextCatalog', ["gettextPlurals", "gettextF
          * @name gettextCatalog#debugPrefix
          * @public
          * @type {String} [MISSING]:
-         * @description Custom prefix for untranslated strings when <a href="api/gettext/service/gettextCatalog#debug">gettextCatalog#debug</a> set to `true`.
+         * @description Custom prefix for untranslated strings when <a href="api/gettext/factory/gettextCatalog#debug">gettextCatalog#debug</a> set to `true`.
          */
         debugPrefix: '[MISSING]: ',
         /**
@@ -346,7 +347,7 @@ angular.module('gettext').factory('gettextCatalog', ["gettextPlurals", "gettextF
          * @public
          * @param {String} language language name
          * @param {Object.<String>} strings set of strings where the key is the translation `key` and `value` is the translated text
-         * @description Processes an object of string definitions. <a href="docs/manual-setstrings">More details here</a>.
+         * @description Processes an object of string definitions. <a href="guide/manual-setstrings">More details here</a>.
          */
         setStrings: function (language, strings) {
             if (!this.strings[language]) {
@@ -405,12 +406,12 @@ angular.module('gettext').factory('gettextCatalog', ["gettextPlurals", "gettextF
          * @name gettextCatalog#getString
          * @public
          * @param {String} string translation key
-         * @param {$rootScope.Scope=} scope scope to do interpolation against
+         * @param {ng.type.$rootScope.Scope=} scope scope to do interpolation against
          * @param {String=} context translation key context, e.g. <a href="docs/context">Verb, Noun</a>
          * @returns {String} translated or annotated string
          * @description Translate a string with the given scope and context.
          *
-         * First it tries <a href="api/gettext/service/gettextCatalog#currentLanguage">gettextCatalog#currentLanguage</a> (e.g. `en-US`) then <a href="api/gettext/factory/gettextFallbackLanguage">fallback</a> (e.g. `en`).
+         * First it tries <a href="api/gettext/factory/gettextCatalog#currentLanguage">gettextCatalog#currentLanguage</a> (e.g. `en-US`) then <a href="api/gettext/factory/gettextFallbackLanguage">fallback</a> (e.g. `en`).
          *
          * When `scope` is supplied it uses Angular.JS interpolation, so something like this will do what you expect:
          * ```js
@@ -435,10 +436,10 @@ angular.module('gettext').factory('gettextCatalog', ["gettextPlurals", "gettextF
          * @param {Number} n number to build sting form for
          * @param {String} string translation key
          * @param {String} stringPlural plural translation key
-         * @param {$rootScope.Scope=} scope scope to do interpolation against
+         * @param {ng.type.$rootScope.Scope=} scope scope to do interpolation against
          * @param {String=} context translation key context, e.g. <a href="docs/context">Verb, Noun</a>
          * @returns {String} translated or annotated string
-         * @see <a href="api/gettext/service/gettextCatalog#getString">gettextCatalog#getString</a> for details
+         * @see <a href="api/gettext/factory/gettextCatalog#getString">gettextCatalog#getString</a> for details
          * @description Translate a plural string with the given context.
          */
         getPlural: function (n, string, stringPlural, scope, context) {
@@ -461,7 +462,7 @@ angular.module('gettext').factory('gettextCatalog', ["gettextPlurals", "gettextF
          * @description Load a set of translation strings from a given URL.
          *
          * This should be a JSON catalog generated with [angular-gettext-tools](https://github.com/rubenv/angular-gettext-tools).
-         * <a href="docs:lazy-loading">More details here</a>.
+         * <a href="guide/lazy-loading">More details here</a>.
          */
         loadRemote: function (url) {
             return $http({
@@ -491,7 +492,7 @@ angular.module('gettext').factory('gettextCatalog', ["gettextPlurals", "gettextF
  * @requires https://docs.angularjs.org/api/ng/service/$compile $compile
  * @requires https://docs.angularjs.org/api/ng/service/$window $window
  * @restrict AE
- * @param {String} translate key to translate
+ * @param {Boolean} translate node value is used as a translation key
  * @param {String=} translatePlural plural form
  * @param {Number=} translateN value to watch to substitute correct plural form
  * @param {String=} translateContext context value, e.g. <a href="docs/context">Verb, Noun</a>
@@ -677,7 +678,7 @@ angular.module("gettext").factory("gettextFallbackLanguage", function () {
  * ```
  * This filter does not support plural strings.
  *
- * You may want to use <a href="docs/custom-annotations">custom annotations</a> to avoid using the `translate` filter all the time.
+ * You may want to use <a href="guide/custom-annotations">custom annotations</a> to avoid using the `translate` filter all the time.
  */
 angular.module('gettext').filter('translate', ["gettextCatalog", function (gettextCatalog) {
     function filter(input, context) {

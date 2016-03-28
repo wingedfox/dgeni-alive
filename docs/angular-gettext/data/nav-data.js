@@ -27,6 +27,11 @@ angular.module('docApp').constant('DOCS_NAVIGATION', {
             "href": "api/gettext/factory",
             "navItems": [
               {
+                "name": "gettextCatalog",
+                "type": "factory",
+                "href": "api/gettext/factory/gettextCatalog"
+              },
+              {
                 "name": "gettextFallbackLanguage",
                 "type": "factory",
                 "href": "api/gettext/factory/gettextFallbackLanguage"
@@ -51,67 +56,16 @@ angular.module('docApp').constant('DOCS_NAVIGATION', {
             ]
           },
           {
-            "name": "object",
+            "name": "function",
             "type": "section",
-            "href": "api/gettext/object",
+            "href": "api/gettext/function",
             "navItems": [
               {
                 "name": "gettext",
-                "type": "object",
-                "href": "api/gettext/object/gettext"
+                "type": "function",
+                "href": "api/gettext/function/gettext"
               }
             ]
-          },
-          {
-            "name": "service",
-            "type": "section",
-            "href": "api/gettext/service",
-            "navItems": [
-              {
-                "name": "gettextCatalog",
-                "type": "service",
-                "href": "api/gettext/service/gettextCatalog"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  "guide": {
-    "id": "guide",
-    "href": "guide/index",
-    "name": "Guide",
-    "fullscreen": true,
-    "navGroups": [
-      {
-        "name": "Guide",
-        "type": "groups",
-        "href": "guide",
-        "navItems": [
-          {
-            "name": "annotate",
-            "type": "",
-            "href": "guide/annotate",
-            "title": "Annotating markup"
-          },
-          {
-            "name": "compile",
-            "type": "",
-            "href": "guide/compile",
-            "title": "Compiling translations"
-          },
-          {
-            "name": "extract",
-            "type": "",
-            "href": "guide/extract",
-            "title": "Extracting strings"
-          },
-          {
-            "name": "index",
-            "type": "",
-            "href": "guide/index",
-            "title": "Developer guide"
           }
         ]
       }
@@ -119,8 +73,9 @@ angular.module('docApp').constant('DOCS_NAVIGATION', {
   },
   "docs": {
     "id": "docs",
-    "href": "docs",
+    "href": "docs/index",
     "name": "Docs",
+    "fullscreen": true,
     "navGroups": [
       {
         "name": "Docs",
@@ -134,22 +89,16 @@ angular.module('docApp').constant('DOCS_NAVIGATION', {
             "title": "Translation Contexts"
           },
           {
-            "name": "custom-annotations",
+            "name": "grunt-angular-gettext",
             "type": "",
-            "href": "docs/custom-annotations",
-            "title": "Custom Annotations"
+            "href": "docs/grunt-angular-gettext",
+            "title": "grunt-angular-gettext API"
           },
           {
-            "name": "manual-setstrings",
+            "name": "index",
             "type": "",
-            "href": "docs/manual-setstrings",
-            "title": "Manual Set Strings"
-          },
-          {
-            "name": "translate",
-            "type": "",
-            "href": "docs/translate",
-            "title": "Translating"
+            "href": "docs/index",
+            "title": "Getting started"
           }
         ]
       }
@@ -177,6 +126,87 @@ angular.module('docApp').constant('DOCS_NAVIGATION', {
                 "href": "error/gettext/MissingPlural"
               }
             ]
+          }
+        ]
+      }
+    ]
+  },
+  "guide": {
+    "id": "guide",
+    "href": "guide/index",
+    "name": "Guide",
+    "fullscreen": true,
+    "navGroups": [
+      {
+        "name": "Guide",
+        "type": "groups",
+        "href": "guide",
+        "navItems": [
+          {
+            "name": "annotate-js",
+            "type": "",
+            "href": "guide/annotate-js",
+            "title": "Annotating JavaScript source"
+          },
+          {
+            "name": "annotate",
+            "type": "",
+            "href": "guide/annotate",
+            "title": "Annotating markup"
+          },
+          {
+            "name": "compile",
+            "type": "",
+            "href": "guide/compile",
+            "title": "Compiling translations"
+          },
+          {
+            "name": "configure",
+            "type": "",
+            "href": "guide/configure",
+            "title": "Configuring angular-gettext"
+          },
+          {
+            "name": "custom-annotations",
+            "type": "",
+            "href": "guide/custom-annotations",
+            "title": "Custom Annotations"
+          },
+          {
+            "name": "extract",
+            "type": "",
+            "href": "guide/extract",
+            "title": "Extracting strings"
+          },
+          {
+            "name": "index",
+            "type": "",
+            "href": "guide/index",
+            "title": "Developer guide"
+          },
+          {
+            "name": "install",
+            "type": "",
+            "href": "guide/install",
+            "title": "Adding angular-gettext to your project"
+          },
+          {
+            "name": "lazy-loading",
+            "type": "",
+            "href": "guide/lazy-loading",
+            "title": "Lazy-loading languages"
+          },
+          {
+            "name": "manual-setstrings",
+            "type": "",
+            "href": "guide/manual-setstrings",
+            "title": "Manual Set Strings"
+          },
+          {
+            "name": "translate",
+            "type": "",
+            "href": "guide/translate",
+            "title": "Translating"
           }
         ]
       }

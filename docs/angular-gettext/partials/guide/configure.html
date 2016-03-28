@@ -1,0 +1,30 @@
+
+
+<h1>
+  <p>Configuring angular-gettext</p>
+
+</h1>
+
+<p>Configuring angular-gettext</p>
+<h2 id="setting-the-language">Setting the language</h2>
+<p>Set the language by setting a language code on the catalog:</p>
+<pre><code class="lang-javascript">angular.module(&#39;myApp&#39;).run(function (gettextCatalog) {
+    gettextCatalog.setCurrentLanguage(&#39;nl&#39;);
+});
+</code></pre>
+<p>You can do this anywhere in your application, the use of a <code>run</code> block above is just an example.</p>
+<h2 id="highlighting-untranslated-strings">Highlighting untranslated strings</h2>
+<p>You can enable a debugging mode to clearly indicate untranslated strings:</p>
+<pre><code class="lang-javascript">angular.module(&#39;myApp&#39;).run(function (gettextCatalog) {
+    gettextCatalog.debug = true;
+});
+</code></pre>
+<p>This will prepend <code>[MISSING]:</code> to each untranslated string.</p>
+<p><a href="guide/index">All done! Back to the developer guide.</a></p>
+
+
+
+
+
+
+

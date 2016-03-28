@@ -6,7 +6,7 @@
 </h1>
 
 <p>Setting strings manually</p>
-<p>You can set translated strings by injecting the <a href="api/gettext/service/gettextCatalog">gettextCatalog</a> and using the <a href="api/gettext/service/gettextCatalog#setStrings">setStrings</a> method.</p>
+<p>You can set translated strings by injecting the <a href="api/gettext/factory/gettextCatalog">gettextCatalog</a> and using the <a href="api/gettext/factory/gettextCatalog#setStrings">setStrings</a> method.</p>
 <p>As an example, you may have the following code in your application:</p>
 <pre><code class="lang-javascript">angular.module(&quot;myApp&quot;).run(function (gettextCatalog) {
     // Load the strings automatically during initialization.
@@ -16,7 +16,7 @@
     });
 });
 </code></pre>
-<p>The <a href="api/gettext/service/gettextCatalog#setStrings">setStrings</a> method accepts two parameters:</p>
+<p>The <a href="api/gettext/factory/gettextCatalog#setStrings">setStrings</a> method accepts two parameters:</p>
 <ol>
 <li><code>language</code>: A language code.</li>
 <li><p><code>strings</code>: A dictionary of strings. The format of this dictionary is:</p>

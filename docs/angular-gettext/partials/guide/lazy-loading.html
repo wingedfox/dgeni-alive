@@ -1,0 +1,50 @@
+
+
+<h1>
+  <p>Lazy-loading languages</p>
+
+</h1>
+
+<p>The default way of working with language strings is to <a href="guide/compile">compile them</a> to a JavaScript file and include them with your application.
+This isn&#39;t feasible anymore once you have a lot of languages (or a lot of strings): the resulting JavaScript file would simply become too big.</p>
+<p>There&#39;s another option: lazy-load the languages, only when you need them.</p>
+<h2 id="step-1-compiling-strings-to-json-catalogues-">Step 1: Compiling strings to JSON catalogues.</h2>
+<p>Instead of compiling to JavaScript (the default), configure your grunt task to output JSON files:</p>
+<pre><code class="lang-javascript">grunt.initConfig({
+    nggettext_compile: {
+        all: {
+            options: {
+                format: &quot;json&quot;
+            },
+            files: [
+                {
+                    expand: true,
+                    dot: true,
+                    cwd: &quot;po&quot;,
+                    dest: &quot;dist/languages&quot;,
+                    src: [&quot;*.po&quot;],
+                    ext: &quot;.json&quot;
+                }
+            ]
+        },
+    },
+})
+</code></pre>
+<p>This will generate a <code>dist/languages/XX.json</code> file for each <code>po/XX.po</code>.</p>
+<h2 id="step-2-load-the-languages-in-your-application-">Step 2: Load the languages in your application.</h2>
+<p>The gettextCatalog provides a <code>loadRemote</code> method to easily load new languages. Whenever you change the application languages, do something like this:</p>
+<pre><code class="lang-javascript">angular.module(&quot;myApp&quot;).controller(&quot;helloController&quot;, function ($scope, gettextCatalog) {
+    $scope.switchLanguage = function (lang) {
+        gettextCatalog.setCurrentLanguage(lang);
+        gettextCatalog.loadRemote(&quot;/languages/&quot; + lang + &quot;.json&quot;);
+    };
+});
+</code></pre>
+<p>All translations will be updated once the strings have been loaded.</p>
+
+
+
+
+
+
+

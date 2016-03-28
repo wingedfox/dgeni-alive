@@ -34,7 +34,7 @@ This is an adaptation of the <a href="http://todomvc.com/">TodoMVC</a> example. 
   <h2>Module Components</h2>
   
   <div>
-    <h3 class="component-heading" id="service">Service</h3>
+    <h3 class="component-heading" id="factory">Factory</h3>
     <table class="definition-table">
       <tr>
         <th>Name</th>
@@ -42,8 +42,20 @@ This is an adaptation of the <a href="http://todomvc.com/">TodoMVC</a> example. 
       </tr>
       
       <tr>
-        <td><a href="api/gettext/service/gettextCatalog">gettextCatalog</a></td>
+        <td><a href="api/gettext/factory/gettextCatalog">gettextCatalog</a></td>
         <td><p>Provides set of method to translate stings</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/gettext/factory/gettextFallbackLanguage">gettextFallbackLanguage</a></td>
+        <td><p>Strips regional code and returns language code only</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/gettext/factory/gettextPlurals">gettextPlurals</a></td>
+        <td><p>Provides correct plural form id for the given language</p>
 </td>
       </tr>
       
@@ -68,29 +80,6 @@ This is an adaptation of the <a href="http://todomvc.com/">TodoMVC</a> example. 
   </div>
   
   <div>
-    <h3 class="component-heading" id="factory">Factory</h3>
-    <table class="definition-table">
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-      
-      <tr>
-        <td><a href="api/gettext/factory/gettextFallbackLanguage">gettextFallbackLanguage</a></td>
-        <td><p>Strips regional code and returns language code only</p>
-</td>
-      </tr>
-      
-      <tr>
-        <td><a href="api/gettext/factory/gettextPlurals">gettextPlurals</a></td>
-        <td><p>Provides correct plural form id for the given language</p>
-</td>
-      </tr>
-      
-    </table>
-  </div>
-  
-  <div>
     <h3 class="component-heading" id="filter">Filter</h3>
     <table class="definition-table">
       <tr>
@@ -108,7 +97,7 @@ This is an adaptation of the <a href="http://todomvc.com/">TodoMVC</a> example. 
   </div>
   
   <div>
-    <h3 class="component-heading" id="object">Object</h3>
+    <h3 class="component-heading" id="function">Function</h3>
     <table class="definition-table">
       <tr>
         <th>Name</th>
@@ -116,8 +105,8 @@ This is an adaptation of the <a href="http://todomvc.com/">TodoMVC</a> example. 
       </tr>
       
       <tr>
-        <td><a href="api/gettext/object/gettext">gettext</a></td>
-        <td><p>Gettext constant function for annotating strings</p>
+        <td><a href="api/gettext/function/gettext">gettext</a></td>
+        <td><p>Gettext constant function for annotating strings.</p>
 </td>
       </tr>
       

@@ -29,7 +29,7 @@
   
   <h2 id="dependencies">Dependencies</h2>
   <ul>
-    <li><a href="api/gettext/service/gettextCatalog"><code>gettextCatalog</code></a></li><li><a href="https://docs.angularjs.org/api/ng/service/$parse">$parse</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$animate">$animate</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$compile">$compile</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$window">$window</a></li>
+    <li><a href="api/gettext/factory/gettextCatalog">gettextCatalog</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$parse">$parse</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$animate">$animate</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$compile">$compile</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$window">$window</a></li>
   </ul>
   
 
@@ -49,10 +49,10 @@
     
       <li>as element:
       
-      <pre><code>&lt;translate&#10;    [translate-plural=&quot;&quot;]&#10;    [translate-n=&quot;&quot;]&#10;    [translate-context=&quot;&quot;]&gt;&#10;  ...&#10;&lt;/translate&gt;</code></pre>
+      <pre><code>&lt;translate&#10;    [translate-plural=&quot;String&quot;]&#10;    [translate-n=&quot;Number&quot;]&#10;    [translate-context=&quot;String&quot;]&gt;&#10;  ...&#10;&lt;/translate&gt;</code></pre>
       </li>
     <li>as attribute:
-        <pre><code>&lt;ANY&#10;  translate&#10;  [translate-plural=&quot;&quot;]&#10;  [translate-n=&quot;&quot;]&#10;  [translate-context=&quot;&quot;]&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
+        <pre><code>&lt;ANY&#10;  translate&#10;  [translate-plural=&quot;String&quot;]&#10;  [translate-n=&quot;Number&quot;]&#10;  [translate-context=&quot;String&quot;]&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
       </li>
     
   </div>
@@ -77,7 +77,7 @@
         
       </td>
       <td>
-        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="label type-hint type-hint-boolean">Boolean</a>
+        <span class="label type-hint type-hint-boolean"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" _target="blank">Boolean</a></span>
       </td>
       <td>
         <p>node value is used as a translation key</p>
@@ -94,7 +94,7 @@
         <div><em>(optional)</em></div>
       </td>
       <td>
-        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+        <span class="label type-hint type-hint-string"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" _target="blank">String</a></span>
       </td>
       <td>
         <p>plural form</p>
@@ -111,7 +111,7 @@
         <div><em>(optional)</em></div>
       </td>
       <td>
-        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="label type-hint type-hint-number">Number</a>
+        <span class="label type-hint type-hint-number"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" _target="blank">Number</a></span>
       </td>
       <td>
         <p>value to watch to substitute correct plural form</p>
@@ -128,7 +128,7 @@
         <div><em>(optional)</em></div>
       </td>
       <td>
-        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+        <span class="label type-hint type-hint-string"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" _target="blank">String</a></span>
       </td>
       <td>
         <p>context value, e.g. <a href="docs/context">Verb, Noun</a></p>
@@ -164,7 +164,7 @@
   <li id="MissingPlural">
     <table class="variables-matrix return-arguments">
   <tr>
-    <td><a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="label type-hint type-hint-error">Error</a></td>
+    <td><span class="label type-hint type-hint-error"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" _target="blank">Error</a></span></td>
     <td><p><a href="error/gettext/MissingPlural">MissingPlural</a> for malformed plurals</p>
 </td>
   </tr>

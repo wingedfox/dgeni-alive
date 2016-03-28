@@ -42,7 +42,7 @@ fter that its up to you to define how its being translated. For example, if you&
 <p>If you&#39;ve specified custom attributes, <code>gettext</code> also looks for plurals by adding <code>-plural</code> and <code>-n</code> to the attribute name, e.g. <code>placeholder-plural</code> and <code>placeholder-n</code>:</p>
 <pre><code class="lang-xml">&lt;input placeholder=&quot;Input a hobbit name&quot; placeholder-n=&quot;hobbitCount&quot; placeholder-plural=&quot;Input names for {{$count}} hobbits&quot;/&gt;
 </code></pre>
-<p>Keep in mind that its up to you how the translation is being handled. In this case you&#39;ll need to use <a href="api/gettext/service/gettextCatalog#getPlural">gettextCatalog.getPlural</a>.</p>
+<p>Keep in mind that its up to you how the translation is being handled. In this case you&#39;ll need to use <a href="api/gettext/factory/gettextCatalog#getPlural">gettextCatalog.getPlural</a>.</p>
 <h2 id="comments">Comments</h2>
 <p>Comments are handled in the same way: gettext looks for <code>[custom attribute]-comment</code>, e.g. <code>placeholder-comment</code>:</p>
 <pre><code class="lang-xml">&lt;input placeholder-comment=&quot;Name for a creature that is short in stature&quot; placeholder=&quot;Hobbit name&quot;&gt;

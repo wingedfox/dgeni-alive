@@ -7,7 +7,7 @@
   <ol class="api-profile-header-structure naked-list step-list">
     
     <li>
-      - object in module <a href="api/gettext">gettext</a>
+      - function in module <a href="api/gettext">gettext</a>
     </li>
   </ol>
 </header>
@@ -15,7 +15,8 @@
 
 
 <div class="api-profile-description">
-  <p>Gettext constant function for annotating strings</p>
+  <p>Gettext constant function for annotating strings.</p>
+<p>This function does nothing but it is used by <a href="https://github.com/rubenv/angular-gettext-tools">angular-gettext-tools</a> for building of a list of strings <a href="guide/annotate">annotated</a> in JavaScript code.</p>
 <pre><code class="lang-js">angular.module(&#39;myApp&#39;, [&#39;gettext&#39;]).config(function(gettext) {
   /// MyApp document title
   gettext(&#39;my-app.title&#39;);
@@ -56,7 +57,7 @@
         
       </td>
       <td>
-        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+        <span class="label type-hint type-hint-string"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" _target="blank">String</a></span>
       </td>
       <td>
         <p>annotation key</p>

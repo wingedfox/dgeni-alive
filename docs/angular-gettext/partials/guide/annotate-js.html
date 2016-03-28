@@ -1,0 +1,54 @@
+
+
+<h1>
+  <p>Annotating JavaScript source</p>
+
+</h1>
+
+<p>Annotating JavaScript source</p>
+<h2 id="marking-strings-in-javascript-code-as-translatable-">Marking strings in JavaScript code as translatable.</h2>
+<p>If you have text that should be translated in your JavaScript code, wrap it with a call to a function named <code><a href="api/gettext/function/gettext">gettext</a></code>. This module provides an injectable function to do so:</p>
+<pre><code class="lang-javascript">angular.module(&quot;myApp&quot;).controller(&quot;helloController&quot;, function (gettext) {
+    var myString = gettext(&quot;Hello&quot;);
+});
+</code></pre>
+<p>The <code>Hello</code> string will be added to your <code>.pot</code> file using the code above.</p>
+<p>Be sure to update your <a href="docs/grunt-angular-gettext">Grunt task</a> to include the JavaScript files:</p>
+<pre><code class="lang-javascript">grunt.initConfig({
+  nggettext_extract: {
+    pot: {
+      &#39;po/template.pot&#39;: [&#39;src/views/*.html&#39;, &#39;src/js/*.js&#39;]
+    },
+  },
+})
+</code></pre>
+<h3 id="translating-directly-in-javascript-">Translating directly in JavaScript.</h3>
+<p>You can inject <code><a href="api/gettext/factory/gettextCatalog">gettextCatalog</a></code> to fetch translated strings in JavaScript. Use the <code><a href="api/gettext/factory/gettextCatalog#getString">getString</a></code> method for this.</p>
+<pre><code class="lang-javascript">angular.module(&quot;myApp&quot;).controller(&quot;helloController&quot;, function (gettextCatalog) {
+    var translated = gettextCatalog.getString(&quot;Hello&quot;);
+});
+</code></pre>
+<p>Any string passed to <code><a href="api/gettext/factory/gettextCatalog#getString">gettextCatalog.getString</a></code> is automatically marked for translation. In other words: no need to annotate these strings with <code><a href="api/gettext/function/gettext">gettext</a></code>. This also works for plurals:</p>
+<pre><code class="lang-javascript">angular.module(&quot;myApp&quot;).controller(&quot;helloController&quot;, function (gettextCatalog) {
+    var myString2 = gettextCatalog.getPlural(3, &quot;One Bird&quot;, &quot;{{$count}} Birds&quot;, {});
+});
+</code></pre>
+<p>It&#39;s not recommended to put translated strings on the scope. Use the <a href="guide/annotate">filter</a> for translations in views. The JavaScript API is meant for strings that are used in library code.</p>
+<p>You can pass a data object to interpolate the translated strings:</p>
+<pre><code class="lang-javascript">var translated = gettextCatalog.getString(&quot;Hello {{name}}&quot;, { name: &quot;Ruben&quot; });
+</code></pre>
+<h3 id="adding-comments-in-javascript-">Adding comments in JavaScript.</h3>
+<p>Similar to the <a href="guide/annotate">comments in HTML</a>, you can insert context comments in JavaScript using the triple forward slash syntax of gettext.</p>
+<p>For example,</p>
+<pre><code class="lang-javascript">angular.module(&quot;myApp&quot;).controller(&quot;helloController&quot;, function (gettext) {
+    /// Verb
+    var myString = gettext(&quot;File&quot;);
+});
+</code></pre>
+
+
+
+
+
+
+
