@@ -16,7 +16,7 @@ var DEFAULT_PACKAGES = [
     require('./packages/jsdoc-ext'),
     require('./packages/ngdoc-ext'),
     require('./packages/links-ext'),
-    require('dgeni-packages/examples'),
+    require('./packages/examples-ext'),
 ];
 
 /**
@@ -32,7 +32,6 @@ function configurePackage(p) {
      .processor(require('./processors/navigation'))
      .processor(require('./processors/structuredParam'))
      .processor(require('./processors/website'))
-     .processor(require('./processors/exampleDependenciesBuilder'))
 
      // generate website
      .config(function(generateWebsite) {
@@ -177,9 +176,7 @@ function DocGen () {
      */
     this.Package = function (p) {
         if (!pkg) {
-            var packages = (p && [
-                require('./packages/jsdoc')
-            ].concat(p) || DEFAULT_PACKAGES || []).map(function(packageName) {
+            var packages = (p && [].concat(p) || DEFAULT_PACKAGES || []).map(function(packageName) {
                 if ('string' == typeof packageName) {
                     return require(packageName);
                 } else {
