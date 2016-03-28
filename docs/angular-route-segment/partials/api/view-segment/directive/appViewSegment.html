@@ -27,7 +27,7 @@
   
   <h2 id="dependencies">Dependencies</h2>
   <ul>
-    <li><a href="https://docs.angularjs.org/api/ngRoute/service/$route">$route</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$compile">$compile</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$controller">$controller</a></li><li><a href="https://docs.angularjs.org/api/ngRoute/service/$routeParams">$routeParams</a></li><li><a href="api/route-segment/service/$routeSegment"><code>$routeSegment</code></a></li><li><a href="https://docs.angularjs.org/api/ng/service/$q">$q</a></li><li><a href="https://docs.angularjs.org/api/auto/service/$injector">$injector</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$timeout">$timeout</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$animate">$animate</a></li>
+    <li><a href="https://docs.angularjs.org/api/ngRoute/service/$route">$route</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$compile">$compile</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$controller">$controller</a></li><li><a href="https://docs.angularjs.org/api/ngRoute/service/$routeParams">$routeParams</a></li><li><a href="api/route-segment/service/$routeSegment">$routeSegment</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$q">$q</a></li><li><a href="https://docs.angularjs.org/api/auto/service/$injector">$injector</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$timeout">$timeout</a></li><li><a href="https://docs.angularjs.org/api/ng/service/$animate">$animate</a></li>
   </ul>
   
 
@@ -47,13 +47,13 @@
     
       <li>as element:
       
-      <pre><code>&lt;app-view-segment&#10;  app-view-segment=&quot;&quot;&gt;&#10;...&#10;&lt;/app-view-segment&gt;</code></pre>
+      <pre><code>&lt;app-view-segment&gt;&#10;  ...&#10;&lt;/app-view-segment&gt;</code></pre>
       </li>
     <li>as attribute:
-        <pre><code>&lt;ANY&#10;  app-view-segment=&quot;&quot;&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
+        <pre><code>&lt;ANY&#10;  app-view-segment=&quot;String&quot;&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
       </li>
     <li>as CSS class:
-        <pre><code>&lt;ANY class=&quot;app-view-segment: ;&quot;&gt; ... &lt;/ANY&gt;</code></pre>
+        <pre><code>&lt;ANY class=&quot;app-view-segment: String;&quot;&gt; ... &lt;/ANY&gt;</code></pre>
       </li>
     
   </div>
@@ -78,7 +78,7 @@
         
       </td>
       <td>
-        <a href="http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="label type-hint type-hint-string">String</a>
+        <span class="label type-hint type-hint-string"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" _target="blank">String</a></span>
       </td>
       <td>
         <p>render depth level</p>
@@ -92,6 +92,7 @@
 </table>
 
 </section>
+  
   
 
 
