@@ -34,7 +34,7 @@ module.exports = function navigationMapper_ERROR(aliasMap, log) {
         .filter(function (it) {
           return it.docType !== 'module' && it.docType != 'overview';
         })
-        .sort('name')
+        .sortBy('name')
         .forEach(function (error) {
           navGroup.navItems.push({
             name: error.name,
