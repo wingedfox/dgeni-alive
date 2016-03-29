@@ -15,8 +15,7 @@ var pkg = require('../package.json');
 var DEFAULT_PACKAGES = [
     require('./packages/jsdoc-ext'),
     require('./packages/ngdoc-ext'),
-    require('./packages/links-ext'),
-    require('./packages/examples-ext'),
+    require('./packages/links-ext')
 ];
 
 /**
