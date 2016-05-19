@@ -25,8 +25,7 @@ module.exports = function generateWebsite(log, templateFinder) {
       'styles/docs.css',
       'styles/github.css',
       'styles/runnableExample.css',
-      'bower.json',
-      '.bowerrc'
+      'bower.json'
   ];
   var locals = {};
 
@@ -45,7 +44,7 @@ module.exports = function generateWebsite(log, templateFinder) {
         docs.push({
           docType: 'website',
           id: t,
-          template: 'app/' + (/^\./.test(t) ? 'dot' + t : t),
+          template: 'app/' + t,
           outputPath: t,
           locals: locals
         });
