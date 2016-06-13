@@ -70,8 +70,10 @@ module.exports = function generateIndexProcessor(aliasMap, log, renderMarkdown) 
         })
 
         buffer.ensureCapacity(buffer.limit + filter.buckets.length*4);
+
         // append filter
-        filter.buckets.forEach(function(v) {
+        // use lodash for node <4.0 compat because buckets is a typed array
+        _.forEach(filter.buckets, function(v) {
           buffer.writeInt32(v);
         })
 
