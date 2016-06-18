@@ -73,6 +73,7 @@ module.exports = function generateIndexProcessor(aliasMap, log, renderMarkdown) 
 
         // append filter
         // use lodash for node <4.0 compat because buckets is a typed array
+        // TODO: revert to array method by the end of node 0.12 LTS (https://github.com/nodejs/LTS#lts_schedule)
         _.forEach(filter.buckets, function(v) {
           buffer.writeInt32(v);
         })
