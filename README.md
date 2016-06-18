@@ -42,6 +42,8 @@ Parts of code were taken from generator-ngdoc.
 5. ...
 6. Profit
 
+[FAQ](https://github.com/wingedfox/dgeni-alive/wiki/FAQ)
+
 ## How to use
 ### Install
 ```
