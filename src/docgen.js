@@ -160,6 +160,10 @@ function configurePackage(p) {
             pathTemplate: '${area}/${moduleName}/${groupType}',
             outputPathTemplate: 'partials/${area}/${moduleName}/${groupType}.html'
         });
+    })
+    // workaround for https://github.com/angular/dgeni-packages/issues/185
+    .config(function (extractAccessTransform) {
+        extractAccessTransform.allowedDocTypes.add("js");
     });
 
     return p;
