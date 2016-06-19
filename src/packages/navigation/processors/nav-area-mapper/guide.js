@@ -14,13 +14,8 @@ module.exports = function navigationMapper_GUIDE(aliasMap, log) {
       navItems: []
     };
 
-
-console.log(Object.keys(guideMapper))
     _(pages)
-      .sortBy([
-    'sortOrder',
-    'name'
-  ])
+      .sortBy(guideMapper.sortBy)
       .forEach(function (page) {
         res.navItems.push({
           name: page.name,
@@ -42,10 +37,11 @@ console.log(Object.keys(guideMapper))
     value: 'Guide'
   });
 
-  Object.defineProperty(guideMapper, 'sortBy', [
-    'sortOrder',
-    'name'
-  ]);
+  Object.defineProperty(guideMapper, 'sortBy', {
+    value: [
+      'sortOrder',
+      'name'
+    ]});
 
   return guideMapper;
 };

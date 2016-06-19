@@ -169,7 +169,7 @@ function DocGen () {
      */
     this.Package = function (p) {
         if (!pkg) {
-            var packages = (p && [].concat(p) || DEFAULT_PACKAGES || []).map(function(packageName) {
+            var packages = _.union(DEFAULT_PACKAGES, p || []).map(function(packageName) {
                 if ('string' == typeof packageName) {
                     return require(packageName);
                 } else {
