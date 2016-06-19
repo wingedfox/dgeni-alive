@@ -14,13 +14,20 @@ module.exports = function navigationMapper_GUIDE(aliasMap, log) {
       navItems: []
     };
 
-    _(pages).forEach(function (page) {
-      res.navItems.push({
-        name: page.name,
-        type: '',
-        href: page.path,
-        title: page.title
-      });
+
+console.log(Object.keys(guideMapper))
+    _(pages)
+      .sortBy([
+    'sortOrder',
+    'name'
+  ])
+      .forEach(function (page) {
+        res.navItems.push({
+          name: page.name,
+          type: '',
+          href: page.path,
+         title: page.title
+        });
     });
 
     return [res];
@@ -34,6 +41,11 @@ module.exports = function navigationMapper_GUIDE(aliasMap, log) {
   Object.defineProperty(guideMapper, 'title', {
     value: 'Guide'
   });
+
+  Object.defineProperty(guideMapper, 'sortBy', [
+    'sortOrder',
+    'name'
+  ]);
 
   return guideMapper;
 };

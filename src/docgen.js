@@ -15,7 +15,8 @@ var pkg = require('../package.json');
 var DEFAULT_PACKAGES = [
     require('./packages/jsdoc-ext'),
     require('./packages/ngdoc-ext'),
-    require('./packages/links-ext')
+    require('./packages/links-ext'),
+    require('./packages/navigation')
 ];
 
 /**
@@ -28,7 +29,6 @@ function configurePackage(p) {
      // build navigation
      .processor(require('./processors/config'))
      .processor(require('./processors/index'))
-     .processor(require('./processors/navigation'))
      .processor(require('./processors/structuredParam'))
      .processor(require('./processors/website'))
 
@@ -39,16 +39,6 @@ function configurePackage(p) {
          .locals('title', pkg.title)
          .locals('url', pkg.homepage);
      })
-
-     // add navigation area mappers
-     .config(function(generateNavigationProcessor, getInjectables) {
-        generateNavigationProcessor.addMappers(getInjectables([
-          require('./processors/mappers/api'),
-          require('./processors/mappers/docs'),
-          require('./processors/mappers/error'),
-          require('./processors/mappers/guide')
-        ]));
-      })
 
      // add filters
      .config(function(templateEngine, getInjectables) {

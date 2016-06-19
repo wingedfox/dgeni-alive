@@ -14,13 +14,15 @@ module.exports = function navigationMapper_DOCS(aliasMap, log) {
       navItems: []
     };
 
-    _(pages).forEach(function (page) {
-      res.navItems.push({
-        name: page.name,
-        type: '',
-        href: page.path,
-        title: page.title
-      });
+    _(pages)
+      .sortBy(docsMapper.sortBy)
+      .forEach(function (page) {
+        res.navItems.push({
+          name: page.name,
+          type: '',
+          href: page.path,
+         title: page.title
+        });
     });
 
     return [res];
@@ -28,12 +30,18 @@ module.exports = function navigationMapper_DOCS(aliasMap, log) {
 
 
   Object.defineProperty(docsMapper, 'area', {
-    value: 'docs'
+    value: 'guide'
   });
 
   Object.defineProperty(docsMapper, 'title', {
-    value: 'Docs'
+    value: 'Guide'
   });
+
+  Object.defineProperty(docsMapper, 'sortBy', {
+    value: [
+      'sortOrder',
+      'name'
+    ]});
 
   return docsMapper;
 };
