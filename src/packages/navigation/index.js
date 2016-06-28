@@ -9,7 +9,6 @@ module.exports = new Package('navigation', [])
 
   // Add in the real processors for this package
   .processor(require('./processors/navigation'))
-  .processor(require('./processors/order-nav-items'))
 
   // Add more tag definitions
   .config(function(parseTagsProcessor, getInjectables) {
