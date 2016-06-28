@@ -1,7 +1,7 @@
 {
   "name": "dgeni-alive",
   "title": "Dgeni-Alive",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Live doc generator on top of Dgeni",
   "main": "src/docgen.js",
   "scripts": {
