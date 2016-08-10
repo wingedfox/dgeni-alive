@@ -120,6 +120,17 @@ api: {
   src: [
     '/src/**/*.js',
     '!**/test/**/*.js'
+  ],
+  // Any paths that contain your overriden templates relative to the grunt file
+  templatePaths: [
+    'dgeniAliveTemplates'
+  ],
+  // Any template files you want to override. Be sure to include the directory where these are located with the `templatePaths` option
+  templateOverrides: [
+    {
+      template: 'views/main.html',
+      file: 'main.html'
+    }
   ]
 }
 ```
