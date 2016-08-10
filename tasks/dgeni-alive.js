@@ -34,8 +34,15 @@ module.exports = function (grunt) {
         var dest = path.resolve(this.data.dest);
 
         // enable debug
-        docgen.Package().config(function(log) {
+        docgen.Package().config(function(log, templateFinder) {
             log.level = debug? 'debug': 'info';
+
+            if(this.data.templatePaths) {
+                this.data.templatePaths.forEach(function(path) {
+                    // path/to/templates
+                    templateFinder.templateFolders.unshift(path);
+                });
+            }
         });
 
         var done = this.async();
