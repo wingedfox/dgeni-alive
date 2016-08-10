@@ -30,6 +30,19 @@ module.exports = function generateWebsite(log, templateFinder) {
   ];
   var locals = {};
 
+  /**
+   * An array of objects
+   * @type {Array}
+   *
+   * {
+   *    template: 'views/main.html',
+   *    file: 'main.html'
+   * }
+   *
+   * Be sure to add the template folder that your new main.html is in so it can find it.
+   */
+  var templateOverrides = [];
+
   return {
     locals: function(n, v) {
       if (void(v) === v) {
@@ -39,9 +52,46 @@ module.exports = function generateWebsite(log, templateFinder) {
       }
       return this;
     },
+    addTemplateOverride: function(template, file) {
+      if(template && file) {
+        templateOverrides.push({
+          template: template,
+          file: file
+        });
+      }
+    },
     $runBefore: ['rendering-docs'],
     $process: function (docs) {
+
+      var filteredTemplates = [];
+
+      // If you have an override, lets remove what it is overriding in the default templates
       templates.forEach(function(t) {
+        var shouldOverride = false;
+
+        templateOverrides.forEach(function(to) {
+          if(to.template === t) {
+            shouldOverride = true;
+          }
+        });
+
+        if(!shouldOverride) {
+          filteredTemplates.push(t);
+        }
+      });
+
+      // Add the overridden templates
+      templateOverrides.forEach(function(to) {
+        docs.push({
+          docType: 'website',
+          id: to.template,
+          template: to.file,
+          outputPath: to.template,
+          locals: locals
+        });
+      });
+
+      filteredTemplates.forEach(function(t) {
         docs.push({
           docType: 'website',
           id: t,
