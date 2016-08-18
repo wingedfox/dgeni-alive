@@ -1,6 +1,8 @@
 # dgeni-alive
 Live docs on top of dgeni documentation generator
 
+[ [FAQ](https://github.com/wingedfox/dgeni-alive/wiki/FAQ) ] [ [HowTo](https://github.com/wingedfox/dgeni-alive/wiki/HowTo) ]
+
 ## Motivation
 `Dgeni-alive` documentation generator has been built after a long search for working one with AngularJS doc flavour.
 
@@ -43,8 +45,6 @@ Parts of code were taken from generator-ngdoc.
 5. ...
 6. Profit
 
-[FAQ](https://github.com/wingedfox/dgeni-alive/wiki/FAQ)
-[HowTo](https://github.com/wingedfox/dgeni-alive/wiki/HowTo)
 
 ## How to use
 ### Install

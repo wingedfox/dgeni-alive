@@ -30,13 +30,15 @@ module.exports = function (grunt) {
     grunt.registerMultiTask('dgeni-alive', 'Generate live docs with ngdoc/dgeni.', function () {
         var debug = !!grunt.option('debug');
 
+        var packages = this.options().packages;
         var serve = this.options().serve;
         var dest = path.resolve(this.data.dest);
 
         var apiOptions = this.data;
 
+        docgen.Package(packages || void(packages))
         // enable debug
-        docgen.Package().config(function(log) {
+        .config(function(log) {
             log.level = debug? 'debug': 'info';
         })
 
