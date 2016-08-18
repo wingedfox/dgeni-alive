@@ -47,7 +47,6 @@ function configurePackage(p) {
      // add more templates location
      .config(function(templateFinder) {
         templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
-        console.log(templateFinder.templatePatterns)
       })
 
      // do not assume links to be absolute
