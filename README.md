@@ -44,6 +44,7 @@ Parts of code were taken from generator-ngdoc.
 6. Profit
 
 [FAQ](https://github.com/wingedfox/dgeni-alive/wiki/FAQ)
+[HowTo](https://github.com/wingedfox/dgeni-alive/wiki/HowTo)
 
 ## How to use
 ### Install
@@ -63,22 +64,6 @@ docgen.package().config(function(log) {
   console.log("I'm done!");
 });
 
-```
-
-### Web-app configuration
-Whether you need to change live docs appearance, feel free to override templates
-- **[content.html](src/templates/app/views/content.html)** - content pane
-- **[footer.html](src/templates/app/views/footer.html)** - footer
-- **[main.html](src/templates/app/views/main.html)** - root template
-- **[navbar.html](src/templates/app/views/navbar.html)** - top navbar
-- **[sidebar.html](src/templates/app/views/sidebar.html)** - left sidebar
-
-```js
-docgen.package()  
-  // add more templates location
-  .config(function(templateFinder) {
-    templateFinder.templateFolders.unshift('/path/to/templates');
-  })
 ```
 
 ### Grunt task

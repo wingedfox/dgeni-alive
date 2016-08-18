@@ -1,8 +1,11 @@
 'use strict';
 
-module.exports = function generateWebsite(log, templateFinder) {
-
-//  templateFinder.templateFolders.unshift(path.resolve(__dirname, '../src/templates'));
+/**
+ * Generates web app by given templates
+ *
+ * @dgService generateWebsiteProcessor
+ */
+module.exports = function generateWebsiteProcessor (log) {
 
   var debug = log.debug;
 
@@ -52,51 +55,15 @@ module.exports = function generateWebsite(log, templateFinder) {
       }
       return this;
     },
-    addTemplateOverride: function(template, file) {
-      if(template && file) {
-        templateOverrides.push({
-          template: template,
-          file: file
-        });
-      }
-    },
+    templates: templates,
     $runBefore: ['rendering-docs'],
-    $process: function (docs) {
-
-      var filteredTemplates = [];
-
-      // If you have an override, lets remove what it is overriding in the default templates
-      templates.forEach(function(t) {
-        var shouldOverride = false;
-
-        templateOverrides.forEach(function(to) {
-          if(to.template === t) {
-            shouldOverride = true;
-          }
-        });
-
-        if(!shouldOverride) {
-          filteredTemplates.push(t);
-        }
-      });
-
-      // Add the overridden templates
-      templateOverrides.forEach(function(to) {
+    $process: function generateWebsiteProcessor (docs) {
+      this.templates.forEach(function(t) {
         docs.push({
           docType: 'website',
-          id: to.template,
-          template: to.file,
-          outputPath: to.template,
-          locals: locals
-        });
-      });
-
-      filteredTemplates.forEach(function(t) {
-        docs.push({
-          docType: 'website',
+          area: 'website',
           id: t,
-          template: 'app/' + (/^\./.test(t) ? 'dot' + t : t),
-          outputPath: t,
+          name: t.replace(/(^|\/)(\.)/g, '$1dot$2'),
           locals: locals
         });
       });

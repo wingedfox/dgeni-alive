@@ -24,10 +24,10 @@ module.exports = function generateConfigProcessor(log) {
     $runBefore: ['rendering-docs'],
     $process: function (docs) {
       docs.push({
-        docType: 'config',
+        area: 'website',
+        docType: 'config-data',
         id: 'config',
-        template: 'app/data/config.template.js',
-        outputPath: 'data/config.js',
+        name: 'data/config.js',
         config: {
             TITLE: title,
             ROOT: root,

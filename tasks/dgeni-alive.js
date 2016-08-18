@@ -49,16 +49,6 @@ module.exports = function (grunt) {
             }
         })
 
-        .config(function(generateWebsite) {
-            if(apiOptions.templateOverrides) {
-                apiOptions.templateOverrides.forEach(function(template) {
-                    grunt.log.writeln('Overriding template: %s', path.resolve(template.template));
-
-                    generateWebsite.addTemplateOverride(template.template, template.file);
-                });
-            }
-        });
-
         var done = this.async();
         if (this.data.title) {
             docgen.title(this.data.title);
