@@ -53,18 +53,16 @@ module.exports = function generateNavigationProcessor(aliasMap, log) {
       });
 
       docs.push({
+        area: 'nav-data',
         docType: 'nav-data',
         id: 'nav-data',
-        template: 'app/data/nav-data.template.js',
-        outputPath: 'data/nav-data.js',
         areas: areas
       });
 
       docs.push({
+        area: 'nav-data',
         docType: 'nav-data',
         id: 'area-data',
-        template: 'app/data/area-data.template.js',
-        outputPath: 'data/area-data.js',
         areaIds: areaIds
       });
     }

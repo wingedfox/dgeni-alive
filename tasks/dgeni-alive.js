@@ -15,15 +15,15 @@ var path = require('path');
 var defaults = {
     root: process.cwd(),
     port: 10000,
-    host: "127.0.0.1",
+    host: '127.0.0.1',
     cache: 20,
     showDir : true,
     autoIndex: true,
-    ext: "html",
+    ext: 'html',
     runInBackground: false,
     cors: false,
     openBrowser : false
-}
+};
 
 module.exports = function (grunt) {
     // register task
@@ -33,10 +33,21 @@ module.exports = function (grunt) {
         var serve = this.options().serve;
         var dest = path.resolve(this.data.dest);
 
+        var apiOptions = this.data;
+
         // enable debug
         docgen.Package().config(function(log) {
             log.level = debug? 'debug': 'info';
-        });
+        })
+
+        .config(function(templateFinder) {
+            if(apiOptions.templatePaths) {
+                apiOptions.templatePaths.forEach(function(templatePath) {
+                    grunt.log.writeln('Adding template path: %s', path.resolve(templatePath));
+                    templateFinder.templateFolders.unshift(path.resolve(templatePath));
+                });
+            }
+        })
 
         var done = this.async();
         if (this.data.title) {
@@ -52,10 +63,10 @@ module.exports = function (grunt) {
                 var options = _.extend({}, defaults, {
                         root: dest
                     }, serve);
-                var url = _.template("http://<%= host %>:<%= port %>/")(options);
+                var url = _.template('http://<%= host %>:<%= port %>/')(options);
                 var server = require('http-server').createServer(options);
                 server.listen(options.port, options.host, function () {
-                    grunt.log.writeln("Server running on %s", url);
+                    grunt.log.writeln('Server running on %s', url);
                     grunt.log.ok('Hit CTRL-C to stop the server');
                     if (options.openBrowser){
                         require('opener')(url, {

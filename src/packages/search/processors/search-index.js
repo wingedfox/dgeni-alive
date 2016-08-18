@@ -7,7 +7,10 @@ var decode = require('ent/decode');
 var bloom = require('bloomfilter');
 var ByteBuffer = require("bytebuffer");
 
-module.exports = function generateIndexProcessor(aliasMap, log, renderMarkdown) {
+module.exports = function generateSearchIndexProcessorFactory(aliasMap, log, renderMarkdown) {
+  /**
+   *  Removes code blocks, tags and other useless content from string
+   */
   function cleanText(md) {
     var res = '';
     if (md) {
@@ -30,31 +33,37 @@ module.exports = function generateIndexProcessor(aliasMap, log, renderMarkdown) 
       }
       return errorRate;
     },
-    $process: function (docs) {
+    $process: function generateSearchIndexProcessor (docs) {
 
       var tokens = [];
       var buffer = new ByteBuffer(0);
 
       var index = docs.filter(function (v) {
+        // build search index for rendered docs only
+        // do not dig down to the document sources
+        // and skip extra content
         return ['componentGroup', 'config', 'nav-data', 'website'].indexOf(v.docType) < 0 &&
                !!v.renderedContent;
       }).map(function(v) {
-          var index = tokenizer.extract(['events', 'properties', 'methods', 'name', 'codeName', 'renderedContent', 'docType'].map(function(k) {
-          if ('string' === typeof v[k]) {
-            return 'renderedContent' === k ? cleanText(v[k]) : v[k];
-          } else if (v[k]) {
-            var m = v[k];
-            return [m.codeName || '',
-                    m.name || '',
-                    cleanText(m.renderedContent || ''),
-                    m.alias || '',
-                    m.eventTarget || '',
-                    m.eventType || ''
-            ].join(' ');
-          } else {
-            return '';
-          }
-        }).join(' ').replace(/(\$(\w+))/g, '$1 $2'), {
+        // for each document extract only certain properties
+        var index = tokenizer.extract(
+          ['events', 'properties', 'methods', 'name', 'codeName', 'renderedContent', 'docType'].map(function(k) {
+            if ('string' === typeof v[k]) {
+              // rendered content should be cleaned a bit
+              return 'renderedContent' === k ? cleanText(v[k]) : v[k];
+            } else if (v[k]) {
+              var m = v[k];
+              return [m.codeName || '',
+                      m.name || '',
+                      cleanText(m.renderedContent || ''),
+                      m.alias || '',
+                      m.eventTarget || '',
+                      m.eventType || ''
+              ].join(' ');
+            } else {
+              return '';
+            }
+          }).join(' ').replace(/(\$(\w+))/g, '$1 $2'), {
           language: "english",
           remove_digits: true,
           return_changed_case: true,
@@ -88,16 +97,15 @@ module.exports = function generateIndexProcessor(aliasMap, log, renderMarkdown) 
       });
 
       docs.push({
-        docType: 'search-data',
+        docType: 'search-data-index',
         id: 'search-index',
-        outputPath: 'data/search.index',
+        name: 'search.index',
         renderedContent: buffer.toBinary(0,buffer.offset)
       });
 
       docs.push({
         docType: 'search-data',
         id: 'search-meta',
-        outputPath: 'data/search-meta.js',
         renderedContent: JSON.stringify(tokens)
       });
     }

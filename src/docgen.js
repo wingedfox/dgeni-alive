@@ -16,7 +16,7 @@ var DEFAULT_PACKAGES = [
     require('./packages/jsdoc-ext'),
     require('./packages/ngdoc-ext'),
     require('./packages/links-ext'),
-    require('./packages/navigation')
+    require('./packages/website')
 ];
 
 /**
@@ -27,14 +27,11 @@ function configurePackage(p) {
     p.factory(require('./services/transforms/errorTagTransform'))
 
      // build navigation
-     .processor(require('./processors/config'))
-     .processor(require('./processors/index'))
      .processor(require('./processors/structuredParam'))
-     .processor(require('./processors/website'))
 
      // generate website
-     .config(function(generateWebsite) {
-        generateWebsite
+     .config(function(generateWebsiteProcessor) {
+        generateWebsiteProcessor
          .locals('version', pkg.version)
          .locals('title', pkg.title)
          .locals('url', pkg.homepage);
@@ -50,13 +47,15 @@ function configurePackage(p) {
      // add more templates location
      .config(function(templateFinder) {
         templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
+        console.log(templateFinder.templatePatterns)
       })
 
-     // do not assume links to be 
+     // do not assume links to be absolute
      .config(function(checkAnchorLinksProcessor) {
         checkAnchorLinksProcessor.base = '/';
       })
 
+     // 
      .config(function(parseTagsProcessor, getInjectables) {
         getInjectables(require('./tag-defs')).forEach(function(v) {
             parseTagsProcessor.tagDefinitions.push(v);
@@ -208,9 +207,9 @@ function DocGen () {
      * @returns {DocGen}
      */
     this.title = function (title) {
-        this.Package().config(function(generateConfigProcessor, generateWebsite) {
+        this.Package().config(function(generateConfigProcessor, generateWebsiteProcessor) {
             generateConfigProcessor.title(title);
-            generateWebsite.locals('productTitle', title);
+            generateWebsiteProcessor.locals('productTitle', title);
         });
         return this;
     }
@@ -222,9 +221,9 @@ function DocGen () {
      * @returns {DocGen}
      */
     this.version = function (version) {
-        this.Package().config(function(generateConfigProcessor, generateWebsite) {
+        this.Package().config(function(generateConfigProcessor, generateWebsiteProcessor) {
             generateConfigProcessor.version(version);
-            generateWebsite.locals('productVersion', version);
+            generateWebsiteProcessor.locals('productVersion', version);
         });
         return this;
     }
