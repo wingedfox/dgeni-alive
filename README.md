@@ -77,20 +77,20 @@ Add section to your Gruntfile.js
 "dgeni-alive": {
 options: {
   // optional basePath for correct path calculation
-     basePath: '',
+  basePath: '',
   // optional dgeni packages
-  // packages: [
-  //   'dgeni-packages/jsdoc',            // either names
-  //   require('dgeni-packages/examples') // or packages
-  // ]
+  packages: [
+    'dgeni-packages/jsdoc',            // either names
+    require('dgeni-packages/examples') // or packages
+  ]
   // optional serve section for running local http server with live docs
-  // serve: {
-  // the server port
-  // can also be written as a function, e.g.
-       port: 10000,
-  // open the browser
-       openBrowser: true // or command to run favorite browser
-  // }
+  serve: {
+    // the server port
+    // can also be written as a function, e.g.
+    port: 10000,
+    // open the browser
+    openBrowser: true // or command to run favorite browser
+  }
 },
 api: {
   // product title
@@ -102,6 +102,7 @@ api: {
   // where to put docs
   dest: '/docs/',
   // where to look for sources
+  // grunt globbing is supported
   src: [
     '/src/**/*.js',
     '!**/test/**/*.js'
@@ -109,13 +110,6 @@ api: {
   // Any paths that contain your overriden templates relative to the grunt file
   templatePaths: [
     'dgeniAliveTemplates'
-  ],
-  // Any template files you want to override. Be sure to include the directory where these are located with the `templatePaths` option
-  templateOverrides: [
-    {
-      template: 'views/main.html',
-      file: 'main.html'
-    }
   ]
 }
 ```
