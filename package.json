@@ -31,7 +31,7 @@
     "bytebuffer": "~5.0.0",
     "catharsis": "~0.8.8",
     "dgeni": "~0.4.2",
-    "dgeni-packages": "~0.13.0",
+    "dgeni-packages": "~0.16.0",
     "ent": "~2.2.0",
     "fs-extra": "~0.30.0",
     "http-server": "~0.9.0",

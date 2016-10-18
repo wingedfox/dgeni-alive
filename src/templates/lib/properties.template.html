@@ -5,10 +5,10 @@
   <li id="{$ property.name $}">
     <h3 class="{% if property.deprecated != null %}member-deprecated{% endif %}">
       <span class="title">{$ property.name | code $}</span>
-      {$ memberAccess(property) $}
-      {$ deprecatedOrSince(property) $}
+      {$ lib.memberAccess(property) $}
+      {$ lib.deprecatedOrSince(property) $}
     </h3>
-    {$ typeInfo(property) $}
+    {$ lib.typeInfo(property) $}
   </li>
   {% endfor -%}
 </ul>
