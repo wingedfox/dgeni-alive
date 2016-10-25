@@ -1,7 +1,7 @@
 {
   "name": "dgeni-alive",
   "title": "Dgeni-Alive",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Live doc generator on top of Dgeni",
   "main": "src/docgen.js",
   "scripts": {
@@ -25,6 +25,15 @@
     "url": "https://github.com/wingedfox/dgeni-alive/issues"
   },
   "homepage": "https://github.com/wingedfox/dgeni-alive#readme",
+  "contributors": [
+    {
+      "name": "North McCormick",
+      "email": "north@checkster.com"
+    }, {
+      "name": "Wesley Porter",
+      "email": "wesp@qualtrics.com"
+    }
+  ],
   "dependencies": {
     "bloomfilter": "~0.0.16",
     "bower": "~1.7.9",
