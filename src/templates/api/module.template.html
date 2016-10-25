@@ -7,10 +7,6 @@
 
 {$ doc.description | marked $}
 
-{% if doc.name != 'ng' and doc.name != 'auto' %}
-{% block installation %}{% endblock %}
-{% endif %}
-
 {% if doc.componentGroups and doc.componentGroups.length > 0 %}
 <div class="component-breakdown">
   <h2>Module Components</h2>
