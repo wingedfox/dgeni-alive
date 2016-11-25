@@ -35,7 +35,8 @@ Parts of code were taken from generator-ngdoc.
 7. Added Errors Reference
 8. Added Search
 9. Added @sortOrder tag
-10. TBD
+10. Added JSX reader and @ngdoc type 'React' for documenting React components.
+11. TBD
 
 ## How it works
 1. Configure Dgeni package

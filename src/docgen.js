@@ -29,6 +29,11 @@ function configurePackage(p) {
      // build navigation
      .processor(require('./processors/structuredParam'))
 
+     // add the JSX file reading service to the processor
+     .config(function (readFilesProcessor, jsxFileReader) {
+        readFilesProcessor.fileReaders.unshift(jsxFileReader);
+     })
+
      // generate website
      .config(function(generateWebsiteProcessor) {
         generateWebsiteProcessor
