@@ -26,9 +26,6 @@ function configurePackage(p) {
     // append services
     p.factory(require('./services/transforms/errorTagTransform'))
 
-     // JSX file reader service
-     .factory(require('./file-readers/jsxFileReader'))
-
      // build navigation
      .processor(require('./processors/structuredParam'))
 
@@ -91,12 +88,6 @@ function configurePackage(p) {
         });
 
         computeIdsProcessor.idTemplates.push({
-            docTypes: ['React'],
-            idTemplate: 'module:${module}.${docType}:${name}',
-            getAliases: getAliases
-        });
-
-        computeIdsProcessor.idTemplates.push({
             docTypes: ['error'],
             idTemplate: 'module:${module}.${docType}:${name}',
             getAliases: getAliases
@@ -125,12 +116,6 @@ function configurePackage(p) {
             pathTemplate: '${area}/${module}/${docType}/${name}',
             outputPathTemplate: 'partials/${area}/${module}/${docType}/${name}.html'
         });
-
-         computePathsProcessor.pathTemplates.push({
-             docTypes: ['React'],
-             pathTemplate: '${area}/${module}/${docType}/${name}',
-             outputPathTemplate: 'partials/${area}/${module}/${docType}/${name}.html'
-         });
 
         computePathsProcessor.pathTemplates.push({
             docTypes: ['error'],
