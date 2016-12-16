@@ -4,6 +4,7 @@
   "dependencies": {
     "modernizr": "3.3.x",
     "angular": "1.5.x",
+    "angular-animate": "1.5.9",
     "jquery": "2.x.x",
     "bootstrap": "3.3.x",
     "google-code-prettify": "1.0.1",
@@ -24,6 +25,7 @@
     }
   },
   "resolutions": {
-    "angular": "1.5.x"
+    "angular": "1.5.x",
+    "angular-animate": "1.5.9"
   }
 }
