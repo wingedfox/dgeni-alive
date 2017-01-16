@@ -24,6 +24,7 @@
     }
   },
   "resolutions": {
-    "angular": "1.5.x"
+    "angular": "1.5.x",
+    "angular-animate": "1.5.x"
   }
 }
