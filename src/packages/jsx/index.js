@@ -1,4 +1,5 @@
 var Package = require('dgeni').Package;
+var path = require('path');
 
 /**
  * @dgPackage jsx
