@@ -4,7 +4,7 @@
   "dependencies": {
     "modernizr": "3.3.x",
     "angular": "1.5.x",
-    "angular-animate": "1.5.x"
+    "angular-animate": "1.5.x",
     "jquery": "2.x.x",
     "bootstrap": "3.3.x",
     "google-code-prettify": "1.0.1",
