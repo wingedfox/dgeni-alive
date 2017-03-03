@@ -16,7 +16,8 @@ var DEFAULT_PACKAGES = [
     require('./packages/jsdoc-ext'),
     require('./packages/ngdoc-ext'),
     require('./packages/links-ext'),
-    require('./packages/website')
+    require('./packages/website'),
+    require('./packages/jsx')
 ];
 
 /**
