@@ -1,0 +1,40 @@
+{% import "lib/macros.html" as lib -%}
+{% extends "api/api.template.html" %}
+
+{% block additional %}
+  {% block usage %}
+  <h2 id="usage">Usage</h2>
+  <div class="usage">
+  {% if doc.usage %}
+    {$ doc.usage | marked $}
+  {% else %}
+
+  {% if doc.name.indexOf('ng') == 0 -%}
+  (This directive can be used as custom element, but be aware of <a href="guide/ie">IE restrictions</a>).
+  {%- endif %}
+  {% code %}
+  <{$ doc.name | dashCase $}
+    {%- for param in doc.params -%}
+      {# skip attribute with name equal to directive name #}
+      {%- if (doc.name != param.alias and doc.name != param.name) %}
+      {$ lib.directiveParam(param, '="', '"') $}
+      {%- endif -%}
+    {%- endfor %}>
+  </{$ doc.name | dashCase $}>
+  {% endcode %}
+ 
+
+  {%- endif %}
+  </div>
+  {% endblock -%}
+
+  {%- if doc.animations %}
+  <h2 id="animations">Animations</h2>
+  {$ doc.animations | marked $}
+  {$ 'module:ngAnimate.$animate' | link('Click here', doc) $} to learn more about the steps involved in the animation.
+  {%- endif -%}
+
+  {% include "lib/params.template.html" %}
+  {% include "lib/events.template.html" %}
+  {% include "lib/throws.template.html" %}
+{% endblock %}
