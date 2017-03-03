@@ -86,13 +86,6 @@ function configurePackage(p) {
             idTemplate: 'module:${module}.${docType}:${name}',
             getAliases: getAliases
         });
-        
-        // Directive component
-        computeIdsProcessor.idTemplates.push({
-            docTypes: ['component'],
-            idTemplate: 'module:${module}.directive:${name}',
-            getAliases: getAliases
-        });
 
         computeIdsProcessor.idTemplates.push({
             docTypes: ['error'],
@@ -104,6 +97,18 @@ function configurePackage(p) {
             docTypes: ['factory'],
             idTemplate: 'module:${module}.${docType}:${name}',
             getAliases: getAliases
+        });
+        
+        computeIdsProcessor.idTemplates.push({
+            docTypes: ['component'],
+            idTemplate: 'module:${module}.${docType}:${name}',
+            getAliases: getAliases
+        });
+
+        computePathsProcessor.pathTemplates.push({
+            docTypes: ['component'],
+            pathTemplate: '${area}/${module}/${docType}/${name}',
+            outputPathTemplate: 'partials/${area}/${module}/${docType}/${name}.html'
         });
 
         computePathsProcessor.pathTemplates.push({
