@@ -86,6 +86,13 @@ function configurePackage(p) {
             idTemplate: 'module:${module}.${docType}:${name}',
             getAliases: getAliases
         });
+        
+        // Directive component
+        computeIdsProcessor.idTemplates.push({
+            docTypes: ['component'],
+            idTemplate: 'module:${module}.directive:${name}',
+            getAliases: getAliases
+        });
 
         computeIdsProcessor.idTemplates.push({
             docTypes: ['error'],
