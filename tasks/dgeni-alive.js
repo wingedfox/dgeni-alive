@@ -46,12 +46,11 @@ module.exports = function (grunt) {
         var deployments = _.extend({}, deploymentDefaults.deployments, this.options().deployments);
         var deploymentTarget = this.options().deploymentTarget || deploymentDefaults.deploymentTarget;
 
-        docgen.Package(packages || void(packages))
+        var docgenPackages = docgen.Package(packages || void(packages))
         // enable debug
         .config(function(log) {
             log.level = debug? 'debug': 'info';
         })
-
         .config(function(templateFinder) {
             if(apiOptions.templatePaths) {
                 apiOptions.templatePaths.forEach(function(templatePath) {
@@ -59,16 +58,17 @@ module.exports = function (grunt) {
                     templateFinder.templateFolders.unshift(path.resolve(templatePath));
                 });
             }
-        })
+        });
         
-        .config(function(generateExamplesProcessor, generateProtractorTestsProcessor) {
-            generateExamplesProcessor.deployments = deployments;
-            generateProtractorTestsProcessor.deployments = deployments;
-        })
-        
-        .config(function (renderDocsProcessor) {
-            renderDocsProcessor.extraData.deploymentTarget = deploymentTarget;
-        })
+        if (packages.includes('dgeni-packages/examples')) {
+            docgenConfig.config(function(generateExamplesProcessor, generateProtractorTestsProcessor) {
+                generateExamplesProcessor.deployments = deployments;
+                generateProtractorTestsProcessor.deployments = deployments;
+            })
+            .config(function (renderDocsProcessor) {
+                renderDocsProcessor.extraData.deploymentTarget = deploymentTarget;
+            });
+        }
 
         var done = this.async();
         if (this.data.title) {
