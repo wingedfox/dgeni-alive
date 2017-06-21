@@ -61,7 +61,7 @@ module.exports = function (grunt) {
         });
         
         if (packages.includes('dgeni-packages/examples')) {
-            docgenConfig.config(function(generateExamplesProcessor, generateProtractorTestsProcessor) {
+            docgenPackages.config(function(generateExamplesProcessor, generateProtractorTestsProcessor) {
                 generateExamplesProcessor.deployments = deployments;
                 generateProtractorTestsProcessor.deployments = deployments;
             })
