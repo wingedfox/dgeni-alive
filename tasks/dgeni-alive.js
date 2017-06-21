@@ -25,6 +25,13 @@ var defaults = {
     openBrowser : false
 };
 
+var deploymentDefaults = {
+    deployments : [{
+        name: 'default'
+    }],
+    deploymentTarget : 'default'
+};
+
 module.exports = function (grunt) {
     // register task
     grunt.registerMultiTask('dgeni-alive', 'Generate live docs with ngdoc/dgeni.', function () {
@@ -35,6 +42,9 @@ module.exports = function (grunt) {
         var dest = path.resolve(this.data.dest);
 
         var apiOptions = this.data;
+        
+        var deployments = _.extend({}, deploymentDefaults.deployments, this.options().deployments);
+        var deploymentTarget = this.options().deploymentTarget || deploymentDefaults.deploymentTarget;
 
         docgen.Package(packages || void(packages))
         // enable debug
@@ -49,6 +59,15 @@ module.exports = function (grunt) {
                     templateFinder.templateFolders.unshift(path.resolve(templatePath));
                 });
             }
+        })
+        
+        .config(function(generateExamplesProcessor, generateProtractorTestsProcessor) {
+            generateExamplesProcessor.deployments = deployments;
+            generateProtractorTestsProcessor.deployments = deployments;
+        })
+        
+        .config(function (renderDocsProcessor) {
+            renderDocsProcessor.extraData.deploymentTarget = deploymentTarget;
         })
 
         var done = this.async();
