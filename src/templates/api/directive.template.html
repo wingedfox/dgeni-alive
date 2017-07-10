@@ -38,13 +38,13 @@
 		{%- if doc.restrict.attribute -%}
 		<li>as attribute:
 			{% code %}
-			<{$ doc.element $}
-			{%- for param in doc.params %}
-			{$ lib.directiveParam(param, '="', '"', false, doc.name) $}
-			{%- endfor %}>
-			...
-		</{$ doc.element $}>
-		{% endcode %}
+			<{$ doc.element $} data-{$ doc.name | dashCase $}
+				{%- for param in doc.params %}
+				data-{$ lib.directiveParam(param, '="', '"', false, doc.name) $}
+				{%- endfor %}>
+				...
+			</{$ doc.element $}>
+			{% endcode %}
 		</li>
 		{% endif -%}
 
@@ -72,6 +72,7 @@
 
 {% include "lib/params.template.html" %}
 {% include "lib/methods.template.html" %}
+{% include "lib/properties.template.html" %}
 {% include "lib/events.template.html" %}
 {% include "lib/throws.template.html" %}
 {% endblock %}
