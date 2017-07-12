@@ -40,7 +40,7 @@ module.exports = function navigationMapper_DOCS(aliasMap, log) {
   Object.defineProperty(docsMapper, 'sortBy', {
     value: [
       'sortOrder',
-      'name'
+      'title'
     ]});
 
   return docsMapper;
