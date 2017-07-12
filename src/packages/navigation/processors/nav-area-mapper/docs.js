@@ -30,11 +30,11 @@ module.exports = function navigationMapper_DOCS(aliasMap, log) {
 
 
   Object.defineProperty(docsMapper, 'area', {
-    value: 'guide'
+    value: 'docs'
   });
 
   Object.defineProperty(docsMapper, 'title', {
-    value: 'Guide'
+    value: 'Docs'
   });
 
   Object.defineProperty(docsMapper, 'sortBy', {
