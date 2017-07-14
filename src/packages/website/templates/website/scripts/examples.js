@@ -182,11 +182,8 @@ angular.module('examples', [])
 							filename = 'index.html';
 						}
 
-						console.info('getting data for ', filename);
 						filePromises.push($http.get(exampleFolder + '/' + filename, { transformResponse: [] })
 							.then(function(response) {
-								console.info('got data for ', filename);
-
 								return {
 									name: filename,
 									content: response.data.replace(/(src\s*=\s*['"])([\.\/])/ig,
