@@ -8,6 +8,8 @@
     "bootstrap": "3.3.x",
     "google-code-prettify": "1.0.1",
     "angular-animate": "1.5.x",
+    "angular-aria": "1.5.x",
+    "angular-messages": "1.5.x",
     "angular-material": "1.0.x",
     "bytebuffer": "5.0.x",
     "font-awesome": "fontawesome#~4.5.0"
