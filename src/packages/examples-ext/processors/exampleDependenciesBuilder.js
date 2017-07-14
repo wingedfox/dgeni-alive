@@ -36,15 +36,18 @@ module.exports = function exampleDependenciesBuilder (readFilesProcessor, log, g
 
       // traverse deployments, check project dependencies and add local file
       // dependencies to the list of generated documents
-      generateExamplesProcessor.deployments.forEach(function(deployment) {
+      var deployment, name, processor, commonFiles;
+      for (var x in generateExamplesProcessor.deployments) {
+        if (generateExamplesProcessor.deployments.hasOwnProperty(x)) {
+          deployment = generateExamplesProcessor.deployments[x];
+          name = makeUniqueName(deployments, deployment.name);
+          processor = processDependency.bind(null, docs, name);
 
-        var name = makeUniqueName(deployments, deployment.name);
-        var processor = processDependency.bind(null, docs, name);
-
-        var commonFiles = deployment.examples && deployment.examples.commonFiles || {};
-        (commonFiles.scripts || []).forEach(processor);
-        (commonFiles.stylesheets || []).forEach(processor);
-      })
+          commonFiles = deployment.examples && deployment.examples.commonFiles || {};
+          (commonFiles.scripts || []).forEach(processor);
+          (commonFiles.stylesheets || []).forEach(processor);
+		}
+      }
     }
   };
 

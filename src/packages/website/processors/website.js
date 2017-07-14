@@ -17,6 +17,7 @@ module.exports = function generateWebsiteProcessor (log) {
       'views/navbar.html',
       'views/sidebar.html',
       'views/searchbox.html',
+	  'scripts/examples.js',
       'scripts/a.directive.js',
       'scripts/docs.controller.js',
       'scripts/index.js',
