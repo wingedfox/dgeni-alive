@@ -115,5 +115,38 @@ api: {
 }
 ```
 
+## Setting up Live Examples
+Add the dgeni-packages examples package to your package array.
+If you want the "Edit in Plunker" button and file tabs also add dgeni-alive examples-ext.
+Your package array should look something like this:
+```
+packages: [
+	'dgeni-packages/ngdoc',
+	'dgeni-packages/examples',
+	'./packages/examples-ext',
+],
+```
+You will also need to add deployments configuration to generate the examples.
+This is added to the "options" section of the configuration.
+```
+deployments: [{
+	name: 'default',
+	examples: {
+		commonFiles: {
+			scripts: [
+				'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js',
+				'/docs/resources/js/examples.js'
+			],
+			stylesheets: []
+		}
+	}
+}],
+deploymentTarget: 'default'
+```
+This example configuration defines a deployment "default" and makes it the default target.
+It tells every example to include jquery and a js file relative to the build path called "examples.js".
+Local files will be copied automatically in the same place as the generated example html if you use "examples-ext" package.
+You could also specify stylesheets in the stylesheets array.
+
 ## License
 MIT
