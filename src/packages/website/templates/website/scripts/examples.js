@@ -18,12 +18,36 @@ angular.module('examples', [])
 		return {
 			restrict: 'C',
 			scope : true,
-			controller : ['$scope', function($scope) {
+			controller : ['$scope', '$attrs', function($scope, $attrs) {
 				$scope.setTab = function(index) {
 					var tab = $scope.tabs[index];
 					$scope.activeTabIndex = index;
 					$scope.$broadcast('tabChange', index, tab);
 				};
+
+				if (angular.isFunction(iFrameResize) && $attrs.frameId) {
+					if ($attrs.hasOwnProperty('frameNoResize') && $attrs.frameNoResize == "true") {
+						// noop
+					} else {
+						var iframeOpts = {};
+						if ($attrs.hasOwnProperty('frameMinHeight')) {
+							iframeOpts.minHeight = $attrs.frameMinHeight;
+						}
+						if ($attrs.hasOwnProperty('frameMaxHeight')) {
+							iframeOpts.maxHeight = $attrs.frameMaxHeight;
+						}
+						if ($attrs.hasOwnProperty('frameHeightCalculationMethod')) {
+							iframeOpts.heightCalculationMethod = $attrs.frameHeightCalculationMethod;
+						}
+						if ($attrs.hasOwnProperty('frameScrolling')) {
+							iframeOpts.scrolling = $attrs.frameScrolling;
+						}
+						if ($attrs.hasOwnProperty('frameTolerance')) {
+							iframeOpts.tolerance = $attrs.frameTolerance;
+						}
+						iFrameResize(iframeOpts, '#' + $attrs.frameId);
+					}
+				}
 			}],
 			compile : function(element) {
 				element.html(tpl + element.html());
@@ -186,6 +210,7 @@ angular.module('examples', [])
 							.then(function(response) {
 								return {
 									name: filename,
+									// get content and replace relative links with full path
 									content: response.data.replace(/(src\s*=\s*['"])([\.\/])/ig,
 										'$1' + location.protocol + '//' + location.host + '/' + exampleFolder + '/$2')
 								};

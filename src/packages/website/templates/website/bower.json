@@ -12,7 +12,8 @@
     "angular-messages": "1.5.x",
     "angular-material": "1.0.x",
     "bytebuffer": "5.0.x",
-    "font-awesome": "fontawesome#~4.5.0"
+    "font-awesome": "fontawesome#~4.5.0",
+    "iframe-resizer": "3.5.x"
   },
   "overrides": {
     "bootstrap": {
@@ -23,6 +24,11 @@
     "font-awesome": {
       "main": [
         "css/font-awesome.css"
+      ]
+    },
+    "iframe-resizer": {
+      "main": [
+        "js/iframeResizer.min.js"
       ]
     }
   },

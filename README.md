@@ -135,7 +135,7 @@ deployments: [{
 		commonFiles: {
 			scripts: [
 				'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js',
-				'/docs/resources/js/examples.js'
+				'docs/resources/js/examples.js'
 			],
 			stylesheets: []
 		}
@@ -145,8 +145,19 @@ deploymentTarget: 'default'
 ```
 This example configuration defines a deployment "default" and makes it the default target.
 It tells every example to include jquery and a js file relative to the build path called "examples.js".
-Local files will be copied automatically in the same place as the generated example html if you use "examples-ext" package.
+Paths that do not begin with http(s), // or / will be copied automatically in the same place as the generated example html if you use "examples-ext" package.
 You could also specify stylesheets in the stylesheets array.
+
+### Configuring iFrame-Resizer
+iFrame-Resizer (https://github.com/davidjbradshaw/iframe-resizer) is used to resize example iframes when "examples-ext" is used.
+The following options for iframe resizer may be specified as example attributes (see iframe-resizer readme for explainations of what they do):
+minHeight, maxHeight, heightCalculationMethod, scrolling, tolerance.
+Options are set as attributes in your example tag in the documentation as snake-case with frame- prefixed before the option name.
+This is an example of setting minHeight to 200:
+ ```
+ * <example module="myModule" name="myExample" frame-min-height="200">
+```
+If you wish to disable iframe-resizer for an example add `frame-no-resize="true"` to your example.
 
 ## License
 MIT

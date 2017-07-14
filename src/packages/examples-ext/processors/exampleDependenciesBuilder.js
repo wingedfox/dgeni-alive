@@ -15,9 +15,12 @@ var fs = require('fs');
 module.exports = function exampleDependenciesBuilder (readFilesProcessor, log, generateExamplesProcessor, exampleMap) {
   /**
    * Regular expression to check if path is external
+   * Matches strings that start with http(s)://, // or /
+   * Strings that match will not be copied to the docs directory
+   * They assume some external thing has managed that
    * @type {RegExp}
    */
-  var REMOTE_REG = /(https?:)?\/\//i;
+  var REMOTE_REG = /^(https?:)?\/?\//i;
 
   /**
    * Document type for docs entries
@@ -44,7 +47,14 @@ module.exports = function exampleDependenciesBuilder (readFilesProcessor, log, g
           processor = processDependency.bind(null, docs, name);
 
           commonFiles = deployment.examples && deployment.examples.commonFiles || {};
-          (commonFiles.scripts || []).forEach(processor);
+
+          if (!commonFiles.hasOwnProperty('scripts')) {
+            commonFiles.scripts = [];
+          }
+          // add iframe resizer script
+          commonFiles.scripts.push('/bower_components/iframe-resizer/js/iframeResizer.contentWindow.min.js');
+
+          commonFiles.scripts.forEach(processor);
           (commonFiles.stylesheets || []).forEach(processor);
 		}
       }

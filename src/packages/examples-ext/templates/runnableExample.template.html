@@ -4,6 +4,7 @@
 <plnkr-opener example-path="{$ doc.path $}"></plnkr-opener>
 <div class="runnable-example"
     path="{$ doc.example.deployments[deploymentTarget].path $}"
+    frame-id="{$ doc.example.id $}"
     {%- for attrName, attrValue in doc.example.attributes %}
     {$ attrName $}="{$ attrValue $}"{% endfor %}>
 
@@ -22,7 +23,7 @@
 	{% endfor %}
     </md-tabs>
   </md-content>
-  <iframe class="runnable-example-frame" src="{$ doc.example.deployments[deploymentTarget].outputPath $}" name="{$ doc.example.id $}"></iframe>
+  <iframe class="runnable-example-frame" src="{$ doc.example.deployments[deploymentTarget].outputPath $}" name="{$ doc.example.id $}" id="{$ doc.example.id $}"></iframe>
 </div>
 
 
