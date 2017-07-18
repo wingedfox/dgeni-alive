@@ -151,7 +151,7 @@ You could also specify stylesheets in the stylesheets array.
 ### Configuring iFrame-Resizer
 iFrame-Resizer (https://github.com/davidjbradshaw/iframe-resizer) is used to resize example iframes when "examples-ext" is used.
 The following options for iframe resizer may be specified as example attributes (see iframe-resizer readme for explainations of what they do):
-minHeight, maxHeight, heightCalculationMethod, scrolling, tolerance.
+log, minHeight, maxHeight, heightCalculationMethod, scrolling, tolerance.
 Options are set as attributes in your example tag in the documentation as snake-case with frame- prefixed before the option name.
 This is an example of setting minHeight to 200:
  ```

@@ -25,6 +25,7 @@ angular.module('examples', [])
 					$scope.$broadcast('tabChange', index, tab);
 				};
 
+				// see https://github.com/davidjbradshaw/iframe-resizer for explanation of options
 				if (angular.isFunction(iFrameResize) && $attrs.frameId) {
 					if ($attrs.hasOwnProperty('frameNoResize') && $attrs.frameNoResize == "true") {
 						// noop
@@ -44,6 +45,9 @@ angular.module('examples', [])
 						}
 						if ($attrs.hasOwnProperty('frameTolerance')) {
 							iframeOpts.tolerance = $attrs.frameTolerance;
+						}
+						if ($attrs.hasOwnProperty('frameLog') && $attrs.frameLog === 'true') {
+							iframeOpts.log = true;
 						}
 						iFrameResize(iframeOpts, '#' + $attrs.frameId);
 					}
