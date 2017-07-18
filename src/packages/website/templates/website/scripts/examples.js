@@ -215,8 +215,9 @@ angular.module('examples', [])
 								return {
 									name: filename,
 									// get content and replace relative links with full path
-									content: response.data.replace(/(src\s*=\s*['"])([\.\/])/ig,
-										'$1' + location.protocol + '//' + location.host + '/' + exampleFolder + '/$2')
+									content: response.data
+										.replace(/((?:src|href)\s*=\s*['"])(\/[a-z0-9])/ig, '$1' + location.protocol + '//' + location.host + '/$2')
+										.replace(/((?:src|href)\s*=\s*['"])([\.\/])/ig, '$1' + location.protocol + '//' + location.host + '/' + exampleFolder + '/$2')
 								};
 							}));
 					});
