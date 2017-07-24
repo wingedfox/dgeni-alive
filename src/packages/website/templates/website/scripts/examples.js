@@ -49,7 +49,18 @@ angular.module('examples', [])
 						if ($attrs.hasOwnProperty('frameLog') && $attrs.frameLog === 'true') {
 							iframeOpts.log = true;
 						}
-						iFrameResize(iframeOpts, '#' + $attrs.frameId);
+						// attach iframe resizer
+						var iframe = iFrameResize(iframeOpts, '#' + $attrs.frameId);
+						// add event to teardown iframe when destroyed
+						$scope.$on('$destroy', function() {
+							if (angular.isArray(iframe)) {
+								for (var i=0,l=iframe.length; i<l; i++) {
+									if (iframe[i] && iframe[i].hasOwnProperty('iFrameResizer')) {
+										iframe[i].iFrameResizer.close();
+									}
+								}
+							}
+						});
 					}
 				}
 			}],
