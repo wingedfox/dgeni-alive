@@ -11,4 +11,8 @@ module.exports = new Package('jsdoc-ext', [require('dgeni-packages/jsdoc')])
 // Add more tag definitions
 .config(function(parseTagsProcessor, getInjectables) {
   parseTagsProcessor.tagDefinitions = parseTagsProcessor.tagDefinitions.concat(getInjectables(require('./tag-defs')));
+})
+// Add more code name matchers
+.config(function(codeNameService, getInjectables) {
+  codeNameService.matchers = getInjectables(require('./services/code-name-matchers'));
 });

@@ -154,10 +154,20 @@ The following options for iframe resizer may be specified as example attributes 
 log, minHeight, maxHeight, heightCalculationMethod, scrolling, tolerance.
 Options are set as attributes in your example tag in the documentation as snake-case with frame- prefixed before the option name.
 This is an example of setting minHeight to 200:
- ```
+```
  * <example module="myModule" name="myExample" frame-min-height="200">
 ```
 If you wish to disable iframe-resizer for an example add `frame-no-resize="true"` to your example.
+
+## Additional Packages
+dgeni-alive provides several packages to supplement the default dgeni-packages.
+To include a package from dgeni-alive in grunt configuration you would add `./packages/{package-name}` to you packages array.
+* examples-ext: provides improvements to the live examples
+* jsdoc-ext: provides additional jsdoc tags and code expressions (included by default)
+* jsx: provides jsx support
+* links-ext: provides extensions to dgeni-packages/links (included by default)
+* ngdoc-ext: provides extensions to dgeni-packages/ngdoc (included by default)
+* website: website package (included by default)
 
 ## License
 MIT
