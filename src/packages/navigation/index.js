@@ -5,7 +5,7 @@ var path = require('path');
  * @dgPackage navigation
  * @description Navigation builder package
  */
-module.exports = new Package('navigation', [])
+module.exports = new Package('navigation', [require('../jsdoc-ext')])
 
   // Add in the real processors for this package
   .processor(require('./processors/navigation'))
