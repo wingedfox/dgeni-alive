@@ -10,17 +10,17 @@
 
   <md-content>
     <md-tabs md-dynamic-height="false" md-border-bottom>
-	{% for fileName, file in doc.example.files %}
-	  <md-tab label="{$ file.name $}">
-		<md-content class="md-padding">
-		  <div class="runnable-example-file" {% for attrName, attrValue in file.attributes %}{$ attrName $}="{$ attrValue $}"{% endfor %}>
-		  {% code -%}
-			{$ file.fileContents $}
-		  {%- endcode %}
-		  </div>
-		</md-content>
-	  </md-tab>
-	{% endfor %}
+    {% for fileName, file in doc.example.files %}
+      <md-tab label="{$ file.name $}">
+        <md-content class="md-padding">
+          <div class="runnable-example-file" {% for attrName, attrValue in file.attributes %}{$ attrName $}="{$ attrValue $}"{% endfor %}>
+          {% code -%}
+            {$ file.fileContents $}
+          {%- endcode %}
+          </div>
+        </md-content>
+      </md-tab>
+    {% endfor %}
     </md-tabs>
   </md-content>
   <iframe class="runnable-example-frame" src="{$ doc.example.deployments[deploymentTarget].outputPath $}" name="{$ doc.example.id $}" id="{$ doc.example.id $}"></iframe>
