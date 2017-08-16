@@ -56,7 +56,14 @@ module.exports = function exampleDependenciesBuilder (readFilesProcessor, log, g
 
           commonFiles.scripts.forEach(processor);
           (commonFiles.stylesheets || []).forEach(processor);
-		}
+
+          // ensure final commonFiles is set even if none was previously defined
+          if (!deployment.hasOwnProperty('examples')) {
+            deployment.examples = { commonFiles: commonFiles };
+          } else {
+            deployment.examples.commonFiles = commonFiles;
+          }
+        }
       }
     }
   };
