@@ -8,3 +8,7 @@
   border-width: 0px 1px 1px 1px;
   border-color: #ddd;
 }
+
+.runnable-example-frame {
+  width: 100%;
+}

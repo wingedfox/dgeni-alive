@@ -115,5 +115,59 @@ api: {
 }
 ```
 
+## Setting up Live Examples
+Add the dgeni-packages examples package to your package array.
+If you want the "Edit in Plunker" button and file tabs also add dgeni-alive examples-ext.
+Your package array should look something like this:
+```
+packages: [
+	'dgeni-packages/ngdoc',
+	'dgeni-packages/examples',
+	'./packages/examples-ext',
+],
+```
+You will also need to add deployments configuration to generate the examples.
+This is added to the "options" section of the configuration.
+```
+deployments: [{
+	name: 'default',
+	examples: {
+		commonFiles: {
+			scripts: [
+				'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js',
+				'docs/resources/js/examples.js'
+			],
+			stylesheets: []
+		}
+	}
+}],
+deploymentTarget: 'default'
+```
+This example configuration defines a deployment "default" and makes it the default target.
+It tells every example to include jquery and a js file relative to the build path called "examples.js".
+Paths that do not begin with http(s), // or / will be copied automatically in the same place as the generated example html if you use "examples-ext" package.
+You could also specify stylesheets in the stylesheets array.
+
+### Configuring iFrame-Resizer
+iFrame-Resizer (https://github.com/davidjbradshaw/iframe-resizer) is used to resize example iframes when "examples-ext" is used.
+The following options for iframe resizer may be specified as example attributes (see iframe-resizer readme for explainations of what they do):
+log, minHeight, maxHeight, heightCalculationMethod, scrolling, tolerance.
+Options are set as attributes in your example tag in the documentation as snake-case with frame- prefixed before the option name.
+This is an example of setting minHeight to 200:
+```
+ * <example module="myModule" name="myExample" frame-min-height="200">
+```
+If you wish to disable iframe-resizer for an example add `frame-no-resize="true"` to your example.
+
+## Additional Packages
+dgeni-alive provides several packages to supplement the default dgeni-packages.
+To include a package from dgeni-alive in grunt configuration you would add `./packages/{package-name}` to you packages array.
+* examples-ext: provides improvements to the live examples
+* jsdoc-ext: provides additional jsdoc tags and code expressions (included by default)
+* jsx: provides jsx support
+* links-ext: provides extensions to dgeni-packages/links (included by default)
+* ngdoc-ext: provides extensions to dgeni-packages/ngdoc (included by default)
+* website: website package (included by default)
+
 ## License
 MIT

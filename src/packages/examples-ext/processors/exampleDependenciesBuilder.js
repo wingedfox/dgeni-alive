@@ -15,9 +15,12 @@ var fs = require('fs');
 module.exports = function exampleDependenciesBuilder (readFilesProcessor, log, generateExamplesProcessor, exampleMap) {
   /**
    * Regular expression to check if path is external
+   * Matches strings that start with http(s)://, // or /
+   * Strings that match will not be copied to the docs directory
+   * They assume some external thing has managed that
    * @type {RegExp}
    */
-  var REMOTE_REG = /(https?:)?\/\//i;
+  var REMOTE_REG = /^(https?:)?\/?\//i;
 
   /**
    * Document type for docs entries
@@ -36,15 +39,32 @@ module.exports = function exampleDependenciesBuilder (readFilesProcessor, log, g
 
       // traverse deployments, check project dependencies and add local file
       // dependencies to the list of generated documents
-      generateExamplesProcessor.deployments.forEach(function(deployment) {
+      var deployment, name, processor, commonFiles;
+      for (var x in generateExamplesProcessor.deployments) {
+        if (generateExamplesProcessor.deployments.hasOwnProperty(x)) {
+          deployment = generateExamplesProcessor.deployments[x];
+          name = makeUniqueName(deployments, deployment.name);
+          processor = processDependency.bind(null, docs, name);
 
-        var name = makeUniqueName(deployments, deployment.name);
-        var processor = processDependency.bind(null, docs, name);
+          commonFiles = deployment.examples && deployment.examples.commonFiles || {};
 
-        var commonFiles = deployment.examples && deployment.examples.commonFiles || {};
-        (commonFiles.scripts || []).forEach(processor);
-        (commonFiles.stylesheets || []).forEach(processor);
-      })
+          if (!commonFiles.hasOwnProperty('scripts')) {
+            commonFiles.scripts = [];
+          }
+          // add iframe resizer script
+          commonFiles.scripts.push('/bower_components/iframe-resizer/js/iframeResizer.contentWindow.min.js');
+
+          commonFiles.scripts.forEach(processor);
+          (commonFiles.stylesheets || []).forEach(processor);
+
+          // ensure final commonFiles is set even if none was previously defined
+          if (!deployment.hasOwnProperty('examples')) {
+            deployment.examples = { commonFiles: commonFiles };
+          } else {
+            deployment.examples.commonFiles = commonFiles;
+          }
+        }
+      }
     }
   };
 

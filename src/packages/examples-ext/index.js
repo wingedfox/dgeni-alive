@@ -7,11 +7,18 @@ var path = require('path');
  */
 module.exports = new Package('examples-ext', [require('dgeni-packages/examples')])
 
-// Add in the real processors for this package
-.processor(require('./processors/exampleDependenciesBuilder'))
+  // Add in the real processors for this package
+  .processor(require('./processors/exampleDependenciesBuilder'))
 
-// add more templates location
-.config(function(templateFinder) {
-  templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
-})
-;
+  // add more templates location
+  .config(function(templateFinder) {
+      templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
+  })
+
+  // add doctype for example-dependency
+  .config(function(computePathsProcessor, computeIdsProcessor) {
+      computeIdsProcessor.idTemplates.push({
+          docTypes: ['example-dependency'],
+          getAliases: function(doc) { return [doc.id]; }
+      });
+  });

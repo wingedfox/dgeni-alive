@@ -1,7 +1,7 @@
 'use strict';
 var DOCS_OVERWRITELINK = true;
 
-angular.module('docApp', ['ngMaterial'])
+angular.module('docApp', ['ngMaterial', 'examples'])
 .constant('DOCS_OVERWRITELINK', typeof DOCS_OVERWRITELINK === 'undefined' ? false : DOCS_OVERWRITELINK)
 .constant('SEARCH', [])
 .provider('DOCS_OVERWRITELINK', function (DOCS_OVERWRITELINK) {

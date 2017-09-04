@@ -40,7 +40,7 @@ module.exports = function navigationMapper_GUIDE(aliasMap, log) {
   Object.defineProperty(guideMapper, 'sortBy', {
     value: [
       'sortOrder',
-      'name'
+      'title'
     ]});
 
   return guideMapper;
