@@ -37,7 +37,7 @@
   ],
   "dependencies": {
     "bloomfilter": "~0.0.16",
-    "bower": "~1.7.9",
+    "bower": "~1.8.2",
     "bytebuffer": "~5.0.0",
     "catharsis": "~0.8.8",
     "dgeni": "~0.4.2",
